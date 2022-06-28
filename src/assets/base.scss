@@ -1,0 +1,129 @@
+$rows: 20;
+$colors: "green", "brown", "blue", "purple", "red";
+
+:root {
+  --c-white: 0deg, 0%, 100%;
+
+  --c-green-100: 98deg, 100%, 15%;
+  --c-green-200: 96deg, 90%, 35%;
+  --c-green-300: 94deg, 84%, 43%;
+  --c-green-400: 94deg, 80%, 68%;
+  --c-green-500: 92deg, 76%, 72%;
+  --c-green-600: 90deg, 80%, 74%;
+  --c-green-700: 90deg, 84%, 76%;
+  --c-green-800: 88deg, 90%, 80%;
+  --c-green-900: 86deg, 100%, 80%;
+
+  --c-brown-100: 20deg, 100%, 15%;
+  --c-brown-200: 22deg, 93%, 30%;
+  --c-brown-300: 25deg, 89%, 40%;
+  --c-brown-400: 30deg, 84%, 45%;
+  --c-brown-500: 30deg, 79%, 50%;
+  --c-brown-600: 32deg, 83%, 60%;
+  --c-brown-700: 35deg, 89%, 70%;
+  --c-brown-800: 38deg, 89%, 80%;
+  --c-brown-900: 40deg, 100%, 80%;
+
+  --c-blue-100: 160deg, 100%, 15%;
+  --c-blue-200: 160deg, 93%, 30%;
+  --c-blue-300: 162deg, 89%, 40%;
+  --c-blue-400: 164deg, 83%, 45%;
+  --c-blue-500: 166deg, 79%, 50%;
+  --c-blue-600: 168deg, 84%, 60%;
+  --c-blue-700: 170deg, 89%, 70%;
+  --c-blue-800: 172deg, 95%, 80%;
+  --c-blue-900: 172deg, 100%, 85%;
+
+  --c-purple-100: 273deg, 100%, 15%;
+  --c-purple-200: 274deg, 92%, 32%;
+  --c-purple-300: 276deg, 86%, 36%;
+  --c-purple-400: 277deg, 81%, 43%;
+  --c-purple-500: 279deg, 76%, 50%;
+  --c-purple-600: 280deg, 82%, 60%;
+  --c-purple-700: 282deg, 88%, 72%;
+  --c-purple-800: 284deg, 92%, 80%;
+  --c-purple-900: 285deg, 100%, 85%;
+
+  --c-red-100: 348deg, 100%, 15%;
+  --c-red-200: 350deg, 92%, 30%;
+  --c-red-300: 350deg, 86%, 35%;
+  --c-red-400: 352deg, 80%, 40%;
+  --c-red-500: 354deg, 76%, 50%;
+  --c-red-600: 356deg, 80%, 60%;
+  --c-red-700: 356deg, 86%, 70%;
+  --c-red-800: 358deg, 92%, 77%;
+  --c-red-900: 0deg, 100%, 85%;
+
+  --c-black: 0deg, 0%, 0%;
+
+  --f-size-h1: 4.5rem;
+  --f-size-h2: 3rem;
+  --f-size-h3: 2.25rem;
+  --f-size-p: 1.25rem;
+
+  --shadow-xs: 0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
+  --shadow-s: 0 3px 6px hsla(0, 0%, 0%, 0.15), 0 2px 4px hsla(0, 0%, 0%, 0.12);
+
+  --shadow-m: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.1);
+
+  --shadow-l: 0 15px 25px hsla(0, 0%, 0%, 0.15), 0 5px 10px hsla(0, 0%, 0%, 0.5);
+  --shadow-xl: 0 20px 40px hsla(0, 0%, 0%, 0.2);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--c-white);
+  --color-text: var(--c-black);
+  --color-root: var(--c-white);
+  --color-button: var(--c-white);
+  --color-shadow: var(--c-white);
+
+  --section-gap: 160px;
+}
+
+h1 {
+  font-size: var(--f-size-h1);
+}
+
+h2 {
+  font-size: var(--f-size-h2);
+}
+
+h3 {
+  font-size: var(--f-size-h3);
+}
+
+p {
+  font-size: var(--f-size-p);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--c-black);
+    --color-text: var(--c-white);
+    --color-root: var(--c-black);
+    --color-button: var(--c-black);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  color: hsl(var(--color-text));
+  background: hsl(var(--color-background));
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  z-index: -20;
+}
