@@ -12,15 +12,20 @@
 
   <nav>
     <ul>
-      <div class="link__wrapper" v-for="section in sections" :key="section.id">
+      <div
+        class="link__wrapper"
+        v-for="(section, index) in sections"
+        :key="section.id"
+      >
         <li
-          class=""
+          class="reveal-link-anim"
           :ref="(el) => link_buttons.push(el as HTMLLIElement)"
           :data-order="section.id"
         >
           <a
             :class="section.color + '-600 expanded-navbar-anim'"
             :ref="(el) => links.push(el as HTMLLinkElement)"
+            @click="color_animation(sections[index].color)"
           >
             {{ section.textContent }}
           </a>
@@ -69,12 +74,9 @@ const background = ref<HTMLDivElement>();
 const root = document.querySelector<HTMLElement>(":root");
 const links = ref<HTMLLinkElement[]>([]);
 const link_buttons = ref<HTMLLIElement[]>([]);
-let isButtonEnabled = true;
-
 const color_rows = ref<HTMLSpanElement[]>([]);
 
 const color_animation = (color: string) => {
-  isButtonEnabled = false;
   color_rows.value.forEach((row, index) => {
     row.classList.remove("hidden");
     row.classList.add("changeColor");
@@ -99,8 +101,6 @@ const color_animation = (color: string) => {
       });
     } else if (index === color_rows.value.length - 1) {
       row.addEventListener("animationend", () => {
-        isButtonEnabled = true;
-
         end_animation();
       });
     } else {
@@ -108,16 +108,7 @@ const color_animation = (color: string) => {
     }
   });
 };
-onMounted(() => {
-  link_buttons.value.forEach((button) => {
-    button.classList.add("reveal-link-anim");
-  });
-  links.value.forEach((link, index) => {
-    link.addEventListener("click", () => {
-      if (isButtonEnabled) color_animation(sections[index].color);
-    });
-  });
-});
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
