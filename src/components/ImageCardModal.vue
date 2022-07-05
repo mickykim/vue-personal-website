@@ -11,22 +11,15 @@
     <div class="modal__content">
       <span ref="closeModal" class="close">&times;</span>
       <div class="modal__image-wrapper">
-        <img
-          src="../assets/websiteImage.jpg"
-          class="modal__image"
-          width="400"
-          height="400"
-          loading="lazy"
-        />
+        <ImageGallery :slides="slides" />
       </div>
-
-      <p>Some text in the Modal..</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import ImageGallery from "./ImageGallery.vue";
 
 // Get the button that opens the modal
 const card = ref();
@@ -37,6 +30,20 @@ const modal = ref();
 // Get the <span> element that closes the modal
 const closeModal = ref();
 
+const slides = [
+  {
+    id: 1,
+    imgurl: "websiteImage.jpg",
+    title: "Pog",
+    description: "Poggers description",
+  },
+  {
+    id: 2,
+    imgurl: "websiteImage.jpg",
+    title: "Pog",
+    description: "Poggers description",
+  },
+];
 onMounted(() => {
   // When the user clicks on the button, open the modal
   if (card.value)
@@ -88,7 +95,7 @@ onMounted(() => {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* Enable scroll if needed */
+  overflow: auto;
   background-color: rgba(200, 200, 200, 0.3); /* Fade background content */
 }
 .revealed {
@@ -97,17 +104,9 @@ onMounted(() => {
 /* Modal Content/Box */
 .modal__content {
   background-color: hsl(var(--color-background));
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 2rem auto; /* 15% from the top and centered */
   padding: 20px;
   max-width: 60%;
-}
-
-.modal__image-wrapper {
-}
-.modal__image {
-  display: block;
-  width: 100%;
-  object-fit: cover;
 }
 
 /* The Close Button */

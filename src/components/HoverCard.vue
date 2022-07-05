@@ -13,10 +13,12 @@
           />
         </div>
         <div class="bottom-section">
-          <h3>Title</h3>
-          <h4>Tags:</h4>
-          <p>Description</p>
-          <a href="">Link</a>
+          <div class="content">
+            <h3>Title</h3>
+            <h4>Tags:</h4>
+            <p>Description</p>
+            <a href="">Link</a>
+          </div>
         </div>
       </div>
     </div>
@@ -89,6 +91,9 @@
 
     transform: translateY(150%);
     transition: transform var(--anim-duration);
+    .content {
+      margin: 0 0.5rem;
+    }
   }
 
   a {
