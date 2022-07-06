@@ -1,15 +1,15 @@
 <template>
   <!-- Trigger/Open The Modal -->
-  <div ref="card" class="modal__card">
+  <div ref="card" class="modal__card" @click="openModal">
     <h3>Pog Title</h3>
     <h4>FeelsGoodMan Description Body</h4>
   </div>
 
   <!-- The Modal -->
-  <div ref="modal" class="modal">
+  <div ref="modal" class="modal" @click="closeModal">
     <!-- Modal content -->
     <div class="modal__content">
-      <span ref="closeModal" class="close">&times;</span>
+      <span class="close" @click="closeModal">&times;</span>
       <div class="modal__image-wrapper">
         <ImageGallery :slides="slides" />
       </div>
@@ -21,14 +21,8 @@
 import { onMounted, ref } from "vue";
 import ImageGallery from "./ImageGallery.vue";
 
-// Get the button that opens the modal
-const card = ref();
-
 // Get the modal
 const modal = ref();
-
-// Get the <span> element that closes the modal
-const closeModal = ref();
 
 const slides = [
   {
@@ -44,26 +38,15 @@ const slides = [
     description: "Poggers description",
   },
 ];
-onMounted(() => {
-  // When the user clicks on the button, open the modal
-  if (card.value)
-    card.value.onclick = function () {
-      if (modal.value) modal.value.classList.add("revealed");
-    };
 
-  // When the user clicks on <span> (x), close the modal
-  if (closeModal.value)
-    closeModal.value.onclick = function () {
-      if (modal.value) modal.value.classList.remove("revealed");
-    };
+function closeModal(e: Event) {
+  if (e.target == modal.value) modal.value.classList.remove("revealed");
+}
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (modal.value && event.target == modal.value) {
-      modal.value.classList.remove("revealed");
-    }
-  };
-});
+function openModal() {
+  modal.value.classList.add("revealed");
+}
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
@@ -96,7 +79,10 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(200, 200, 200, 0.3); /* Fade background content */
+  background-color: hsla(
+    var(--color-background),
+    0.4
+  ); /* Fade background content */
 }
 .revealed {
   display: block;

@@ -128,8 +128,8 @@ $colors: "green", "brown", "blue", "purple", "red";
     --color-background: var(--c-#{$color}-600);
     --color-text: var(--c-#{$color}-100);
     --color-shadow: var(--c-#{$color}-900);
-    --shadow-xs: inset 0 1px 0 hsl(var(--color-shadow)),
-      0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
+    --shadow-xs: inset 0 2px 0 hsl(var(--color-shadow)),
+      0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 2px hsla(0, 0%, 0%, 0.24);
     box-shadow: var(--shadow-xs);
   }
   [data-order="#{$i}"] {

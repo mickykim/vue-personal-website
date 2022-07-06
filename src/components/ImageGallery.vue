@@ -27,7 +27,6 @@ import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { computed } from "@vue/reactivity";
 
 const modules = [Pagination, Navigation];
 const props = defineProps(["slides"]);
@@ -63,7 +62,7 @@ function onSlideChange() {}
   }
 
   .bottom {
-    background-color: black;
+    background-color: hsl(var(--color-background));
     width: 100%;
   }
 }

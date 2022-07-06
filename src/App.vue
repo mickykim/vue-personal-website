@@ -2,7 +2,7 @@
   <header><HeaderContainer /></header>
 
   <main ref="main">
-    <NavBar :colorTheme="colorTheme" @change-color-theme="changeColorTheme" />
+    <NavBar @change-color-theme="changeColorTheme" />
     <IndexTemplate />
   </main>
 </template>
