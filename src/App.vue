@@ -20,6 +20,7 @@ const colorTheme = reactive({
   text: "",
   root: "",
   button: "",
+  color: "",
 });
 
 watch(colorTheme, () => {
@@ -28,6 +29,16 @@ watch(colorTheme, () => {
   root.style.setProperty("--color-background", `var(${colorTheme.background})`);
   root.style.setProperty("--color-root", `var(${colorTheme.root})`);
   root.style.setProperty("--color-button", `var(${colorTheme.button})`);
+
+  root.style.setProperty("--c-primary-100", `--c-${colorTheme.color}-100`);
+  root.style.setProperty("--c-primary-200", `--c-${colorTheme.color}-200`);
+  root.style.setProperty("--c-primary-300", `--c-${colorTheme.color}-300`);
+  root.style.setProperty("--c-primary-400", `--c-${colorTheme.color}-400`);
+  root.style.setProperty("--c-primary-500", `--c-${colorTheme.color}-500`);
+  root.style.setProperty("--c-primary-600", `--c-${colorTheme.color}-600`);
+  root.style.setProperty("--c-primary-700", `--c-${colorTheme.color}-700`);
+  root.style.setProperty("--c-primary-800", `--c-${colorTheme.color}-800`);
+  root.style.setProperty("--c-primary-900", `--c-${colorTheme.color}-900`);
 });
 
 function changeColorTheme(color: string) {
@@ -36,6 +47,8 @@ function changeColorTheme(color: string) {
   colorTheme.text = `--c-${color}-100`;
   colorTheme.root = `--c-${color}-900`;
   colorTheme.button = `--c-${color}-500`;
+
+  colorTheme.color = color;
 }
 </script>
 

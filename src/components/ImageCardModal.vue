@@ -46,7 +46,6 @@ function closeModal(e: Event) {
 function openModal() {
   modal.value.classList.add("revealed");
 }
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>

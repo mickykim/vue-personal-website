@@ -1,10 +1,5 @@
 <template>
-  <swiper
-    :pagination="true"
-    :navigation="true"
-    :modules="modules"
-    @slideChange="onSlideChange"
-  >
+  <swiper :pagination="true" :navigation="true" :modules="modules">
     <!-- Create every swiper slide with a for loop of data from a prop -->
     <swiper-slide v-for="slide in props.slides" :key="slide.id">
       <div class="top">
@@ -33,7 +28,6 @@ const props = defineProps(["slides"]);
 const imagePath = (imgurl: string) => {
   return new URL(`../assets/${imgurl}`, import.meta.url).href;
 };
-function onSlideChange() {}
 </script>
 
 <style lang="scss" scoped>
