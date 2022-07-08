@@ -88,10 +88,11 @@ function openModal() {
 }
 /* Modal Content/Box */
 .modal__content {
-  background-color: hsl(var(--color-background));
+  background-color: hsl(var(--c-primary-400));
   margin: 2rem auto; /* 15% from the top and centered */
   padding: 20px;
   max-width: 60%;
+  border-radius: 0.5rem;
 }
 
 /* The Close Button */

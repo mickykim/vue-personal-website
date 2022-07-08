@@ -2,7 +2,7 @@
   <header><HeaderContainer /></header>
 
   <main ref="main">
-    <NavBar @change-color-theme="changeColorTheme" />
+    <NavBar @change-color-theme="changeColorTheme" id="navbar" />
     <IndexTemplate />
   </main>
 </template>
@@ -30,15 +30,15 @@ watch(colorTheme, () => {
   root.style.setProperty("--color-root", `var(${colorTheme.root})`);
   root.style.setProperty("--color-button", `var(${colorTheme.button})`);
 
-  root.style.setProperty("--c-primary-100", `--c-${colorTheme.color}-100`);
-  root.style.setProperty("--c-primary-200", `--c-${colorTheme.color}-200`);
-  root.style.setProperty("--c-primary-300", `--c-${colorTheme.color}-300`);
-  root.style.setProperty("--c-primary-400", `--c-${colorTheme.color}-400`);
-  root.style.setProperty("--c-primary-500", `--c-${colorTheme.color}-500`);
-  root.style.setProperty("--c-primary-600", `--c-${colorTheme.color}-600`);
-  root.style.setProperty("--c-primary-700", `--c-${colorTheme.color}-700`);
-  root.style.setProperty("--c-primary-800", `--c-${colorTheme.color}-800`);
-  root.style.setProperty("--c-primary-900", `--c-${colorTheme.color}-900`);
+  root.style.setProperty("--c-primary-100", `var(--c-${colorTheme.color}-100)`);
+  root.style.setProperty("--c-primary-200", `var(--c-${colorTheme.color}-200)`);
+  root.style.setProperty("--c-primary-300", `var(--c-${colorTheme.color}-300)`);
+  root.style.setProperty("--c-primary-400", `var(--c-${colorTheme.color}-400)`);
+  root.style.setProperty("--c-primary-500", `var(--c-${colorTheme.color}-500)`);
+  root.style.setProperty("--c-primary-600", `var(--c-${colorTheme.color}-600)`);
+  root.style.setProperty("--c-primary-700", `var(--c-${colorTheme.color}-700)`);
+  root.style.setProperty("--c-primary-800", `var(--c-${colorTheme.color}-800)`);
+  root.style.setProperty("--c-primary-900", `var(--c-${colorTheme.color}-900)`);
 });
 
 function changeColorTheme(color: string) {
@@ -55,6 +55,9 @@ function changeColorTheme(color: string) {
 <style lang="scss">
 @import "./assets/base.scss";
 
+#navbar {
+  display: none;
+}
 #app {
   max-width: 1366px;
   margin: 0 auto;
@@ -64,7 +67,17 @@ function changeColorTheme(color: string) {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+@media screen and (min-width: 900px) {
+  #navbar {
+    display: block;
+  }
+
+  main {
+    grid-template-columns: 1fr 4fr;
+  }
 }
 </style>
