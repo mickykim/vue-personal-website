@@ -17,15 +17,29 @@
             <h3>Title</h3>
             <h4>Tags:</h4>
             <p>Description</p>
-            <a href="">Link</a>
+            <a @click="toggleModal">Link</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <ImageGalleryModal
+    @toggle-show-modal="toggleModal"
+    :showModal="showModal"
+    v-show="showModal"
+  />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import ImageGalleryModal from "./ImageGalleryModal.vue";
+
+const showModal = ref(false);
+
+function toggleModal() {
+  showModal.value = !showModal.value;
+}
+</script>
 
 <style lang="scss" scoped>
 .hover-card {
@@ -35,7 +49,7 @@
   max-width: 20rem;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-s);
+  box-shadow: var(--shadow-m);
   border-radius: 0.5rem;
 
   cursor: pointer;
@@ -45,7 +59,10 @@
   overflow: hidden;
 
   position: relative;
+  border: 0.5rem solid hsl(var(--c-black));
   border-radius: 0.5rem;
+
+  transition: border var(--anim-duration);
 }
 .back-card {
   aspect-ratio: 9/10;
@@ -63,6 +80,8 @@
       transform: translateY(0%);
     }
   }
+
+  border: 0.5rem solid hsl(var(--c-primary-900));
 }
 
 .image {
@@ -87,7 +106,7 @@
     transition: transform var(--anim-duration);
   }
   .bottom-section {
-    background-color: hsl(var(--color-root));
+    background-color: hsl(var(--c-primary-700));
 
     transform: translateY(150%);
     transition: transform var(--anim-duration);
@@ -98,8 +117,8 @@
 
   a {
     padding: 0.5rem 1.5rem;
-    background-color: hsl(var(--color-button));
-    color: hsl(var(--c-white));
+    background-color: hsl(var(--c-primary-400));
+    color: hsl(var(--c-primary-900));
     text-decoration: none;
     border-radius: 0.25rem;
   }

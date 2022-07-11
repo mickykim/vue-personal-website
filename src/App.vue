@@ -26,7 +26,7 @@ const colorTheme = reactive({
 watch(colorTheme, () => {
   if (!root) return;
   root.style.setProperty("--color-text", `var(${colorTheme.text})`);
-  root.style.setProperty("--color-background", `var(${colorTheme.background})`);
+  // root.style.setProperty("--color-background", `var(${colorTheme.background})`);
   root.style.setProperty("--color-root", `var(${colorTheme.root})`);
   root.style.setProperty("--color-button", `var(${colorTheme.button})`);
 
@@ -39,8 +39,14 @@ watch(colorTheme, () => {
   root.style.setProperty("--c-primary-700", `var(--c-${colorTheme.color}-700)`);
   root.style.setProperty("--c-primary-800", `var(--c-${colorTheme.color}-800)`);
   root.style.setProperty("--c-primary-900", `var(--c-${colorTheme.color}-900)`);
+
+  root.style.setProperty(
+    "--shadow-s",
+    `0 3px 6px hsla(var(--c-primary-500), 0.15), 0 2px 4px hsla(var(--c-primary-500), 0.12)`
+  );
 });
 
+//-------------- Emit handlers ------------------
 function changeColorTheme(color: string) {
   colorTheme.background = `--c-${color}-700`;
 

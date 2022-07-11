@@ -6,22 +6,10 @@
     <HoverCard />
 
     <HoverCard />
-
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
-    <ImageCardModal />
   </div>
 </template>
 
 <script setup lang="ts">
-import ImageCardModal from "../ImageCardModal.vue";
 import HoverCard from "../HoverCard.vue";
 </script>
 

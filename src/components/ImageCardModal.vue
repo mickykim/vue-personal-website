@@ -6,15 +6,6 @@
   </div>
 
   <!-- The Modal -->
-  <div ref="modal" class="modal" @click="closeModal">
-    <!-- Modal content -->
-    <div class="modal__content">
-      <span class="close" @click="closeModal">&times;</span>
-      <div class="modal__image-wrapper">
-        <ImageGallery :slides="slides" />
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -22,30 +13,6 @@ import { onMounted, ref } from "vue";
 import ImageGallery from "./ImageGallery.vue";
 
 // Get the modal
-const modal = ref();
-
-const slides = [
-  {
-    id: 1,
-    imgurl: "websiteImage.jpg",
-    title: "Pog",
-    description: "Poggers description",
-  },
-  {
-    id: 2,
-    imgurl: "websiteImage.jpg",
-    title: "Pog",
-    description: "Poggers description",
-  },
-];
-
-function closeModal(e: Event) {
-  if (e.target == modal.value) modal.value.classList.remove("revealed");
-}
-
-function openModal() {
-  modal.value.classList.add("revealed");
-}
 </script>
 
 <style lang="scss" scoped>
@@ -66,47 +33,6 @@ function openModal() {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  cursor: pointer;
-}
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: hsla(
-    var(--color-background),
-    0.4
-  ); /* Fade background content */
-}
-.revealed {
-  display: block;
-}
-/* Modal Content/Box */
-.modal__content {
-  background-color: hsl(var(--c-primary-400));
-  margin: 2rem auto; /* 15% from the top and centered */
-  padding: 20px;
-  max-width: 60%;
-  border-radius: 0.5rem;
-}
-
-/* The Close Button */
-.close {
-  color: hsl(var(--color-text));
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 </style>
