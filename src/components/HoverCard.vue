@@ -136,18 +136,18 @@ function toggleModal() {
 
 .front-card {
   display: grid;
-  width: calc(100% - 0.75rem);
-  height: calc(100% - 0.75rem);
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
   grid-template-rows: 50% auto;
   z-index: 10;
-  position: absolute;
-  top: 6px;
-  left: 6px;
   border-radius: 0.5rem;
   .top-section {
     transform: translateY(300%);
     transition: transform var(--anim-duration);
-    min-width: calc(100% - 0.75rem);
+    min-width: calc(100% - 1rem);
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     overflow-y: hidden; //Display rounded corners
