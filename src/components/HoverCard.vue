@@ -136,8 +136,8 @@ function toggleModal() {
 
 .front-card {
   display: grid;
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
+  width: calc(100% - 0.75rem);
+  height: calc(100% - 0.75rem);
   grid-template-rows: 50% auto;
   z-index: 10;
   position: absolute;
@@ -147,11 +147,10 @@ function toggleModal() {
   .top-section {
     transform: translateY(300%);
     transition: transform var(--anim-duration);
-
-    img {
-      border-top-left-radius: 0.5rem;
-      border-top-right-radius: 0.5rem;
-    }
+    min-width: calc(100% - 0.75rem);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    overflow-y: hidden; //Display rounded corners
   }
   .bottom-section {
     background-color: hsl(var(--c-primary-900));
@@ -162,8 +161,6 @@ function toggleModal() {
     border-bottom-right-radius: 0.5rem;
     .content {
       margin: 0 0.5rem;
-      border-bottom-left-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
     }
   }
 

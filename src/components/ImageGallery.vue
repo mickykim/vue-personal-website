@@ -5,7 +5,7 @@
       <div class="top">
         <img :src="imagePath(slide.imgurl)" />
       </div>
-      <div class="bottom">
+      <div v-if="slide.title || slide.description" class="bottom">
         <h3>{{ slide.title }}</h3>
         <p>{{ slide.description }}</p>
       </div>
@@ -32,7 +32,8 @@ const imagePath = (imgurl: string) => {
 
 <style lang="scss" scoped>
 .swiper {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
 }
 .swiper-slide {
   text-align: center;
