@@ -125,7 +125,7 @@ $colors: "green", "brown", "blue", "purple", "red";
 @for $i from 1 through length($colors) {
   $color: nth($colors, $i); //Get the ith value from colors array
   a.#{$color} {
-    --color-background: var(--c-#{$color}-600);
+    --color-background: var(--c-#{$color}-800);
     --color-text: var(--c-#{$color}-100);
     --color-shadow: var(--c-#{$color}-900);
     --shadow-xs: inset 0 2px 0 hsl(var(--color-shadow)),

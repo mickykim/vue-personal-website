@@ -42,7 +42,7 @@ watch(colorTheme, () => {
 
   root.style.setProperty(
     "--shadow-s",
-    `0 3px 6px hsla(var(--c-primary-500), 0.15), 0 2px 4px hsla(var(--c-primary-500), 0.12)`
+    `0 10px 20px hsla(var(--c-primary-100), 0.25), 0 3px 6px hsla(var(--c-primary-100), 0.2)`
   );
 });
 

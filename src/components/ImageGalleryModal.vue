@@ -4,7 +4,7 @@
     <div class="modal__content">
       <span class="close" @click="$emit('toggleShowModal')">&times;</span>
       <div class="modal__image-wrapper">
-        <ImageGallery :slides="slides" />
+        <ImageGallery :slides="props.slides" />
       </div>
     </div>
   </div>
@@ -17,21 +17,7 @@ import ImageGallery from "./ImageGallery.vue";
 const emit = defineEmits(["toggleShowModal"]);
 
 const modal = ref();
-
-const slides = [
-  {
-    id: 1,
-    imgurl: "websiteImage.jpg",
-    title: "Pog",
-    description: "Poggers description",
-  },
-  {
-    id: 2,
-    imgurl: "websiteImage.jpg",
-    title: "Pog",
-    description: "Poggers description",
-  },
-];
+const props = defineProps(["slides"]);
 
 function closeModal(e: Event) {
   if (e.target == modal.value) emit("toggleShowModal");

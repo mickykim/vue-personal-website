@@ -6,11 +6,7 @@
       </div>
       <div class="front-card">
         <div class="top-section">
-          <img
-            class="image"
-            src="./../assets/websiteImage.jpg"
-            loading="lazy"
-          />
+          <ImageGallery :slides="frontCardSlides" />
         </div>
         <div class="bottom-section">
           <div class="content">
@@ -26,6 +22,7 @@
   <ImageGalleryModal
     @toggle-show-modal="toggleModal"
     :showModal="showModal"
+    :slides="modalSlides"
     v-show="showModal"
   />
 </template>
@@ -33,9 +30,34 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import ImageGalleryModal from "./ImageGalleryModal.vue";
+import ImageGallery from "./ImageGallery.vue";
 
 const showModal = ref(false);
+const frontCardSlides = [
+  {
+    id: 3,
+    imgurl: "websiteImage.jpg",
+  },
+  {
+    id: 4,
+    imgurl: "websiteImage.jpg",
+  },
+];
 
+const modalSlides = [
+  {
+    id: 1,
+    imgurl: "websiteImage.jpg",
+    title: "Pog",
+    description: "Poggers description",
+  },
+  {
+    id: 2,
+    imgurl: "websiteImage.jpg",
+    title: "Pog",
+    description: "Poggers description",
+  },
+];
 function toggleModal() {
   showModal.value = !showModal.value;
 }
@@ -49,7 +71,7 @@ function toggleModal() {
   max-width: 20rem;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-m);
+  box-shadow: var(--shadow-s);
   border-radius: 0.5rem;
 
   cursor: pointer;
