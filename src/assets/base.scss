@@ -99,8 +99,8 @@ p {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--c-black);
-    --color-text: var(--c-white);
+    --color-background: var(--c-white);
+    --color-text: var(--c-black);
     --color-root: var(--c-black);
     --color-button: var(--c-black);
   }

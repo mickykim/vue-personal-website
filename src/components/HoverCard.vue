@@ -59,10 +59,11 @@ function toggleModal() {
   overflow: hidden;
 
   position: relative;
-  border: 0.5rem solid hsl(var(--c-black));
-  border-radius: 0.5rem;
+  z-index: 0;
 
+  border-radius: 0.5rem;
   transition: border var(--anim-duration);
+  transition: clip-path var(--anim-duration);
 }
 .back-card {
   aspect-ratio: 9/10;
@@ -81,7 +82,27 @@ function toggleModal() {
     }
   }
 
-  border: 0.5rem solid hsl(var(--c-primary-900));
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #399953;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(
+        hsl(var(--c-primary-900)),
+        hsl(var(--c-primary-800))
+      ),
+      linear-gradient(hsl(var(--c-primary-800)), hsl(var(--c-primary-700))),
+      linear-gradient(hsl(var(--c-primary-700)), hsl(var(--c-primary-600))),
+      linear-gradient(hsl(var(--c-primary-600)), hsl(var(--c-primary-500)));
+    animation: rotate 10s linear infinite;
+  }
 }
 
 .image {
@@ -93,25 +114,34 @@ function toggleModal() {
 
 .front-card {
   display: grid;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
   grid-template-rows: 50% auto;
   z-index: 10;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 6px;
+  left: 6px;
   border-radius: 0.5rem;
   .top-section {
     transform: translateY(300%);
     transition: transform var(--anim-duration);
+
+    img {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
   }
   .bottom-section {
-    background-color: hsl(var(--c-primary-700));
+    background-color: hsl(var(--c-primary-900));
 
     transform: translateY(150%);
     transition: transform var(--anim-duration);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     .content {
       margin: 0 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
     }
   }
 
@@ -122,5 +152,14 @@ function toggleModal() {
     text-decoration: none;
     border-radius: 0.25rem;
   }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.rainbow {
 }
 </style>
