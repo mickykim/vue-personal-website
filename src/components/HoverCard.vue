@@ -86,6 +86,8 @@ function toggleModal() {
   border-radius: 0.5rem;
   transition: border var(--anim-duration);
   transition: clip-path var(--anim-duration);
+  --border-size: 0.5rem;
+  --border-radius: 0.5rem;
 }
 .back-card {
   aspect-ratio: 9/10;
@@ -125,6 +127,18 @@ function toggleModal() {
       linear-gradient(hsl(var(--c-primary-600)), hsl(var(--c-primary-500)));
     animation: rotate 10s linear infinite;
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: var(--border-radius);
+    top: var(--border-radius);
+    width: calc(100% - var(--border-size) * 2);
+    height: calc(100% - var(--border-size) * 2);
+    background: white;
+    border-radius: var(--border-radius);
+  }
 }
 
 .image {
@@ -139,26 +153,28 @@ function toggleModal() {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  width: calc(100% - 1rem);
-  height: calc(100% - 1rem);
+  width: calc(100% - var(--border-size) * 2); // leave space for animated margin
+  height: calc(
+    100% - var(--border-size) * 2
+  ); // leave space for animated margin
   grid-template-rows: 50% auto;
   z-index: 10;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   .top-section {
     transform: translateY(300%);
     transition: transform var(--anim-duration);
-    min-width: calc(100% - 1rem);
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
+    min-width: calc(100% - var(--border-size) * 2);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
     overflow-y: hidden; //Display rounded corners
   }
   .bottom-section {
-    background-color: hsl(var(--c-primary-900));
+    background-color: hsl(var(--c-white));
 
     transform: translateY(150%);
     transition: transform var(--anim-duration);
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
     .content {
       margin: 0 0.5rem;
     }
