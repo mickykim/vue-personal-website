@@ -66,6 +66,8 @@ function toggleModal() {
 <style lang="scss" scoped>
 .hover-card {
   --anim-duration: 0.75s;
+  --border-size: 3px;
+  --border-radius: 0.5rem;
 
   width: 100%;
   max-width: 20rem;
@@ -86,8 +88,6 @@ function toggleModal() {
   border-radius: 0.5rem;
   transition: border var(--anim-duration);
   transition: clip-path var(--anim-duration);
-  --border-size: 0.5rem;
-  --border-radius: 0.5rem;
 }
 .back-card {
   aspect-ratio: 9/10;
@@ -119,12 +119,12 @@ function toggleModal() {
     background-size: 50% 50%, 50% 50%;
     background-position: 0 0, 100% 0, 100% 100%, 0 100%;
     background-image: linear-gradient(
-        hsl(var(--c-primary-900)),
-        hsl(var(--c-primary-800))
+        hsl(var(--c-primary-500)),
+        hsl(var(--c-primary-600))
       ),
-      linear-gradient(hsl(var(--c-primary-800)), hsl(var(--c-primary-700))),
-      linear-gradient(hsl(var(--c-primary-700)), hsl(var(--c-primary-600))),
-      linear-gradient(hsl(var(--c-primary-600)), hsl(var(--c-primary-500)));
+      linear-gradient(hsl(var(--c-primary-400)), hsl(var(--c-primary-300))),
+      linear-gradient(hsl(var(--c-primary-500)), hsl(var(--c-primary-600))),
+      linear-gradient(hsl(var(--c-primary-400)), hsl(var(--c-primary-300)));
     animation: rotate 10s linear infinite;
   }
 
@@ -132,8 +132,8 @@ function toggleModal() {
     content: "";
     position: absolute;
     z-index: -1;
-    left: var(--border-radius);
-    top: var(--border-radius);
+    left: var(--border-size);
+    top: var(--border-size);
     width: calc(100% - var(--border-size) * 2);
     height: calc(100% - var(--border-size) * 2);
     background: white;
@@ -151,8 +151,8 @@ function toggleModal() {
 .front-card {
   display: grid;
   position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
+  top: var(--border-size);
+  left: var(--border-size);
   width: calc(100% - var(--border-size) * 2); // leave space for animated margin
   height: calc(
     100% - var(--border-size) * 2
@@ -170,6 +170,9 @@ function toggleModal() {
   }
   .bottom-section {
     background-color: hsl(var(--c-white));
+    color: hsl(var(--c-primary-100));
+
+    box-shadow: var(--shadow-inset-s);
 
     transform: translateY(150%);
     transition: transform var(--anim-duration);
@@ -182,9 +185,10 @@ function toggleModal() {
 
   a {
     padding: 0.5rem 1.5rem;
-    background-color: hsl(var(--c-primary-400));
-    color: hsl(var(--c-primary-900));
+    background-color: hsl(var(--c-primary-500));
+    color: hsl(var(--c-primary-100));
     text-decoration: none;
+    font-weight: bold;
     border-radius: 0.25rem;
   }
 }

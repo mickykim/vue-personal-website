@@ -35,7 +35,9 @@ const imagePath = (imgurl: string) => {
   width: 100%;
   height: 100%;
   --swiper-theme-color: hsl(var(--c-primary-900));
+  --swiper-navigation-color: hsl(var(--c-primary-900));
 }
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -46,6 +48,7 @@ const imagePath = (imgurl: string) => {
   align-items: center;
   flex-direction: column;
 }
+
 .swiper-slide {
   .top {
     max-height: 600px;

@@ -12,9 +12,10 @@
           :data-order="section.id"
         >
           <a
-            :class="section.color + ' expanded-navbar-anim'"
+            :href="section.url"
+            :class="section.color"
             :ref="(el) => links.push(el as HTMLLinkElement)"
-            @click="$emit('changeColorTheme', sections[index].color)"
+            @click="onClick(sections[index].color, section.id)"
           >
             {{ section.textContent }}
           </a>
@@ -29,23 +30,24 @@ import { ref, onMounted } from "vue";
 
 /**
  * Setup for background color slides
- ** Variable values should be the same as in the js
+ ** Variable values should be the same as in the css
  */
 const sections = [
   {
     id: 1,
     color: "green",
-    textContent: "About",
+    textContent: "Mikim",
+    url: "#hero",
   },
   {
     id: 2,
     color: "brown",
-    textContent: "Websites",
+    textContent: "CV/Resume",
   },
   {
     id: 3,
     color: "blue",
-    textContent: "Poggadopolis",
+    textContent: "Websites",
   },
   {
     id: 4,
@@ -59,12 +61,34 @@ const sections = [
   },
 ];
 const links = ref<HTMLLinkElement[]>([]);
+
 const link_buttons = ref<HTMLLIElement[]>([]);
+const emit = defineEmits(["changeColorTheme"]);
+function onClick(color: string, id: number) {
+  links.value.forEach((link, index) => {
+    if (index + 1 === id) {
+      link.classList.remove("secondary");
+      link.classList.add("expanded-link");
+    } else {
+      link.classList.add("secondary");
+      link.classList.remove("expanded-link");
+    }
+  });
+  emit("changeColorTheme", color);
+}
 
 onMounted(() => {
   /**
-   * PauseChamp...
+   * Expand navigation buttons once the last button is revealed
    */
+  link_buttons.value[link_buttons.value.length - 1].addEventListener(
+    "animationend",
+    () => {
+      links.value.forEach((link) => {
+        link.classList.add("expanded-link");
+      });
+    }
+  );
 });
 </script>
 
@@ -85,22 +109,13 @@ $colors: "green", "brown", "blue", "purple", "red";
   }
 }
 
-@keyframes expandedNavbar {
-  0% {
-    min-width: 0px;
-  }
-  100% {
-    min-width: var(--navbar-width);
-  }
-}
-
 .hidden {
   opacity: 0%;
 }
 
 .reveal-link-anim {
   --anim-time: 1s;
-  --anim-delay: 1s;
+  --anim-delay: 0.5s;
   animation-name: revealLink;
   animation-duration: var(--anim-time);
   animation-delay: calc(
@@ -109,13 +124,17 @@ $colors: "green", "brown", "blue", "purple", "red";
   animation-fill-mode: both;
 }
 
-.expanded-navbar-anim {
-  --anim-time: 0.5s;
-  --anim-delay: 0s;
-  animation-name: expandedNavbar;
-  animation-delay: 4s;
-  animation-duration: var(--anim-time);
-  animation-fill-mode: forwards;
+.expanded-link {
+  min-width: var(--navbar-width);
+}
+
+.secondary {
+  /* border: 1px solid hsl(var(--color-text));
+  color: hsl(var(--color-text)); */
+  border: 1px solid hsl(var(--c-primary-300));
+  color: hsl(var(--c-primary-300));
+  background: transparent;
+  box-shadow: none !important;
 }
 .inactive {
   opacity: 0;
@@ -125,12 +144,11 @@ $colors: "green", "brown", "blue", "purple", "red";
 @for $i from 1 through length($colors) {
   $color: nth($colors, $i); //Get the ith value from colors array
   a.#{$color} {
-    --color-background: var(--c-#{$color}-800);
+    --color-background: var(--c-#{$color}-600);
     --color-text: var(--c-#{$color}-100);
     --color-shadow: var(--c-#{$color}-900);
     --shadow-xs: inset 0 2px 0 hsl(var(--color-shadow)),
       0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 2px hsla(0, 0%, 0%, 0.24);
-    box-shadow: var(--shadow-xs);
   }
   [data-order="#{$i}"] {
     --anim-order: #{$i};
@@ -145,9 +163,13 @@ a {
   display: inline-block;
   padding: 0.625rem 2rem;
   border-radius: 0.25rem;
-  color: hsl(var(--color-text));
+  color: hsl(var(--c-primary-100, var(--color-text)));
   background-color: hsl(var(--color-background));
+  box-shadow: var(--shadow-xs);
   font-weight: bold;
+  min-width: 0px;
+  text-decoration: none;
+  transition: min-width 0.5s, color 0.5s, border 0.5s, background 0.5s;
 }
 a:active {
   box-shadow: none;

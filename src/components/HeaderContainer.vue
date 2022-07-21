@@ -6,6 +6,6 @@
 
 <style scoped>
 div {
-  height: 25vh;
+  height: 200px;
 }
 </style>

@@ -18,6 +18,9 @@ import HoverCard from "../HoverCard.vue";
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin: 0 2rem;
+  justify-items: center;
+  padding: 0 2rem;
+  /* transition: background 0.5s;
+  background: hsl(var(--c-primary-900)); */
 }
 </style>

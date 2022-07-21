@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="hero">
     <template v-for="header in headers">
       <template v-for="(char, index) in header.split('')" :key="index">
         <h2
@@ -90,7 +90,10 @@ section {
     opacity: 100%;
   }
 }
-
+section {
+  /* transition: background 0.5s;
+  background-color: hsl(var(--c-primary-900)); */
+}
 .sliding-fade-in {
   animation-name: slidingFadeIn;
   animation-duration: 1s;
