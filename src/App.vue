@@ -25,10 +25,7 @@ const colorTheme = reactive({
 
 watch(colorTheme, () => {
   if (!root) return;
-  root.style.setProperty("--color-text", `var(${colorTheme.text})`);
   // root.style.setProperty("--color-background", `var(${colorTheme.background})`);
-  root.style.setProperty("--color-root", `var(${colorTheme.root})`);
-  root.style.setProperty("--color-button", `var(${colorTheme.button})`);
 
   root.style.setProperty("--c-primary-100", `var(--c-${colorTheme.color}-100)`);
   root.style.setProperty("--c-primary-200", `var(--c-${colorTheme.color}-200)`);
@@ -50,7 +47,6 @@ watch(colorTheme, () => {
 function changeColorTheme(color: string) {
   colorTheme.background = `--c-${color}-700`;
 
-  colorTheme.text = `--c-${color}-100`;
   colorTheme.root = `--c-${color}-900`;
   colorTheme.button = `--c-${color}-500`;
 

@@ -17,7 +17,7 @@ import HoverCard from "../HoverCard.vue";
 .website-showcase-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 4rem;
   justify-items: center;
   padding: 0 2rem;
   /* transition: background 0.5s;

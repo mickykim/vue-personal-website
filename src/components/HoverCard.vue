@@ -13,7 +13,7 @@
             <h3>Title</h3>
             <h4>Tags:</h4>
             <p>Description</p>
-            <a @click="toggleModal">Link</a>
+            <a @click="toggleModal">Details</a>
           </div>
         </div>
       </div>
@@ -94,6 +94,9 @@ function toggleModal() {
   transition: opacity var(--anim-duration);
 }
 .cards-wrapper:hover {
+  --shadow-s: 0 6px 6px hsla(var(--c-primary-500), 0.15),
+    0 4px 4px hsla(var(--c-primary-500), 0.12);
+  box-shadow: var(--shadow-s);
   .back-card {
     opacity: 0.1;
   }

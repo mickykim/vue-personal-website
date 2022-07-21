@@ -19,7 +19,6 @@
         </h2>
       </template>
     </template>
-
     <p class="sliding-fade-in">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod officiis
       expedita iure. Praesentium, blanditiis molestiae. Suscipit nobis a,
@@ -53,7 +52,21 @@ onMounted(() => {
 
 <style scoped>
 section {
-  padding: 0 2rem;
+  /* transition: background 0.5s;
+  background-color: hsl(var(--c-primary-900)); */
+  margin: 0 0 10rem 0;
+  padding-left: 3rem;
+  position: relative;
+}
+
+section::after {
+  position: absolute;
+  content: "";
+  top: 8.75%;
+  left: 0;
+  width: 100%;
+  height: 85%;
+  border-left: 2px solid hsl(var(--c-primary-500, var(--c-white)));
 }
 
 @keyframes staggeredReveal {
@@ -90,10 +103,7 @@ section {
     opacity: 100%;
   }
 }
-section {
-  /* transition: background 0.5s;
-  background-color: hsl(var(--c-primary-900)); */
-}
+
 .sliding-fade-in {
   animation-name: slidingFadeIn;
   animation-duration: 1s;
@@ -103,5 +113,11 @@ section {
 h2 {
   display: inline-block;
   line-height: normal;
+}
+
+@media screen and (min-width: 600px) {
+  section::after {
+    border-left: 4px solid hsl(var(--c-primary-500, var(--c-white)));
+  }
 }
 </style>
