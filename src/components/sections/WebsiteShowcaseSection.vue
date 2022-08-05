@@ -1,16 +1,23 @@
 <template>
   <div class="website-showcase-section">
-    <HoverCard />
-    <HoverCard />
-
-    <HoverCard />
-
-    <HoverCard />
+    <FadeInComponent>
+      <HoverCard />
+    </FadeInComponent>
+    <FadeInComponent>
+      <HoverCard />
+    </FadeInComponent>
+    <FadeInComponent>
+      <HoverCard />
+    </FadeInComponent>
+    <FadeInComponent>
+      <HoverCard />
+    </FadeInComponent>
   </div>
 </template>
 
 <script setup lang="ts">
 import HoverCard from "../HoverCard.vue";
+import FadeInComponent from "../FadeInComponent.vue";
 </script>
 
 <style scoped>

@@ -109,6 +109,7 @@ section::after {
   animation-duration: 1s;
   animation-delay: 2s;
   animation-fill-mode: both;
+  margin-top: 2rem;
 }
 h2 {
   display: inline-block;

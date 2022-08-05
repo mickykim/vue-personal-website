@@ -94,8 +94,6 @@ function toggleModal() {
   transition: opacity var(--anim-duration);
 }
 .cards-wrapper:hover {
-  --shadow-s: 0 6px 6px hsla(var(--c-primary-500), 0.15),
-    0 4px 4px hsla(var(--c-primary-500), 0.12);
   box-shadow: var(--shadow-s);
   .back-card {
     opacity: 0.1;

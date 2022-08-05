@@ -34,8 +34,8 @@ const imagePath = (imgurl: string) => {
 .swiper {
   width: 100%;
   height: 100%;
-  --swiper-theme-color: hsl(var(--c-primary-900));
-  --swiper-navigation-color: hsl(var(--c-primary-900));
+  --swiper-theme-color: hsl(var(--c-primary-500));
+  --swiper-navigation-color: hsl(var(--c-primary-500));
 }
 
 .swiper-slide {

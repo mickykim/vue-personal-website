@@ -37,10 +37,10 @@ watch(colorTheme, () => {
   root.style.setProperty("--c-primary-800", `var(--c-${colorTheme.color}-800)`);
   root.style.setProperty("--c-primary-900", `var(--c-${colorTheme.color}-900)`);
 
-  root.style.setProperty(
-    "--shadow-s",
-    `0 10px 20px hsla(var(--c-primary-100), 0.25), 0 3px 6px hsla(var(--c-primary-100), 0.2)`
-  );
+  // root.style.setProperty(
+  //   "--shadow-s",
+  //   `0 10px 20px hsla(var(--c-primary-100), 0.25), 0 3px 6px hsla(var(--c-primary-100), 0.2)`
+  // );
 });
 
 //-------------- Emit handlers ------------------

@@ -129,8 +129,8 @@ $colors: "green", "brown", "blue", "purple", "red";
 }
 
 .secondary {
-  /* border: 1px solid hsl(var(--color-text));
-  color: hsl(var(--color-text)); */
+  border: 1px solid hsl(var(--color-text));
+  color: hsl(var(--color-text));
   border: 1px solid hsl(var(--c-primary-300));
   color: hsl(var(--c-primary-300));
   background: transparent;
@@ -170,6 +170,12 @@ a {
   min-width: 0px;
   text-decoration: none;
   transition: min-width 0.5s, color 0.5s, border 0.5s, background 0.5s;
+}
+a:not(.expanded-link) {
+  &:hover {
+    color: hsl(var(--color-background));
+    border-color: hsl(var(--color-background));
+  }
 }
 a:active {
   box-shadow: none;
