@@ -13,7 +13,7 @@ const target = ref();
 
 onMounted(() => {
   const tl = gsap.timeline({
-    scrollTrigger: { trigger: target.value, start: "top center" },
+    scrollTrigger: { trigger: target.value, start: "top 80%" },
   });
   tl.from(target.value, { opacity: 0, y: 100, duration: 1 }).to(target.value, {
     opacity: 1,

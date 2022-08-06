@@ -75,6 +75,7 @@ function toggleModal() {
   flex-direction: column;
   box-shadow: var(--shadow-s);
   border-radius: 0.5rem;
+  /* background-color: gray; */
 
   cursor: pointer;
 }

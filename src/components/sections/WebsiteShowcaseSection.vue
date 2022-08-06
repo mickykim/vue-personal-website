@@ -1,4 +1,7 @@
 <template>
+  <FadeInComponent>
+    <StyledHeader> Websites </StyledHeader>
+  </FadeInComponent>
   <div class="website-showcase-section">
     <FadeInComponent>
       <HoverCard />
@@ -18,6 +21,7 @@
 <script setup lang="ts">
 import HoverCard from "../HoverCard.vue";
 import FadeInComponent from "../FadeInComponent.vue";
+import StyledHeader from "../StyledHeader.vue";
 </script>
 
 <style scoped>
@@ -27,6 +31,7 @@ import FadeInComponent from "../FadeInComponent.vue";
   gap: 4rem;
   justify-items: center;
   padding: 0 2rem;
+  margin-bottom: 8rem;
   /* transition: background 0.5s;
   background: hsl(var(--c-primary-900)); */
 }

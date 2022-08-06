@@ -48,6 +48,7 @@ const sections = [
     id: 3,
     color: "blue",
     textContent: "Websites",
+    url: "#websites",
   },
   {
     id: 4,
@@ -187,7 +188,7 @@ nav {
   width: var(--navbar-width);
   justify-content: flex-end;
   position: sticky;
-  top: 10%;
+  top: 5%;
   align-self: flex-start; /* Fix for sidebar position sticky inside a flex/grid container.
   More info: https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox */
 }
