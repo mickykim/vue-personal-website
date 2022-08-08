@@ -62,8 +62,9 @@ function changeColorTheme(color: string) {
 }
 #app {
   max-width: 1366px;
-  margin: 0 auto;
+  width: 100%;
   padding: 2rem;
+  margin: 0 auto;
   position: static !important;
 }
 
@@ -73,7 +74,7 @@ main {
   gap: 1rem;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1200px) {
   #navbar {
     display: block;
   }

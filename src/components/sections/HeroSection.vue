@@ -1,5 +1,5 @@
 <template>
-  <section id="hero">
+  <section id="hero" class="hero">
     <h2 class="sliding-fade-in">Miqueas Kim Han</h2>
     <p class="sliding-fade-in">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod officiis
@@ -13,10 +13,8 @@
 <script setup lang="ts"></script>
 
 <style scoped>
-section {
-  /* transition: background 0.5s;
-  background-color: hsl(var(--c-primary-900)); */
-  margin: 0 0 15rem 0;
+.hero {
+  margin: 0 0 25rem 0;
 }
 
 @keyframes staggeredReveal {

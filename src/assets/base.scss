@@ -1,6 +1,21 @@
 $rows: 20;
 $colors: "green", "brown", "blue", "purple", "red";
 
+@font-face {
+  font-family: "Avertastd";
+  src: url("./fonts/AvertaDemoPECuttedDemo-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "Avertastd";
+  src: url("./fonts/AvertaDemoPE-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: auto;
+}
 :root {
   --c-white: 43, 0%, 100%;
 
@@ -83,7 +98,16 @@ $colors: "green", "brown", "blue", "purple", "red";
 
   --section-gap: 160px;
 }
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: Avertastd, Inter, sans-serif;
+  font-size: 16px;
+}
 h1 {
   font-size: var(--f-size-h1);
 }
@@ -109,22 +133,12 @@ p {
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-}
-
 body {
   color: hsl(var(--color-text));
+  // overflow-x: hidden;
   background: hsl(var(--color-background));
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, sans-serif;
-  font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

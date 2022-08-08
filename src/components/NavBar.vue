@@ -47,8 +47,8 @@ const sections = [
   {
     id: 3,
     color: "blue",
-    textContent: "Websites",
-    url: "#websites",
+    textContent: "Projects",
+    url: "#projects",
   },
   {
     id: 4,
