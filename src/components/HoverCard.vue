@@ -66,8 +66,8 @@ function toggleModal() {
 <style lang="scss" scoped>
 .hover-card {
   --anim-duration: 0.75s;
-  --border-size: 3px;
-  --border-radius: 0.5rem;
+  --border-size: 0px;
+  --border-radius: 0rem;
 
   width: 100%;
   max-width: 20rem;
@@ -85,8 +85,7 @@ function toggleModal() {
 
   position: relative;
   z-index: 0;
-
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   transition: border var(--anim-duration);
   transition: clip-path var(--anim-duration);
 }
@@ -191,7 +190,7 @@ function toggleModal() {
     color: hsl(var(--c-primary-100));
     text-decoration: none;
     font-weight: bold;
-    border-radius: 0.25rem;
+    border-radius: 0rem;
   }
 }
 

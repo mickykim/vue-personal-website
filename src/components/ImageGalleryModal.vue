@@ -27,12 +27,11 @@ function closeModal(e: Event) {
 <style scoped>
 .modal {
   display: block;
-  position: fixed; /* Stay in place */
+  position: absolute; /* Stay in place */
   z-index: 100; /* Sit on top */
-  left: 0;
   top: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
   overflow: auto;
   background-color: hsla(
     var(--c-primary-400),

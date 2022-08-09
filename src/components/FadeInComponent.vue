@@ -41,6 +41,7 @@ onMounted(() => {
 
 <style scoped>
 .target {
+  position: unset;
 }
 /* Fade animation */
 </style>

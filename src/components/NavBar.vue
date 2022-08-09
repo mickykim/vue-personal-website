@@ -22,11 +22,16 @@
         </li>
       </div>
     </ul>
+    <FadeInComponent direction="up">
+      <SocialLinks />
+    </FadeInComponent>
   </nav>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import SocialLinks from "./SocialLinks.vue";
+import FadeInComponent from "./FadeInComponent.vue";
 
 /**
  * Setup for background color slides
