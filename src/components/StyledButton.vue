@@ -4,7 +4,9 @@
     <div class="left-text">
       <slot> Button </slot>
     </div>
-    <div class="right-icon"></div>
+    <div class="right-icon">
+      <slot></slot>
+    </div>
   </button>
 </template>
 
