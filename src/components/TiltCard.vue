@@ -34,7 +34,7 @@ onMounted(() => {
 .tilt-card {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: lightgreen;
+  background-color: hsl(var(--c-primary-200, var(--c-green-500)));
   width: 100%;
   padding: 1rem;
 }
