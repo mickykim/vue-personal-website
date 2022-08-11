@@ -22,7 +22,7 @@
         </li>
       </div>
     </ul>
-    <FadeInComponent direction="up">
+    <FadeInComponent direction="up" :delay="1">
       <SocialLinks />
     </FadeInComponent>
   </nav>
@@ -121,7 +121,7 @@ $colors: "green", "brown", "blue", "purple", "red";
 
 .reveal-link-anim {
   --anim-time: 1s;
-  --anim-delay: 0.5s;
+  --anim-delay: 1s;
   animation-name: revealLink;
   animation-duration: var(--anim-time);
   animation-delay: calc(

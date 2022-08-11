@@ -92,6 +92,10 @@ function toggleModal() {
 .back-card {
   aspect-ratio: 9/10;
   transition: opacity var(--anim-duration);
+  border: 2px solid hsl(var(--c-primary-700, var(--c-green-500)));
+  img {
+    opacity: 0;
+  }
 }
 .cards-wrapper:hover {
   box-shadow: var(--shadow-s);
@@ -105,40 +109,6 @@ function toggleModal() {
     .bottom-section {
       transform: translateY(0%);
     }
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -2;
-    left: -50%;
-    top: -50%;
-    width: 200%;
-    height: 200%;
-    background-color: #399953;
-    background-repeat: no-repeat;
-    background-size: 50% 50%, 50% 50%;
-    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-    background-image: linear-gradient(
-        hsl(var(--c-primary-500)),
-        hsl(var(--c-primary-600))
-      ),
-      linear-gradient(hsl(var(--c-primary-400)), hsl(var(--c-primary-300))),
-      linear-gradient(hsl(var(--c-primary-500)), hsl(var(--c-primary-600))),
-      linear-gradient(hsl(var(--c-primary-400)), hsl(var(--c-primary-300)));
-    animation: rotate 10s linear infinite;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: var(--border-size);
-    top: var(--border-size);
-    width: calc(100% - var(--border-size) * 2);
-    height: calc(100% - var(--border-size) * 2);
-    background: white;
-    border-radius: var(--border-radius);
   }
 }
 

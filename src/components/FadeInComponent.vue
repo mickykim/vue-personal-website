@@ -15,11 +15,12 @@ const props = defineProps({
   target: String,
   id: Number,
   delay: Number,
+  stagger: Number,
 });
 
 onMounted(() => {
   const tl = gsap.timeline({
-    scrollTrigger: { trigger: target.value, start: "top 90%" },
+    scrollTrigger: { trigger: target.value, start: "top 75%" },
     defaults: { duration: 1, ease: "slow", stagger: 0.5 },
   });
   let animatedElements = props.target
@@ -31,6 +32,8 @@ onMounted(() => {
     tl.from(animatedElements, {
       opacity: 0,
       y: 50,
+      delay: props.delay ? props.delay : 0,
+      stagger: props.stagger ? props.stagger : 0,
     });
   }
   if (props.direction === "right") {

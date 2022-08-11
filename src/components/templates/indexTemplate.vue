@@ -1,8 +1,6 @@
 <template>
   <div class="index-template">
-    <FadeInComponent>
-      <HeroSection />
-    </FadeInComponent>
+    <HeroSection />
     <ResumeSection />
     <ProjectsSection />
   </div>
@@ -11,7 +9,6 @@
 <script setup lang="ts">
 import HeroSection from "../sections/HeroSection.vue";
 import ProjectsSection from "../sections/ProjectsSection.vue";
-import FadeInComponent from "../FadeInComponent.vue";
 import ResumeSection from "../sections/ResumeSection.vue";
 </script>
 

@@ -2,6 +2,10 @@
   <FadeInComponent direction="up">
     <StyledHeading position="right" id="projects"> Projects </StyledHeading>
   </FadeInComponent>
+
+  <div class="projects-section">
+    <TiltCard v-for="i in 4" :id="i" :key="i" image="websiteImage" />
+  </div>
   <div class="website-showcase-section">
     <FadeInComponent direction="up">
       <HoverCard />
@@ -15,9 +19,6 @@
     <FadeInComponent direction="up">
       <HoverCard />
     </FadeInComponent>
-  </div>
-  <div class="projects-section">
-    <TiltCard v-for="i in 4" :id="i" :key="i" />
   </div>
 </template>
 
@@ -49,6 +50,14 @@ import HoverCard from "../HoverCard.vue";
 @media screen and (min-width: 600px) {
   .website-showcase-section {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .projects-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+
+    gap: 4rem;
   }
 }
 </style>
