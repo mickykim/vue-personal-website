@@ -22,7 +22,7 @@
         </li>
       </div>
     </ul>
-    <FadeInComponent direction="up" :delay="1">
+    <FadeInComponent direction="up" :delay="2">
       <SocialLinks />
     </FadeInComponent>
   </nav>
@@ -48,6 +48,7 @@ const sections = [
     id: 2,
     color: "brown",
     textContent: "CV/Resume",
+    url: "#resume",
   },
   {
     id: 3,
@@ -57,13 +58,9 @@ const sections = [
   },
   {
     id: 4,
-    color: "purple",
-    textContent: "Information",
-  },
-  {
-    id: 5,
     color: "red",
     textContent: "Contact",
+    url: "#contact",
   },
 ];
 const links = ref<HTMLLinkElement[]>([]);
@@ -121,7 +118,7 @@ $colors: "green", "brown", "blue", "purple", "red";
 
 .reveal-link-anim {
   --anim-time: 1s;
-  --anim-delay: 1s;
+  --anim-delay: 0s;
   animation-name: revealLink;
   animation-duration: var(--anim-time);
   animation-delay: calc(

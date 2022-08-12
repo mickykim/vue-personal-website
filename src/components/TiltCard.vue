@@ -2,8 +2,9 @@
   <div :class="id ? 'tilt-card ' + id : 'tilt-card'" ref="tiltCard">
     <img class="image-bg" :src="image" />
     <div :class="id ? 'text-content ' + id : 'text-content'" ref="textContent">
-      <h3>Tilt Card</h3>
-      <p>Description</p>
+      <h3 class="title">{{ title }}</h3>
+      <p class="description">{{ description }}</p>
+      <TagList :tags="tags" class="tag-list" />
     </div>
   </div>
 </template>
@@ -13,14 +14,14 @@ import VanillaTilt from "vanilla-tilt";
 import { onMounted, ref, watchEffect } from "vue";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import TagList from "./TagList.vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const props = defineProps({ id: Number, image: String });
+const props = defineProps({ id: Number, image: String, title: String, description:String, tags:Array<string> });
 const tiltCard = ref<HTMLElement>();
 const textContent = ref();
 const image = ref();
-
 const getImageURL = async (imageName: string) => {
   const module = await import(
     /* @vite-ignore */ `./../assets/${imageName}.jpg`
@@ -87,9 +88,17 @@ onMounted(() => {
   );
 }
 
+.tag-list {
+  position: absolute;
+  bottom: 22.5%;
+}
 .text-content {
   z-index: 10;
   transform: translateZ(15px);
+}
+
+.title {
+  margin: 1rem 0;
 }
 
 @media screen and (min-width: 600px) {
@@ -99,7 +108,7 @@ onMounted(() => {
 }
 @media screen and (min-width: 900px) {
   .text-content {
-    margin: 2rem;
+    margin: 1rem 2rem;
     height: 100%;
   }
 }

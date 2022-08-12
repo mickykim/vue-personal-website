@@ -2,20 +2,36 @@
   <button class="styled-button" ref="button">
     <div class="hover-overlay" ref="overlay"></div>
     <div class="left-text">
-      <slot> Button </slot>
+      <slot name="text"> Button </slot>
     </div>
     <div class="right-icon">
-      <slot></slot>
+      <slot name="icon"> </slot>
     </div>
   </button>
 </template>
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
+
+const props = defineProps({
+  image: String,
+});
 const button = ref<Element>();
 const overlay = ref<Element>();
+const image = ref();
 
+const getImageURL = async (imageName: string) => {
+  const module = await import(
+    /* @vite-ignore */ `./../assets/${imageName}.jpg`
+  );
+  return module.default.replace(/^\/@fs/, "");
+};
+watchEffect(async () =>
+  props.image
+    ? (image.value = await getImageURL(props.image))
+    : (image.value = "")
+);
 onMounted(() => {
   const tl = gsap.timeline({
     defaults: { duration: 1, ease: "power2" },
@@ -69,7 +85,7 @@ onMounted(() => {
 .right-icon {
   flex: auto;
   border-left: 1px solid hsl(var(--c-black));
-  padding: 2rem;
+  padding: 1rem 2rem;
   min-height: 4rem;
 }
 </style>

@@ -4,21 +4,15 @@
   </FadeInComponent>
 
   <div class="projects-section">
-    <TiltCard v-for="i in 4" :id="i" :key="i" image="websiteImage" />
-  </div>
-  <div class="website-showcase-section">
-    <FadeInComponent direction="up">
-      <HoverCard />
-    </FadeInComponent>
-    <FadeInComponent direction="up">
-      <HoverCard />
-    </FadeInComponent>
-    <FadeInComponent direction="up">
-      <HoverCard />
-    </FadeInComponent>
-    <FadeInComponent direction="up">
-      <HoverCard />
-    </FadeInComponent>
+    <TiltCard
+      v-for="(card, index) in cardsData"
+      :id="index"
+      :key="index"
+      :title="card.title"
+      :description="card.description"
+      :tags="card.tags"
+      image="websiteImage"
+    />
   </div>
 </template>
 
@@ -27,6 +21,29 @@ import FadeInComponent from "../FadeInComponent.vue";
 import StyledHeading from "../StyledHeading.vue";
 import TiltCard from "../TiltCard.vue";
 import HoverCard from "../HoverCard.vue";
+
+const cardsData = [
+  {
+    title: "Invex Capital",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    tags: ["Vue", "TypeScript", "GSAP"],
+  },
+  {
+    title: "check.gg",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    tags: ["React", "TypeScript", "Tailwind"],
+  },
+  {
+    title: "Title 3",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    tags: ["Mongoose", "Express", "React", "Node.js"],
+  },
+  {
+    title: "Title 4",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    tags: ["Hubspot/HubL", "Javascript"],
+  },
+];
 </script>
 
 <style scoped>

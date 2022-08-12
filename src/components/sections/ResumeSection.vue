@@ -1,11 +1,19 @@
 <template>
   <FadeInComponent direction="up">
-    <StyledHeading position="left">Resume/CV</StyledHeading>
+    <StyledHeading position="left" id="resume">Resume/CV</StyledHeading>
   </FadeInComponent>
   <FadeInComponent direction="right">
     <div class="resume-section">
-      <StyledButton>Resume</StyledButton>
-      <StyledButton>Contact</StyledButton>
+      <StyledButton>
+        <template #text> Resume </template>
+        <template #icon><IonDocumentTextSharp class="icon" /> </template>
+      </StyledButton>
+      <StyledButton>
+        <template #text> Contact </template>
+        <template #icon
+          ><MaterialSymbolsMailOutlineSharp class="icon" />
+        </template>
+      </StyledButton>
     </div>
   </FadeInComponent>
 </template>
@@ -14,6 +22,8 @@
 import StyledButton from "../StyledButton.vue";
 import StyledHeading from "../StyledHeading.vue";
 import FadeInComponent from "../FadeInComponent.vue";
+import IonDocumentTextSharp from "~icons/ion/document-text-sharp";
+import MaterialSymbolsMailOutlineSharp from "~icons/material-symbols/mail-outline-sharp";
 </script>
 
 <style scoped>
@@ -22,5 +32,9 @@ import FadeInComponent from "../FadeInComponent.vue";
   margin-bottom: 15rem;
   gap: 2rem;
   justify-content: center;
+}
+
+.icon {
+  font-size: 1.5rem;
 }
 </style>

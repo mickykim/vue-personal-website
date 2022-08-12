@@ -169,7 +169,4 @@ function toggleModal() {
     transform: rotate(1turn);
   }
 }
-
-.rainbow {
-}
 </style>
