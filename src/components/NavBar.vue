@@ -210,6 +210,7 @@ ul {
   list-style-type: none;
   align-items: flex-end;
   padding: 0.5rem 0.5rem;
+  margin-bottom: 2rem;
 }
 li {
   transform: translateY(120%);

@@ -33,6 +33,7 @@ h2 {
   width: 100%;
   height: 100%;
   border-left: 4px solid hsl(var(--c-primary-300, var(--c-white)));
+  transition: border-color 0.5s;
 }
 
 .styled-heading.right {

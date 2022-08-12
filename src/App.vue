@@ -1,4 +1,5 @@
 <template>
+  <BackgroundImage />
   <header><HeaderContainer /></header>
 
   <main ref="main">
@@ -22,6 +23,7 @@ import HeroSection from "./components/sections/HeroSection.vue";
 import ProjectsSection from "./components/sections/ProjectsSection.vue";
 import ResumeSection from "./components/sections/ResumeSection.vue";
 import { onMounted, reactive, ref, watch } from "vue";
+import BackgroundImage from "./components/BackgroundImage.vue";
 const main = ref();
 const root = document.querySelector<HTMLElement>(":root");
 const currentSection = ref();
@@ -44,7 +46,25 @@ const colorTheme = reactive({
   button: "",
   color: "",
 });
+const addIntersectionObserver = () => {
+  const observer = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          currentSection.value = Number(
+            entry.target.getAttribute("data-section-id")
+          );
+        }
+      });
+    },
+    { threshold: 0.4, rootMargin: "0px 0px -40% 0px" }
+  );
 
+  document.querySelectorAll(".index-template > *").forEach((section) => {
+    observer.observe(section);
+  });
+  document.removeEventListener("scroll", addIntersectionObserver);
+};
 watch(colorTheme, () => {
   if (!root) return;
   // root.style.setProperty("--color-background", `var(${colorTheme.background})`);
@@ -65,25 +85,7 @@ watch(colorTheme, () => {
   // );
 });
 onMounted(() => {
-  setTimeout(() => {
-    const observer = new IntersectionObserver(
-      (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0.8) {
-            currentSection.value = Number(
-              entry.target.getAttribute("data-section-id")
-            );
-          }
-        });
-        console.log(currentSection.value);
-      },
-      { threshold: 0.8 }
-    );
-
-    document.querySelectorAll(".index-template > *").forEach((section) => {
-      observer.observe(section);
-    });
-  }, 3000);
+  document.addEventListener("scroll", addIntersectionObserver);
 });
 </script>
 
@@ -94,10 +96,7 @@ onMounted(() => {
   display: none;
 }
 #app {
-  max-width: 1366px;
   width: 100%;
-  padding: 2rem;
-  margin: 0 auto;
   position: static !important;
 }
 
@@ -106,6 +105,10 @@ main {
   grid-template-columns: 1fr;
   gap: 1rem;
   width: 100%;
+  max-width: 1366px;
+  padding: 2rem;
+
+  margin: 0 auto;
 }
 .index-template {
   padding: 0 0rem;

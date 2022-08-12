@@ -69,6 +69,7 @@ onMounted(() => {
   min-height: 4rem;
   cursor: pointer;
   align-items: center;
+  transition: background-color 0.5s;
 }
 
 .hover-overlay {
