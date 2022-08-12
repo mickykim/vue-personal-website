@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="hero">
+  <section id="hero" data-section-id="0">
     <FadeInComponent direction="up">
       <h2 class="title">Miqueas Kim Han</h2>
     </FadeInComponent>
@@ -19,7 +19,7 @@ import FadeInComponent from "../FadeInComponent.vue";
 </script>
 
 <style scoped>
-.hero {
+#hero {
   margin: 0 0 25rem 0;
 }
 

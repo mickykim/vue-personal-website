@@ -1,19 +1,21 @@
 <template>
-  <FadeInComponent direction="up">
-    <StyledHeading position="right" id="projects"> Projects </StyledHeading>
-  </FadeInComponent>
+  <section id="projects" data-section-id="2">
+    <FadeInComponent direction="up">
+      <StyledHeading position="right"> Projects </StyledHeading>
+    </FadeInComponent>
 
-  <div class="projects-section">
-    <TiltCard
-      v-for="(card, index) in cardsData"
-      :id="index"
-      :key="index"
-      :title="card.title"
-      :description="card.description"
-      :tags="card.tags"
-      image="websiteImage"
-    />
-  </div>
+    <div class="projects-section">
+      <TiltCard
+        v-for="(card, index) in cardsData"
+        :id="index"
+        :key="index"
+        :title="card.title"
+        :description="card.description"
+        :tags="card.tags"
+        image="websiteImage"
+      />
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">

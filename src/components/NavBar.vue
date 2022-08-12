@@ -14,7 +14,10 @@
           <a
             :href="section.url"
             :class="section.color"
-            :ref="(el) => links.push(el as HTMLLinkElement)"
+            :ref="(el) => {
+              if(links.length < sections.length)
+                links.push(el as HTMLLinkElement)
+            }"
             @click="onClick(sections[index].color, section.id)"
           >
             {{ section.textContent }}
@@ -29,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 import SocialLinks from "./SocialLinks.vue";
 import FadeInComponent from "./FadeInComponent.vue";
 
@@ -39,47 +42,53 @@ import FadeInComponent from "./FadeInComponent.vue";
  */
 const sections = [
   {
-    id: 1,
+    id: 0,
     color: "green",
     textContent: "Mikim",
     url: "#hero",
   },
   {
-    id: 2,
+    id: 1,
     color: "brown",
     textContent: "CV/Resume",
     url: "#resume",
   },
   {
-    id: 3,
+    id: 2,
     color: "blue",
     textContent: "Projects",
     url: "#projects",
   },
   {
-    id: 4,
+    id: 3,
     color: "red",
     textContent: "Contact",
     url: "#contact",
   },
 ];
+
+const props = defineProps({ currentSectionId: Number });
 const links = ref<HTMLLinkElement[]>([]);
 
 const link_buttons = ref<HTMLLIElement[]>([]);
 const emit = defineEmits(["changeColorTheme"]);
 function onClick(color: string, id: number) {
   links.value.forEach((link, index) => {
-    if (index + 1 === id) {
+    if (index == id) {
       link.classList.remove("secondary");
       link.classList.add("expanded-link");
     } else {
-      link.classList.add("secondary");
       link.classList.remove("expanded-link");
+
+      link.classList.add("secondary");
     }
   });
   emit("changeColorTheme", color);
 }
-
+watchEffect(() => {
+  if (!props.currentSectionId && props.currentSectionId !== 0) return;
+  onClick(sections[props.currentSectionId].color, props.currentSectionId);
+});
 onMounted(() => {
   /**
    * Expand navigation buttons once the last button is revealed

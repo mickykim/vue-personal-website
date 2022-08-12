@@ -2,18 +2,40 @@
   <header><HeaderContainer /></header>
 
   <main ref="main">
-    <NavBar @change-color-theme="changeColorTheme" id="navbar" />
-    <IndexTemplate />
+    <NavBar
+      @change-color-theme="changeColorTheme"
+      id="navbar"
+      :current-section-id="currentSection"
+    />
+    <div class="index-template">
+      <HeroSection ref="heroSection" />
+      <ResumeSection />
+      <ProjectsSection />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import NavBar from "./components/NavBar.vue";
 import HeaderContainer from "./components/HeaderContainer.vue";
-import IndexTemplate from "./components/templates/indexTemplate.vue";
-import { reactive, ref, watch } from "vue";
+import HeroSection from "./components/sections/HeroSection.vue";
+import ProjectsSection from "./components/sections/ProjectsSection.vue";
+import ResumeSection from "./components/sections/ResumeSection.vue";
+import { onMounted, reactive, ref, watch } from "vue";
 const main = ref();
 const root = document.querySelector<HTMLElement>(":root");
+const currentSection = ref();
+const heroSection = ref<HTMLElement>();
+
+//-------------- Emit handlers ------------------
+function changeColorTheme(color: string) {
+  colorTheme.background = `--c-${color}-700`;
+
+  colorTheme.root = `--c-${color}-900`;
+  colorTheme.button = `--c-${color}-500`;
+
+  colorTheme.color = color;
+}
 
 const colorTheme = reactive({
   background: "",
@@ -42,16 +64,27 @@ watch(colorTheme, () => {
   //   `0 10px 20px hsla(var(--c-primary-100), 0.25), 0 3px 6px hsla(var(--c-primary-100), 0.2)`
   // );
 });
+onMounted(() => {
+  setTimeout(() => {
+    const observer = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > 0.8) {
+            currentSection.value = Number(
+              entry.target.getAttribute("data-section-id")
+            );
+          }
+        });
+        console.log(currentSection.value);
+      },
+      { threshold: 0.8 }
+    );
 
-//-------------- Emit handlers ------------------
-function changeColorTheme(color: string) {
-  colorTheme.background = `--c-${color}-700`;
-
-  colorTheme.root = `--c-${color}-900`;
-  colorTheme.button = `--c-${color}-500`;
-
-  colorTheme.color = color;
-}
+    document.querySelectorAll(".index-template > *").forEach((section) => {
+      observer.observe(section);
+    });
+  }, 3000);
+});
 </script>
 
 <style lang="scss">
@@ -74,7 +107,16 @@ main {
   gap: 1rem;
   width: 100%;
 }
+.index-template {
+  padding: 0 0rem;
+  width: 100%;
+}
 
+@media screen and (min-width: 600px) {
+  .index-template {
+    padding: 0 8rem;
+  }
+}
 @media screen and (min-width: 1200px) {
   #navbar {
     display: block;

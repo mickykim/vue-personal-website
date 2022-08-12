@@ -55,11 +55,6 @@ onMounted(() => {
     leftText.value.getBoundingClientRect().width +
     2 * rightIcon.value.getBoundingClientRect().width;
 
-  console.log(
-    leftText.value.getBoundingClientRect().width,
-    rightIcon.value.getBoundingClientRect().width,
-    maxWidth
-  );
   button.value.style.maxWidth = `${maxWidth.toFixed(2)}px`;
 });
 </script>

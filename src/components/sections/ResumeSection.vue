@@ -1,23 +1,25 @@
 <template>
-  <FadeInComponent direction="up">
-    <StyledHeading position="left" id="resume">Resume/CV</StyledHeading>
-  </FadeInComponent>
-  <FadeInComponent :stagger="0.2" target="resume-section">
-    <div class="resume-section">
-      <StyledButton class="styled-button">
-        <template #text> Resume </template>
-        <template #icon>
-          <IonDocumentTextSharp class="icon" />
-        </template>
-      </StyledButton>
-      <StyledButton class="styled-button">
-        <template #text> Contact </template>
-        <template #icon>
-          <MaterialSymbolsMailOutlineSharp class="icon" />
-        </template>
-      </StyledButton>
-    </div>
-  </FadeInComponent>
+  <section id="resume" data-section-id="1">
+    <FadeInComponent direction="up">
+      <StyledHeading position="left" id="resume">Resume/CV</StyledHeading>
+    </FadeInComponent>
+    <FadeInComponent :stagger="0.2" target="resume-section">
+      <div class="resume-section">
+        <StyledButton class="styled-button">
+          <template #text> Resume </template>
+          <template #icon>
+            <IonDocumentTextSharp class="icon" />
+          </template>
+        </StyledButton>
+        <StyledButton class="styled-button">
+          <template #text> Contact </template>
+          <template #icon>
+            <MaterialSymbolsMailOutlineSharp class="icon" />
+          </template>
+        </StyledButton>
+      </div>
+    </FadeInComponent>
+  </section>
 </template>
 
 <script setup lang="ts">

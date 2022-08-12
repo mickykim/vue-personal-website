@@ -6,7 +6,6 @@
 
 <script setup lang="ts">
 const props = defineProps({ position: String });
-console.log(props);
 </script>
 
 <style scoped>
