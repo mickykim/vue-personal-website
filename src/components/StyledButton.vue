@@ -1,10 +1,10 @@
 <template>
   <button class="styled-button" ref="button">
     <div class="hover-overlay" ref="overlay"></div>
-    <div class="left-text">
+    <div class="left-text" ref="leftText">
       <slot name="text"> Button </slot>
     </div>
-    <div class="right-icon">
+    <div class="right-icon" ref="rightIcon">
       <slot name="icon"> </slot>
     </div>
   </button>
@@ -17,9 +17,11 @@ import { onMounted, ref, watchEffect } from "vue";
 const props = defineProps({
   image: String,
 });
-const button = ref<Element>();
-const overlay = ref<Element>();
+const button = ref<HTMLElement>();
+const overlay = ref<HTMLElement>();
 const image = ref();
+const leftText = ref<HTMLElement>();
+const rightIcon = ref<HTMLElement>();
 
 const getImageURL = async (imageName: string) => {
   const module = await import(
@@ -48,6 +50,17 @@ onMounted(() => {
   button.value?.addEventListener("mouseleave", () => {
     tl.reverse();
   });
+  if (!leftText.value || !rightIcon.value || !button.value) return;
+  let maxWidth =
+    leftText.value.getBoundingClientRect().width +
+    2 * rightIcon.value.getBoundingClientRect().width;
+
+  console.log(
+    leftText.value.getBoundingClientRect().width,
+    rightIcon.value.getBoundingClientRect().width,
+    maxWidth
+  );
+  button.value.style.maxWidth = `${maxWidth.toFixed(2)}px`;
 });
 </script>
 
@@ -60,6 +73,7 @@ onMounted(() => {
   flex-wrap: nowrap;
   min-height: 4rem;
   cursor: pointer;
+  align-items: center;
 }
 
 .hover-overlay {
@@ -72,7 +86,7 @@ onMounted(() => {
   z-index: 10;
 }
 .left-text {
-  flex: auto;
+  flex-grow: 0;
   text-align: center;
   padding: 1.375rem 4rem;
   font-size: 1rem;
@@ -81,11 +95,15 @@ onMounted(() => {
   color: hsl(var(--c-primary-100, var(--c-green-100)));
   min-height: 4rem;
 }
-
 .right-icon {
-  flex: auto;
+  display: flex;
+  flex: 0;
   border-left: 1px solid hsl(var(--c-black));
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   min-height: 4rem;
+}
+@media screen and (min-width: 600px) {
+  .right-icon {
+  }
 }
 </style>

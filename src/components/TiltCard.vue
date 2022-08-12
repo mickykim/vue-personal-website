@@ -56,12 +56,13 @@ onMounted(() => {
 
 <style scoped>
 .tilt-card {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr;
   background-color: hsla(var(--c-primary-200, var(--c-green-500)), 0.5);
   width: 100%;
   cursor: pointer;
   position: relative;
+  min-height: 300px;
   transform-style: preserve-3d;
   transform: perspective(500px);
 }
@@ -95,6 +96,7 @@ onMounted(() => {
 .text-content {
   z-index: 10;
   transform: translateZ(15px);
+  margin: 0.5rem 2rem;
 }
 
 .title {

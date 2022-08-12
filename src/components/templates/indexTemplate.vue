@@ -15,6 +15,7 @@ import ResumeSection from "../sections/ResumeSection.vue";
 <style scoped>
 .index-template {
   padding: 0 0rem;
+  width: 100%;
 }
 @media screen and (min-width: 600px) {
   .index-template {

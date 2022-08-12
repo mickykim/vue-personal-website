@@ -72,6 +72,7 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
 }
 
 @media screen and (min-width: 1200px) {

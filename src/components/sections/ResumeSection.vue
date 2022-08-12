@@ -4,14 +4,16 @@
   </FadeInComponent>
   <FadeInComponent direction="right">
     <div class="resume-section">
-      <StyledButton>
+      <StyledButton class="styled-button">
         <template #text> Resume </template>
-        <template #icon><IonDocumentTextSharp class="icon" /> </template>
+        <template #icon>
+          <IonDocumentTextSharp class="icon" />
+        </template>
       </StyledButton>
-      <StyledButton>
+      <StyledButton class="styled-button">
         <template #text> Contact </template>
-        <template #icon
-          ><MaterialSymbolsMailOutlineSharp class="icon" />
+        <template #icon>
+          <MaterialSymbolsMailOutlineSharp class="icon" />
         </template>
       </StyledButton>
     </div>
@@ -29,12 +31,27 @@ import MaterialSymbolsMailOutlineSharp from "~icons/material-symbols/mail-outlin
 <style scoped>
 .resume-section {
   display: flex;
+  flex-direction: column;
   margin-bottom: 15rem;
   gap: 2rem;
   justify-content: center;
+  align-items: center;
 }
 
 .icon {
   font-size: 1.5rem;
+}
+
+.styled-button {
+  transform: scale(0.8);
+}
+
+@media screen and (min-width: 600px) {
+  .resume-section {
+    flex-direction: row;
+  }
+  .styled-button {
+    transform: scale(1);
+  }
 }
 </style>
