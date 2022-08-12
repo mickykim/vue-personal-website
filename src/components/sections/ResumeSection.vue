@@ -2,7 +2,7 @@
   <FadeInComponent direction="up">
     <StyledHeading position="left" id="resume">Resume/CV</StyledHeading>
   </FadeInComponent>
-  <FadeInComponent direction="right">
+  <FadeInComponent :stagger="0.2" target="resume-section">
     <div class="resume-section">
       <StyledButton class="styled-button">
         <template #text> Resume </template>

@@ -22,7 +22,7 @@
         </li>
       </div>
     </ul>
-    <FadeInComponent direction="up" :delay="2">
+    <FadeInComponent direction="up" :delay="1">
       <SocialLinks />
     </FadeInComponent>
   </nav>

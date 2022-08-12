@@ -28,16 +28,30 @@ onMounted(() => {
       ? "[class='" + props.target + " " + props.id + "'] > *"
       : "." + props.target + " > *"
     : target.value;
-  if (props.direction === "up") {
-    tl.from(animatedElements, {
-      opacity: 0,
-      y: 50,
-      delay: props.delay ? props.delay : 0,
-      stagger: props.stagger ? props.stagger : 0,
-    });
-  }
-  if (props.direction === "right") {
-    tl.from(animatedElements, { opacity: 0, x: -100 });
+
+  switch (props.direction) {
+    case "up":
+      tl.from(animatedElements, {
+        opacity: 0,
+        y: 50,
+        delay: props.delay ? props.delay : 0,
+        stagger: props.stagger ? props.stagger : 0,
+      });
+      break;
+    case "right":
+      tl.from(animatedElements, {
+        opacity: 0,
+        x: -100,
+        delay: props.delay ? props.delay : 0,
+        stagger: props.stagger ? props.stagger : 0,
+      });
+      break;
+    default:
+      tl.from(animatedElements, {
+        opacity: 0,
+        delay: props.delay ? props.delay : 0,
+        stagger: props.stagger ? props.stagger : 0,
+      });
   }
 });
 </script>
