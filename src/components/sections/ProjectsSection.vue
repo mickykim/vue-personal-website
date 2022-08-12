@@ -20,7 +20,6 @@
 import FadeInComponent from "../FadeInComponent.vue";
 import StyledHeading from "../StyledHeading.vue";
 import TiltCard from "../TiltCard.vue";
-import HoverCard from "../HoverCard.vue";
 
 const cardsData = [
   {

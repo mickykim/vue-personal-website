@@ -1,6 +1,6 @@
 <template>
   <ul class="tag-list">
-    <li v-for="tag in tags" :key="tag" class="tag">
+    <li v-for="tag in props.tags" :key="tag" class="tag">
       {{ tag }}
     </li>
   </ul>

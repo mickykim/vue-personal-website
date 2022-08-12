@@ -103,7 +103,5 @@ onMounted(() => {
   min-height: 4rem;
 }
 @media screen and (min-width: 600px) {
-  .right-icon {
-  }
 }
 </style>
