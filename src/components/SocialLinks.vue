@@ -1,8 +1,14 @@
 <template>
   <div class="social-links">
-    <IconGithub class="social-icon" />
-    <IconLinkedIn class="social-icon" />
-    <IconTwitter class="social-icon" />
+    <a href="http://www.google.com" target="_blank" rel="noopener noreferrer">
+      <IconGithub class="social-icon" />
+    </a>
+    <a href="" target="_blank" rel="noopener noreferrer">
+      <IconLinkedIn class="social-icon" />
+    </a>
+    <a href="" target="_blank" rel="noopener noreferrer"
+      ><IconTwitter class="social-icon" />
+    </a>
   </div>
 </template>
 
