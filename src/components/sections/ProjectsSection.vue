@@ -12,7 +12,7 @@
         :title="card.title"
         :description="card.description"
         :tags="card.tags"
-        image="websiteImage"
+        :image="card.image"
       />
     </div>
   </section>
@@ -28,21 +28,25 @@ const cardsData = [
     title: "Invex Capital",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Vue", "TypeScript", "GSAP"],
+    image: "websiteImage",
   },
   {
     title: "check.gg",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["React", "TypeScript", "Tailwind"],
+    image: "websiteImage",
   },
   {
     title: "Title 3",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Mongoose", "Express", "React", "Node.js"],
+    image: "websiteImage",
   },
   {
     title: "Title 4",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Hubspot/HubL", "Javascript"],
+    image: "websiteImage",
   },
 ];
 </script>

@@ -6,6 +6,7 @@
       <p class="description">{{ description }}</p>
       <TagList :tags="tags" class="tag-list" />
     </div>
+    <CoverPage :item="data.coverData" />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import { onMounted, ref, watchEffect } from "vue";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TagList from "./TagList.vue";
+import CoverPage from "./CoverPage.vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,9 +24,27 @@ const props = defineProps({ id: Number, image: String, title: String, descriptio
 const tiltCard = ref<HTMLElement>();
 const textContent = ref();
 const image = ref();
+const data =
+  {
+  cardData: {
+    title: "Invex Capital",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    tags: ["Vue", "TypeScript", "GSAP"],
+    image: "websiteImage",
+    },
+  coverData: {
+    image: "websiteImage",
+    title: "Invex Capital",
+    fullTitle: "Invex Capital",
+    subtitle: "",
+    mainColumnContent: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    sideColumnContent: ["Vue", "TypeScript", "GSAP"],
+  }
+};
+
 const getImageURL = async (imageName: string) => {
   const module = await import(
-    /* @vite-ignore */ `./../assets/${imageName}.jpg`
+    /* @vite-ignore */ `./../assets/${imageName}`
   );
   return module.default.replace(/^\/@fs/, "");
 };
@@ -84,8 +104,8 @@ onMounted(() => {
   width: 100%;
   background: linear-gradient(
     180deg,
-    hsla(var(--c-black), 0) -20%,
-    hsla(var(--c-black), 1)
+    hsla(var(--c-black), 0.25) -20%,
+    hsla(var(--c-black), 0.6)
   );
 }
 
