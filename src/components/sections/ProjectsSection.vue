@@ -28,25 +28,25 @@ const cardsData = [
     title: "Invex Capital",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Vue", "TypeScript", "GSAP"],
-    image: "websiteImage",
+    image: "websiteImage.jpg",
   },
   {
     title: "check.gg",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["React", "TypeScript", "Tailwind"],
-    image: "websiteImage",
+    image: "websiteImage.jpg",
   },
   {
     title: "Title 3",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Mongoose", "Express", "React", "Node.js"],
-    image: "websiteImage",
+    image: "websiteImage.jpg",
   },
   {
     title: "Title 4",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Hubspot/HubL", "Javascript"],
-    image: "websiteImage",
+    image: "websiteImage.jpg",
   },
 ];
 </script>

@@ -1,9 +1,9 @@
 <template>
-  <swiper :pagination="true" :navigation="true" :modules="modules">
+  <swiper :pagination="pagination" :navigation="true" :modules="modules">
     <!-- Create every swiper slide with a for loop of data from a prop -->
-    <swiper-slide v-for="slide in props.slides" :key="slide.id">
+    <swiper-slide v-for="(slide, i) in props.slides" :key="i">
       <div class="top">
-        <img :src="imagePath(slide.imgurl)" />
+        <img :src="imagePath(slide.imgurl)" loading="lazy" />
       </div>
       <div v-if="slide.title || slide.description" class="bottom">
         <h3>{{ slide.title }}</h3>
@@ -24,7 +24,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const modules = [Pagination, Navigation];
-const props = defineProps(["slides"]);
+interface slide {
+  title?: string;
+  description?: string;
+  imgurl: string;
+}
+const props = defineProps<{ slides: slide[]; pagination?: boolean }>();
 const imagePath = (imgurl: string) => {
   return new URL(`../assets/${imgurl}`, import.meta.url).href;
 };
@@ -40,7 +45,7 @@ const imagePath = (imgurl: string) => {
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.25rem;
   background: #fff;
 
   display: flex;

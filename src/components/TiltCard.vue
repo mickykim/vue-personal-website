@@ -1,39 +1,46 @@
 <template>
-  <div :class="id ? 'tilt-card ' + id : 'tilt-card'" ref="tiltCard">
-    <img class="image-bg" :src="image" />
+  <div
+    :class="id ? 'tilt-card ' + id : 'tilt-card'"
+    ref="tiltCard"
+    @click="openCoverPage"
+  >
+    <div
+      class="image-bg"
+      :style="{
+        backgroundImage: `url(src/assets/${props.image})`,
+        backgroundSize: 'cover',
+      }"
+    />
     <div :class="id ? 'text-content ' + id : 'text-content'" ref="textContent">
       <h3 class="title">{{ title }}</h3>
       <p class="description">{{ description }}</p>
       <TagList :tags="tags" class="tag-list" />
     </div>
-    <CoverPage :item="data.coverData" />
   </div>
+  <CoverPage :item="data.coverData" />
 </template>
 
 <script setup lang="ts">
 import VanillaTilt from "vanilla-tilt";
-import { onMounted, ref, watchEffect } from "vue";
+import { onMounted, ref } from "vue";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TagList from "./TagList.vue";
 import CoverPage from "./CoverPage.vue";
-
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({ id: Number, image: String, title: String, description:String, tags:Array<string> });
 const tiltCard = ref<HTMLElement>();
 const textContent = ref();
-const image = ref();
+const openCoverPage = () => {
+  tiltCard.value?.nextElementSibling?.classList.remove('hidden');
+  }
+
 const data =
   {
-  cardData: {
-    title: "Invex Capital",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    tags: ["Vue", "TypeScript", "GSAP"],
-    image: "websiteImage",
-    },
+
   coverData: {
-    image: "websiteImage",
+    image: "invexcapital.png",
     title: "Invex Capital",
     fullTitle: "Invex Capital",
     subtitle: "",
@@ -42,17 +49,6 @@ const data =
   }
 };
 
-const getImageURL = async (imageName: string) => {
-  const module = await import(
-    /* @vite-ignore */ `./../assets/${imageName}`
-  );
-  return module.default.replace(/^\/@fs/, "");
-};
-watchEffect(async () =>
-  props.image
-    ? (image.value = await getImageURL(props.image))
-    : (image.value = "")
-);
 onMounted(() => {
   if (!tiltCard.value) return;
   VanillaTilt.init(tiltCard.value, {
@@ -108,7 +104,9 @@ onMounted(() => {
     hsla(var(--c-black), 0.6)
   );
 }
-
+.text-content {
+  pointer-events: none;
+}
 .tag-list {
   position: absolute;
   bottom: 22.5%;
