@@ -28,7 +28,7 @@ const cardsData = [
     title: "Invex Capital",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Vue", "TypeScript", "GSAP"],
-    image: "websiteImage.jpg",
+    image: "invexcapital.png",
   },
   {
     title: "check.gg",

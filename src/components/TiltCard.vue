@@ -2,7 +2,7 @@
   <div
     :class="id ? 'tilt-card ' + id : 'tilt-card'"
     ref="tiltCard"
-    @click="openCoverPage"
+    @click="isCoverOpen = true"
   >
     <div
       class="image-bg"
@@ -17,7 +17,11 @@
       <TagList :tags="tags" class="tag-list" />
     </div>
   </div>
-  <CoverPage :item="data.coverData" />
+  <CoverPage
+    :item="data.coverData"
+    v-if="isCoverOpen"
+    @close-cover="closeCover"
+  />
 </template>
 
 <script setup lang="ts">
@@ -27,30 +31,42 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TagList from "./TagList.vue";
 import CoverPage from "./CoverPage.vue";
+
+const props = defineProps({
+  id: Number,
+  image: String,
+  title: String,
+  description:String,
+  tags:Array<string>
+});
+const tiltCard = ref<HTMLElement>();
+const textContent = ref<HTMLElement>();
+const isCoverOpen = ref(false);
 gsap.registerPlugin(ScrollTrigger);
 
-const props = defineProps({ id: Number, image: String, title: String, description:String, tags:Array<string> });
-const tiltCard = ref<HTMLElement>();
-const textContent = ref();
-const openCoverPage = () => {
-  tiltCard.value?.nextElementSibling?.classList.remove('hidden');
-  }
 
 const data =
   {
 
   coverData: {
-    image: "invexcapital.png",
-    title: "Invex Capital",
+    image: props.image,
+    title: props.title,
     fullTitle: "Invex Capital",
-    subtitle: "",
-    mainColumnContent: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    sideColumnContent: ["Vue", "TypeScript", "GSAP"],
+    subtitle: "Invex Capital",
+    mainColumnContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus nunc vitae magna tristique, a maximus felis mattis. Pellentesque sollicitudin eros sit amet lectus molestie, lobortis commodo justo egestas. Sed. ",
+    sideColumnContent: props.tags,
   }
 };
 
+
+//Emit handlers
+const closeCover = () => {
+  isCoverOpen.value = false;
+}
+
+
 onMounted(() => {
-  if (!tiltCard.value) return;
+  if (!tiltCard.value || !textContent.value) return;
   VanillaTilt.init(tiltCard.value, {
     max: 10,
     speed: 1000,
