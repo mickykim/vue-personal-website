@@ -140,16 +140,19 @@ onMounted(() => {
     types: "lines",
   });
   wrapLines(mainContentText.lines, "div");
+
   tl.addLabel("start", 0)
     .fromTo("body", { overflow: "auto" }, { overflow: "hidden" }, "start")
     .from(coverPage.value, { visibility: "hidden", duration: 0.1 }, "start")
     .to(overlayRows.value, { scaleY: 1 }, "start")
+
     .addLabel("content", 0.6)
     .from(cover.value, { opacity: 0 }, "content")
     .from(coverImg.value, { y: "-101%" }, "content")
     .from(coverImgInner.value, { y: "101%" }, "content")
     .from(coverTitleInner.value, { y: "101%" }, "content")
     .from(closeButton.value, { x: "-101%" }, "content")
+
     .addLabel("title", 0.8)
     .from(mainColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
     .from(sideColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
@@ -157,8 +160,8 @@ onMounted(() => {
     .from(fullTitleInner.value, { x: "101%" }, "title")
     .from(subtitleInner.value.parentNode, { x: "-101%" }, "title+=0.2")
     .from(subtitleInner.value, { x: "101%" }, "title+=0.2")
-    .addLabel("text", 1)
 
+    .addLabel("text", 1)
     .from(mainContentText.lines, { y: "101%", stagger: 0.1 }, "text")
     .from(
       sideColumnContent.value.firstChild.children,
