@@ -5,15 +5,22 @@
     </FadeInComponent>
 
     <div class="projects-section">
-      <TiltCard
+      <div
+        class="tilt-card-wrapper"
         v-for="(card, index) in cardsData"
-        :id="index"
         :key="index"
-        :title="card.title"
-        :description="card.description"
-        :tags="card.tags"
-        :image="card.image"
-      />
+      >
+        <TiltCard
+          :id="index"
+          :title="card.title"
+          :description="card.description"
+          :tags="card.tags"
+          :image="card.image"
+          :github-link="card.githubLink"
+          :website-link="card.websiteLink"
+          class="tilt-card"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -31,21 +38,17 @@ const cardsData = [
     image: "invexcapital.png",
   },
   {
-    title: "check.gg",
+    title: "Construlita",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["React", "TypeScript", "Tailwind"],
-    image: "websiteImage.jpg",
+    image: "construlita.png",
+    githubLink: "https://github.com/mickykim/construlita",
+    websiteLink: "https://construlita.vercel.app/",
   },
   {
-    title: "Title 3",
+    title: "check.gg",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Mongoose", "Express", "React", "Node.js"],
-    image: "websiteImage.jpg",
-  },
-  {
-    title: "Title 4",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    tags: ["Hubspot/HubL", "Javascript"],
     image: "websiteImage.jpg",
   },
 ];
@@ -59,6 +62,7 @@ const cardsData = [
   gap: 6rem;
   flex-wrap: wrap;
 }
+
 .website-showcase-section {
   display: grid;
   grid-template-columns: 1fr;
@@ -80,6 +84,16 @@ const cardsData = [
     padding: 0 2rem;
 
     gap: 4rem;
+  }
+
+  /* Selects the first TiltCard when there are an odd number of cards */
+  .tilt-card-wrapper:last-child:nth-child(odd) {
+    grid-column: auto / span 2;
+  }
+
+  /* Selects the first TiltCard when there are an even number of cards */
+  .tilt-card-wrapper:last-child:nth-last-child(even) {
+    grid-column: auto / span 1;
   }
 }
 </style>

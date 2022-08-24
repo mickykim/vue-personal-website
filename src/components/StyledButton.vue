@@ -14,35 +14,20 @@
 import gsap from "gsap";
 import { onMounted, ref, watchEffect } from "vue";
 
-const props = defineProps({
-  image: String,
-});
 const button = ref<HTMLElement>();
 const overlay = ref<HTMLElement>();
-const image = ref();
 const leftText = ref<HTMLElement>();
 const rightIcon = ref<HTMLElement>();
 
-const getImageURL = async (imageName: string) => {
-  const module = await import(
-    /* @vite-ignore */ `./../assets/${imageName}.jpg`
-  );
-  return module.default.replace(/^\/@fs/, "");
-};
-watchEffect(async () =>
-  props.image
-    ? (image.value = await getImageURL(props.image))
-    : (image.value = "")
-);
 onMounted(() => {
   const tl = gsap.timeline({
-    defaults: { duration: 1, ease: "power2" },
+    defaults: { duration: 1, ease: "power2.inOut" },
     paused: true,
   });
 
   if (!overlay.value) return;
 
-  tl.to(overlay.value, { right: "0", duration: 1 });
+  tl.to(overlay.value, { right: "0", duration: 0.5 });
   button.value?.addEventListener("mouseenter", () => {
     tl.play();
   });
@@ -66,7 +51,6 @@ onMounted(() => {
   border: none;
   display: flex;
   flex-wrap: nowrap;
-  min-height: 4rem;
   cursor: pointer;
   align-items: center;
   transition: background-color 0.5s;
@@ -98,6 +82,9 @@ onMounted(() => {
   padding: 1rem 1rem;
   min-height: 4rem;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
+  .styled-button {
+    min-height: 4rem;
+  }
 }
 </style>

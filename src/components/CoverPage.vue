@@ -7,13 +7,7 @@
     </div>
     <section class="cover" ref="cover">
       <div class="cover_img" ref="coverImg">
-        <div
-          class="cover_img__inner"
-          ref="coverImgInner"
-          :style="{
-            background: `linear-gradient(hsla(0deg, 0%, 0%, 0.2), hsla(0deg, 0%, 0%, 0.4)), url(src/assets/${item.image})`,
-          }"
-        />
+        <div class="cover_img__inner" ref="coverImgInner" />
         <!-- <ImageGallery
           class="cover_img__inner"
           ref="coverImgInner"
@@ -24,7 +18,11 @@
         /> -->
       </div>
       <div class="cover_title text" ref="coverTitle">
-        <h2 class="text__inner title" ref="coverTitleInner">
+        <h2
+          class="text__inner title"
+          ref="coverTitleInner"
+          :style="{ fontSize: `${clampBuilder(400, 900, 4, 9)}` }"
+        >
           {{ item.title }}
         </h2>
       </div>
@@ -62,7 +60,26 @@
           <TagList :tags="(item.sideColumnContent as string[])" />
         </div>
       </div>
-      <div class="text overlay__back">
+
+      <div class="overlay__column" v-if="item.githubLink || item.websiteLink">
+        <div class="text" v-if="item.githubLink">
+          <div ref="githubLink">
+            <StyledButton @click="openLink(item.githubLink as string)">
+              <template #text> Github </template>
+              <template #icon> <ArrowForwardIos class="icon" /> </template>
+            </StyledButton>
+          </div>
+        </div>
+        <div class="text" v-if="item.websiteLink">
+          <div ref="websiteLink">
+            <StyledButton @click="openLink(item.websiteLink as string)">
+              <template #text> Visit Site</template>
+              <template #icon> <ArrowForwardIos class="icon" /> </template>
+            </StyledButton>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="text overlay__back">
         <button class="unbutton" @click="hideCover" ref="closeButton">
           <svg width="100px" height="18px" viewBox="0 0 50 9">
             <path
@@ -71,6 +88,14 @@
             ></path>
           </svg>
         </button>
+      </div> -->
+      <div class="text overlay__back">
+        <div ref="closeButton">
+          <StyledButton @click="hideCover">
+            <template #text> Back </template>
+            <template #icon> <ArrowBackIosNew class="icon" /> </template>
+          </StyledButton>
+        </div>
       </div>
     </section>
   </div>
@@ -82,9 +107,13 @@ import { onMounted, ref } from "vue";
 import ImageGallery from "./ImageGallery.vue";
 import TagList from "./TagList.vue";
 import SplitType from "split-type";
+import StyledButton from "./StyledButton.vue";
+import ArrowBackIosNew from "~icons/material-symbols/arrow-back-ios-new";
+import ArrowForwardIos from "~icons/material-symbols/arrow-forward-ios";
+import { wrapLines, clampBuilder } from "../utils/utils.js";
 const props = defineProps<{
   item: {
-    image: string;
+    image?: string;
     title: string;
     fullTitle: string;
     subtitle: string;
@@ -92,6 +121,8 @@ const props = defineProps<{
     mainColumnContent: string;
     sideColumnTitle?: string;
     sideColumnContent?: string | string[];
+    githubLink?: string;
+    websiteLink?: string;
   };
 }>();
 
@@ -99,7 +130,7 @@ const emit = defineEmits(["closeCover"]);
 const overlay = ref();
 const overlayRows = ref();
 const coverPage = ref();
-const cover = ref();
+const cover = ref<HTMLElement>();
 const coverImg = ref();
 const coverImgInner = ref();
 const coverTitle = ref();
@@ -111,11 +142,16 @@ const sideColumnTitleInner = ref();
 const sideColumnContent = ref();
 const coverTitleInner = ref();
 const closeButton = ref();
+const githubLink = ref();
+const websiteLink = ref();
 
 const tl = gsap.timeline({
   defaults: { duration: 1, ease: "power3.inOut" },
 });
 
+const openLink = (url: string) => {
+  window.open(url);
+};
 const hideCover = () => {
   tl.reverse().then(() => {
     emit("closeCover");
@@ -127,17 +163,19 @@ const hideCover = () => {
  * @param {String} wrapType - the type of the wrap element ('div', 'span' etc)
  * @param {String} wrapClass - the wrap class(es)
  */
-const wrapLines = (elements: Array<HTMLElement> | null, wrapType: string) => {
-  if (!elements || elements.length === 0) return;
-  elements.forEach((el) => {
-    const wrapEl = document.createElement(wrapType);
-    wrapEl.style.overflow = "hidden";
-    el.parentNode?.appendChild(wrapEl);
-    wrapEl.appendChild(el);
-  });
-};
 
 onMounted(() => {
+  coverImgInner.value.style.background = `linear-gradient(hsla(0deg, 0%, 0%, 0.3), hsla(0deg, 0%, 0%, 0.6)), url(src/assets/${props.item.image})`;
+  const largeViewport = window.matchMedia("(min-width:1200px)");
+  if (!cover.value) return;
+  if (!props.item.githubLink || !props.item.websiteLink) {
+    if (largeViewport) {
+      cover.value.style.gridTemplateAreas = `
+      'image image image image image'
+      'title . . mainContent sideContent'
+      `;
+    }
+  }
   const mainContentText = new SplitType(mainColumnContent.value, {
     types: "lines",
   });
@@ -170,9 +208,15 @@ onMounted(() => {
       { y: "101%", opacity: 0, stagger: 0.2 },
       "text"
     )
-    .addLabel("button", 0.8)
+    .addLabel("button", 0.7)
     .from(closeButton.value, { x: "101%" }, "button")
     .from(closeButton.value.parentNode, { x: "-101%" }, "button");
+  if (githubLink.value || websiteLink.value) {
+    tl.from(githubLink.value, { x: "101%" }, "button")
+      .from(githubLink.value.parentNode, { x: "-101%" }, "button")
+      .from(websiteLink.value, { x: "101%" }, "button+=0.2")
+      .from(websiteLink.value.parentNode, { x: "-101%" }, "button+=0.2");
+  }
 });
 </script>
 
@@ -213,6 +257,7 @@ onMounted(() => {
 
 /* Cover page style property */
 
+// text class often used to hide overflow for reveal animations.
 .text {
   color: var(--color-text);
   overflow: hidden;
@@ -239,17 +284,14 @@ p {
   padding-left: var(--x-padding);
   padding-right: var(--x-padding);
   padding-bottom: var(--bottom-padding);
-
-  grid-template-rows: 4fr 1fr;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas:
-    "image image image image image"
-    "title . . mainContent sideContent";
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas: "image" "title" "mainContent" "sideContent" "links";
 }
 
 .cover_img {
-  grid-area: image;
   display: flex;
+  grid-area: image;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -262,16 +304,15 @@ p {
     width: 100%;
     z-index: -1;
     pointer-events: all;
+    background-repeat: "no-repeat";
   }
 }
 .cover_title {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  grid-area: image;
+
   overflow: hidden;
   .text__inner {
-    font-size: 8rem;
+    font-size: clamp(4rem, 6rem, 8rem);
     font-weight: bold;
   }
 }
@@ -285,17 +326,31 @@ p {
   grid-area: sideContent;
 }
 
+.overlay__column:nth-child(6) {
+  grid-area: links;
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.overlay__column-title {
+  margin-bottom: 1rem;
+}
+.overlay__column-title--main {
+  margin-bottom: 0rem;
+  display: none;
+}
 .overlay__back {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: var(--x-padding);
-  stroke: var(--color-text);
+  stroke: var(--color-overlay);
   stroke-width: 2px;
   cursor: pointer;
 }
-.overlay__back:hover {
+/* .overlay__back:hover {
   stroke: var(--color-hover);
-}
+} */
 .hidden {
   opacity: 0;
   visibility: hidden;
@@ -307,16 +362,49 @@ p {
   padding: 0;
   cursor: pointer;
 }
-@media screen and (min-width: 900px) {
+.icon {
+  font-size: 1.5rem;
+  color: var(--color-overlay);
+  border-color: var(--color-overlay);
+  fill: aqua;
+}
+@media screen and (min-width: 600px) {
+}
+
+@media screen and (min-width: 1200px) {
   .cover {
     --x-padding: 2rem;
     --top-padding: 8rem;
     --bottom-padding: 3rem;
 
     row-gap: 1rem;
+    grid-template-rows: 4fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+      "image image image image image"
+      "title . mainContent sideContent links";
+  }
+  .cover_img {
+  }
+
+  .cover_title {
+    grid-area: none;
+
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
   }
   .overlay__column {
     width: 30ch;
+  }
+  .overlay__column:nth-child(6) {
+    flex-flow: column;
+  }
+
+  .overlay__column-title--main {
+    display: block;
   }
 }
 </style>

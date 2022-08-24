@@ -26,6 +26,7 @@ import FadeInComponent from "../FadeInComponent.vue";
 h2 {
   display: inline-block;
   line-height: normal;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 600px) {

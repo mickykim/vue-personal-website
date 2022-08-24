@@ -1,12 +1,23 @@
 <template>
   <div class="social-links">
-    <a href="http://www.google.com" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://github.com/mickykim"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <IconGithub class="social-icon" />
     </a>
-    <a href="" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.linkedin.com/in/mickykim/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <IconLinkedIn class="social-icon" />
     </a>
-    <a href="" target="_blank" rel="noopener noreferrer"
+    <a
+      href="https://twitter.com/WrathHotS"
+      target="_blank"
+      rel="noopener noreferrer"
       ><IconTwitter class="social-icon" />
     </a>
   </div>

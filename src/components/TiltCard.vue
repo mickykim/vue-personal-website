@@ -9,19 +9,16 @@
       :style="{
         backgroundImage: `url(src/assets/${props.image})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }"
     />
     <div :class="id ? 'text-content ' + id : 'text-content'" ref="textContent">
       <h3 class="title">{{ title }}</h3>
       <p class="description">{{ description }}</p>
-      <TagList :tags="tags" class="tag-list" />
     </div>
+    <TagList :tags="tags" class="tag-list" />
   </div>
-  <CoverPage
-    :item="data.coverData"
-    v-if="isCoverOpen"
-    @close-cover="closeCover"
-  />
+  <CoverPage :item="coverData" v-if="isCoverOpen" @close-cover="closeCover" />
 </template>
 
 <script setup lang="ts">
@@ -37,7 +34,9 @@ const props = defineProps({
   image: String,
   title: String,
   description:String,
-  tags:Array<string>
+  tags:Array<string>,
+  githubLink: String,
+  websiteLink: String,
 });
 const tiltCard = ref<HTMLElement>();
 const textContent = ref<HTMLElement>();
@@ -45,16 +44,17 @@ const isCoverOpen = ref(false);
 gsap.registerPlugin(ScrollTrigger);
 
 
-const data =
+const coverData =
 {
-  coverData: {
-    image: 'invexcapital.png',
+    image: props.image,
     title: props.title as string,
     fullTitle: "Invex Capital",
     subtitle: "Invex Capital",
     mainColumnContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus nunc vitae magna tristique, a maximus felis mattis. Pellentesque sollicitudin eros sit amet lectus molestie, lobortis commodo justo egestas. Sed. ",
     sideColumnContent: props.tags,
-  }
+    githubLink: props.githubLink,
+    websiteLink: props.websiteLink,
+
 };
 
 
@@ -121,19 +121,20 @@ onMounted(() => {
 }
 .text-content {
   pointer-events: none;
+  margin: 0.5rem 2rem;
+  z-index: 10;
+  transform: translateZ(15px);
 }
 .tag-list {
   position: absolute;
   bottom: 22.5%;
-}
-.text-content {
-  z-index: 10;
-  transform: translateZ(15px);
   margin: 0.5rem 2rem;
+  transform: translateZ(15px);
 }
 
 .title {
   margin: 1rem 0;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 600px) {

@@ -16,7 +16,7 @@ const props = defineProps({
 .tag {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  background-color: hsla(var(--c-primary-200, var(--c-green-200)), 0.33);
+  background-color: hsla(var(--c-primary-200, var(--c-green-200)), 0.63);
   color: hsl(var(--c-primary-900, var(--c-white)));
 }
 

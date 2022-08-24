@@ -1,11 +1,18 @@
 <template>
   <div :class="'styled-heading ' + position">
-    <h2><slot>Heading</slot></h2>
+    <h2 ref="heading"><slot>Heading</slot></h2>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({ position: String });
+import { onMounted, ref } from "vue";
+
+const props = defineProps({ position: String, color: String });
+const heading = ref<HTMLElement>();
+onMounted(() => {
+  if (!heading.value) return;
+  heading.value.style.borderLeft = `4px solid hsl(var(--c-${props.color}-300, var(--c-white)))`;
+});
 </script>
 
 <style scoped>
