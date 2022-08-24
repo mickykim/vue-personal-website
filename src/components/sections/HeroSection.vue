@@ -20,7 +20,7 @@ import FadeInComponent from "../FadeInComponent.vue";
 
 <style scoped>
 #hero {
-  margin: 0 0 35rem 0;
+  margin: 0 0 20rem 0;
 }
 
 h2 {

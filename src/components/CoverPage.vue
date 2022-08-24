@@ -62,14 +62,16 @@
           <TagList :tags="(item.sideColumnContent as string[])" />
         </div>
       </div>
-      <button class="button overlay__back" @click="hideCover" ref="closeButton">
-        <svg width="100px" height="18px" viewBox="0 0 50 9">
-          <path
-            vector-effect="non-scaling-stroke"
-            d="m0 4.5 5-3m-5 3 5 3m45-3h-77"
-          ></path>
-        </svg>
-      </button>
+      <div class="text overlay__back">
+        <button class="unbutton" @click="hideCover" ref="closeButton">
+          <svg width="100px" height="18px" viewBox="0 0 50 9">
+            <path
+              vector-effect="non-scaling-stroke"
+              d="m0 4.5 5-3m-5 3 5 3m45-3h-77"
+            ></path>
+          </svg>
+        </button>
+      </div>
     </section>
   </div>
 </template>
@@ -142,18 +144,18 @@ onMounted(() => {
   wrapLines(mainContentText.lines, "div");
 
   tl.addLabel("start", 0)
+    // Remove scrollbar to prevent navigation confusion
     .fromTo("body", { overflow: "auto" }, { overflow: "hidden" }, "start")
     .from(coverPage.value, { visibility: "hidden", duration: 0.1 }, "start")
-    .to(overlayRows.value, { scaleY: 1 }, "start")
+    .from(overlayRows.value, { scaleY: 0, duration: 0.8 }, "start")
 
-    .addLabel("content", 0.6)
+    .addLabel("content", 0.4)
     .from(cover.value, { opacity: 0 }, "content")
     .from(coverImg.value, { y: "-101%" }, "content")
     .from(coverImgInner.value, { y: "101%" }, "content")
-    .from(coverTitleInner.value, { y: "101%" }, "content")
-    .from(closeButton.value, { x: "-101%" }, "content")
 
-    .addLabel("title", 0.8)
+    .addLabel("title", 0.6)
+    .from(coverTitleInner.value, { y: "101%" }, "title")
     .from(mainColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
     .from(sideColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
     .from(fullTitleInner.value.parentNode, { x: "-101%" }, "title")
@@ -161,26 +163,31 @@ onMounted(() => {
     .from(subtitleInner.value.parentNode, { x: "-101%" }, "title+=0.2")
     .from(subtitleInner.value, { x: "101%" }, "title+=0.2")
 
-    .addLabel("text", 1)
+    .addLabel("text", 0.6)
     .from(mainContentText.lines, { y: "101%", stagger: 0.1 }, "text")
     .from(
       sideColumnContent.value.firstChild.children,
-      { y: "101%", stagger: 0.2 },
+      { y: "101%", opacity: 0, stagger: 0.2 },
       "text"
-    );
+    )
+    .addLabel("button", 0.8)
+    .from(closeButton.value, { x: "101%" }, "button")
+    .from(closeButton.value.parentNode, { x: "-101%" }, "button");
 });
 </script>
 
 <style scoped lang="scss">
 /* Transition style properties */
 .cover_page {
+  --color-overlay: hsl(var(--c-primary-100, var(--c-black)));
+  --color-text: hsl(var(--c-primary-900, var(--c-white)));
+  --color-hover: hsl(var(--c-primary-700, var(--c-black)));
   position: fixed;
 
   z-index: 10;
 }
 
 .overlay {
-  --color-overlay: hsl(var(--c-primary-100, var(--c-black)));
   position: fixed;
   top: 0;
   left: 0;
@@ -194,7 +201,6 @@ onMounted(() => {
 
 .overlay__row {
   background: var(--color-overlay);
-  transform: scaleY(0);
 }
 
 .overlay__row:first-child {
@@ -208,7 +214,7 @@ onMounted(() => {
 /* Cover page style property */
 
 .text {
-  color: hsl(var(--c-primary-900, var(--c-white)));
+  color: var(--color-text);
   overflow: hidden;
 }
 p {
@@ -283,10 +289,23 @@ p {
   position: absolute;
   bottom: 10%;
   left: var(--x-padding);
+  stroke: var(--color-text);
+  stroke-width: 2px;
+  cursor: pointer;
+}
+.overlay__back:hover {
+  stroke: var(--color-hover);
 }
 .hidden {
   opacity: 0;
   visibility: hidden;
+}
+.unbutton {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
 @media screen and (min-width: 900px) {
   .cover {

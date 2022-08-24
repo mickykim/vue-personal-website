@@ -46,11 +46,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const data =
-  {
-
+{
   coverData: {
-    image: props.image,
-    title: props.title,
+    image: 'invexcapital.png',
+    title: props.title as string,
     fullTitle: "Invex Capital",
     subtitle: "Invex Capital",
     mainColumnContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus nunc vitae magna tristique, a maximus felis mattis. Pellentesque sollicitudin eros sit amet lectus molestie, lobortis commodo justo egestas. Sed. ",
