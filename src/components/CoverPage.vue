@@ -169,7 +169,7 @@ onMounted(() => {
   const largeViewport = window.matchMedia("(min-width:1200px)");
   if (!cover.value) return;
   if (!props.item.githubLink || !props.item.websiteLink) {
-    if (largeViewport) {
+    if (largeViewport.matches) {
       cover.value.style.gridTemplateAreas = `
       'image image image image image'
       'title . . mainContent sideContent'
@@ -202,7 +202,7 @@ onMounted(() => {
     .from(subtitleInner.value, { x: "101%" }, "title+=0.2")
 
     .addLabel("text", 0.6)
-    .from(mainContentText.lines, { y: "101%", stagger: 0.1 }, "text")
+    .from(mainContentText.lines, { y: "101%", stagger: 0.08 }, "text")
     .from(
       sideColumnContent.value.firstChild.children,
       { y: "101%", opacity: 0, stagger: 0.2 },
@@ -214,8 +214,8 @@ onMounted(() => {
   if (githubLink.value || websiteLink.value) {
     tl.from(githubLink.value, { x: "101%" }, "button")
       .from(githubLink.value.parentNode, { x: "-101%" }, "button")
-      .from(websiteLink.value, { x: "101%" }, "button+=0.2")
-      .from(websiteLink.value.parentNode, { x: "-101%" }, "button+=0.2");
+      .from(websiteLink.value, { x: "101%" }, "button+=0.1")
+      .from(websiteLink.value.parentNode, { x: "-101%" }, "button+=0.1");
   }
 });
 </script>
@@ -271,7 +271,7 @@ p {
   font-size: 1.125rem;
 }
 .cover {
-  --x-padding: 0rem;
+  --x-padding: 2rem;
   --top-padding: 0rem;
   --bottom-padding: 0rem;
   position: fixed;
@@ -281,12 +281,13 @@ p {
   right: 0;
   display: grid;
   padding-top: var(--top-padding);
-  padding-left: var(--x-padding);
-  padding-right: var(--x-padding);
+
   padding-bottom: var(--bottom-padding);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-columns: 1fr;
+  justify-content: stretch;
   grid-template-areas: "image" "title" "mainContent" "sideContent" "links";
+  gap: 1rem;
 }
 
 .cover_img {
@@ -318,23 +319,32 @@ p {
 }
 .overlay__column:nth-child(3) {
   grid-area: title;
+  padding-left: var(--x-padding);
+  padding-right: var(--x-padding);
 }
 .overlay__column:nth-child(4) {
   grid-area: mainContent;
+  padding-left: var(--x-padding);
+  padding-right: var(--x-padding);
 }
 .overlay__column:nth-child(5) {
   grid-area: sideContent;
+  padding-left: var(--x-padding);
+  padding-right: var(--x-padding);
 }
 
 .overlay__column:nth-child(6) {
   grid-area: links;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   gap: 1rem;
   justify-content: flex-end;
+  margin-bottom: 10rem;
+  padding-left: var(--x-padding);
+  padding-right: var(--x-padding);
 }
 .overlay__column-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 .overlay__column-title--main {
   margin-bottom: 0rem;
@@ -376,7 +386,7 @@ p {
     --x-padding: 2rem;
     --top-padding: 8rem;
     --bottom-padding: 3rem;
-
+    gap: 0;
     row-gap: 1rem;
     grid-template-rows: 4fr 1fr;
     grid-template-columns: repeat(5, 1fr);
@@ -400,7 +410,7 @@ p {
     width: 30ch;
   }
   .overlay__column:nth-child(6) {
-    flex-flow: column;
+    margin-bottom: 0rem;
   }
 
   .overlay__column-title--main {

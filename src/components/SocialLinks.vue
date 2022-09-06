@@ -38,11 +38,11 @@ import IconLinkedIn from "~icons/fa6-brands/linkedin";
 
 .social-icon {
   font-size: 2rem;
-  color: hsl(var(--c-primary-200, var(--c-white)));
+  color: hsl(var(--c-primary-900, var(--c-white)));
   transition: color 0.5s;
 }
 
 .social-icon:hover {
-  color: hsl(var(--c-primary-400, var(--c-white)));
+  color: hsl(var(--c-primary-700, var(--c-white)));
 }
 </style>

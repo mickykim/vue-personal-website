@@ -14,7 +14,7 @@
     />
     <div :class="id ? 'text-content ' + id : 'text-content'" ref="textContent">
       <h3 class="title">{{ title }}</h3>
-      <p class="description">{{ description }}</p>
+      <!-- <p class="description">{{ description }}</p> -->
     </div>
     <TagList :tags="tags" class="tag-list" />
   </div>
@@ -114,22 +114,26 @@ onMounted(() => {
   right: 0;
   width: 100%;
   background: linear-gradient(
-    180deg,
+    to bottom,
     hsla(var(--c-black), 0.25) -20%,
-    hsla(var(--c-black), 0.6)
+    hsla(var(--c-black), 0.9)
   );
 }
 .text-content {
   pointer-events: none;
-  margin: 0.5rem 2rem;
+  margin: 0.5rem auto;
   z-index: 10;
+  justify-self: center;
   transform: translateZ(15px);
 }
 .tag-list {
   position: absolute;
-  bottom: 22.5%;
+  bottom: 17.5%;
   margin: 0.5rem 2rem;
   transform: translateZ(15px);
+  width: 80%;
+
+  display: flex;
 }
 
 .title {
@@ -144,7 +148,7 @@ onMounted(() => {
 }
 @media screen and (min-width: 900px) {
   .text-content {
-    margin: 1rem 2rem;
+    margin: 4rem auto;
     height: 100%;
   }
 }

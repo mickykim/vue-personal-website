@@ -1,7 +1,7 @@
 <template>
   <section id="projects" data-section-id="2">
     <FadeInComponent direction="up">
-      <StyledHeading position="right"> Projects </StyledHeading>
+      <StyledHeading position="right" color="blue"> Projects </StyledHeading>
     </FadeInComponent>
 
     <div class="projects-section">
@@ -56,34 +56,25 @@ const cardsData = [
 
 <style scoped>
 .projects-section {
-  display: flex;
   max-width: 760px;
-  margin: 4rem 0;
-  gap: 6rem;
+  margin: 2rem 0;
   flex-wrap: wrap;
-}
-
-.website-showcase-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 2rem;
   justify-items: center;
-  padding: 0 2rem;
-  margin-bottom: 8rem;
+  padding: 0 1.5rem;
   /* transition: background 0.5s;
   background: hsl(var(--c-primary-900)); */
 }
+.tilt-card-wrapper {
+  width: 100%;
+}
 @media screen and (min-width: 600px) {
-  .website-showcase-section {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .projects-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
-
-    gap: 4rem;
   }
 
   /* Selects the first TiltCard when there are an odd number of cards */

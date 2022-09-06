@@ -1,5 +1,5 @@
 <template>
-  <div :class="'styled-heading ' + position">
+  <div :class="'styled-heading ' + position" ref="styledHeading">
     <h2 ref="heading"><slot>Heading</slot></h2>
   </div>
 </template>
@@ -9,9 +9,15 @@ import { onMounted, ref } from "vue";
 
 const props = defineProps({ position: String, color: String });
 const heading = ref<HTMLElement>();
+const styledHeading = ref<HTMLElement>();
 onMounted(() => {
-  if (!heading.value) return;
-  heading.value.style.borderLeft = `4px solid hsl(var(--c-${props.color}-300, var(--c-white)))`;
+  if (!heading.value || !styledHeading.value) return;
+
+  styledHeading.value.style.setProperty(
+    "--c-border",
+    `hsl(var(--c-${props.color}-300, var(--c-white)))`
+  );
+  heading.value.style.color = `hsl(var(--c-${props.color}-900, var(--c-white)))`;
 });
 </script>
 
@@ -39,7 +45,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  border-left: 4px solid hsl(var(--c-primary-300, var(--c-white)));
+  border-left: 4px solid var(--c-border);
   transition: border-color 0.5s;
 }
 
@@ -54,6 +60,6 @@ h2 {
   right: 0;
   width: 100%;
   height: 100%;
-  border-right: 4px solid hsl(var(--c-primary-300, var(--c-white)));
+  border-right: 4px solid var(--c-border);
 }
 </style>

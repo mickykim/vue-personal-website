@@ -1,5 +1,14 @@
 <template>
   <nav>
+    <div class="icon" ref="icon">
+      <img
+        class="icon__inner"
+        src="../assets/mickyIcon.webp"
+        width="150"
+        height="150"
+        ref="iconInner"
+      />
+    </div>
     <ul>
       <div
         class="link__wrapper"
@@ -35,6 +44,7 @@
 import { ref, onMounted, watchEffect } from "vue";
 import SocialLinks from "./SocialLinks.vue";
 import FadeInComponent from "./FadeInComponent.vue";
+import gsap from "gsap";
 
 /**
  * Setup for background color slides
@@ -44,12 +54,12 @@ const sections = [
   {
     id: 0,
     color: "green",
-    textContent: "Mikim",
+    textContent: "About",
     url: "#hero",
   },
   {
     id: 1,
-    color: "brown",
+    color: "orange",
     textContent: "CV/Resume",
     url: "#resume",
   },
@@ -69,7 +79,8 @@ const sections = [
 
 const props = defineProps({ currentSectionId: Number });
 const links = ref<HTMLLinkElement[]>([]);
-
+const icon = ref<HTMLDivElement>();
+const iconInner = ref<HTMLImageElement>();
 const link_buttons = ref<HTMLLIElement[]>([]);
 const emit = defineEmits(["changeColorTheme"]);
 function onClick(color: string, id: number) {
@@ -93,6 +104,12 @@ onMounted(() => {
   /**
    * Expand navigation buttons once the last button is revealed
    */
+  const tl = gsap.timeline({ defaults: { duration: 0.75 } });
+  if (!icon.value || !iconInner.value) return;
+  tl.addLabel("start", 0);
+  tl.addLabel("afterNav", 1.75);
+  tl.from(icon.value, { opacity: 0 }, "afterNav");
+  tl.from(iconInner.value, { opacity: 0 }, "afterNav");
   link_buttons.value[link_buttons.value.length - 1].addEventListener(
     "animationend",
     () => {
@@ -110,7 +127,7 @@ onMounted(() => {
 ** Variable values should be the same as in the js
 */
 $sections: 5;
-$colors: "green", "brown", "blue", "purple", "red";
+$colors: "green", "orange", "blue", "purple", "red";
 
 @keyframes revealLink {
   0% {
@@ -143,8 +160,8 @@ $colors: "green", "brown", "blue", "purple", "red";
 .secondary {
   border: 1px solid hsl(var(--color-text));
   color: hsl(var(--color-text));
-  border: 1px solid hsl(var(--c-primary-300));
-  color: hsl(var(--c-primary-300));
+  border: 1px solid hsl(var(--c-primary-800));
+  color: hsl(var(--c-primary-800));
   background: transparent;
   box-shadow: none !important;
 }
@@ -185,8 +202,10 @@ a {
 }
 a:not(.expanded-link) {
   &:hover {
-    color: hsl(var(--color-background));
+    color: hsl(var(--color-text));
     border-color: hsl(var(--color-background));
+    min-width: var(--navbar-width);
+    background: hsl(var(--color-background));
   }
 }
 a:active {
@@ -220,5 +239,23 @@ li {
   border-radius: 0.5rem;
 
   cursor: pointer;
+}
+.icon {
+  --border-width: 4px;
+  max-width: 150px;
+  max-height: 150px;
+  border: var(--border-width) solid hsl(var(--c-primary-600, var(--c-white)));
+  border-radius: 50%;
+  align-self: center;
+  margin-left: 25%;
+  margin-bottom: 1rem;
+  transition: border 0.5s;
+  overflow: hidden;
+}
+.icon__inner {
+  max-width: calc(150px - calc(var(--border-width) * 2));
+  max-height: calc(150px - calc(var(--border-width) * 2));
+  object-fit: cover;
+  border-radius: 50%;
 }
 </style>

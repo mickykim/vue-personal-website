@@ -1,6 +1,6 @@
 <template>
   <div class="background-image">
-    <svg
+    <!-- <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -55,7 +55,7 @@
           <rect width="1920" height="1080" fill="#ffffff"></rect>
         </mask>
       </defs>
-    </svg>
+    </svg> -->
   </div>
 </template>
 
@@ -104,6 +104,7 @@ onMounted(() => {
   position: fixed;
   top: 0;
   bottom: 0;
+  z-index: -1;
   width: 100%;
 }
 @keyframes float1 {

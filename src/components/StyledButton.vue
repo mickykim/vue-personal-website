@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { onMounted, ref, watchEffect } from "vue";
+import { onMounted, ref } from "vue";
 
 const button = ref<HTMLElement>();
 const overlay = ref<HTMLElement>();

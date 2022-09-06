@@ -28,26 +28,29 @@ $colors: "green", "brown", "blue", "purple", "red";
   --c-green-700: 90deg, 84%, 76%;
   --c-green-800: 88deg, 90%, 80%;
   --c-green-900: 86deg, 100%, 80%;
+  --c-green-gray: 85, 5%, 45%;
 
-  --c-brown-100: 20deg, 100%, 15%;
-  --c-brown-200: 22deg, 93%, 30%;
-  --c-brown-300: 25deg, 89%, 40%;
-  --c-brown-400: 30deg, 84%, 45%;
-  --c-brown-500: 30deg, 79%, 50%;
-  --c-brown-600: 32deg, 83%, 60%;
-  --c-brown-700: 35deg, 89%, 70%;
-  --c-brown-800: 38deg, 89%, 80%;
-  --c-brown-900: 40deg, 100%, 80%;
+  --c-orange-100: 20deg, 100%, 15%;
+  --c-orange-200: 22deg, 93%, 30%;
+  --c-orange-300: 25deg, 89%, 40%;
+  --c-orange-400: 30deg, 84%, 45%;
+  --c-orange-500: 30deg, 79%, 50%;
+  --c-orange-600: 32deg, 83%, 60%;
+  --c-orange-700: 35deg, 89%, 70%;
+  --c-orange-800: 38deg, 89%, 80%;
+  --c-orange-900: 40deg, 100%, 80%;
+  --c-orange-gray: 26, 15%, 45%;
 
-  --c-blue-100: 160deg, 100%, 15%;
-  --c-blue-200: 160deg, 93%, 30%;
-  --c-blue-300: 162deg, 89%, 40%;
-  --c-blue-400: 164deg, 83%, 45%;
-  --c-blue-500: 166deg, 79%, 50%;
-  --c-blue-600: 168deg, 84%, 60%;
-  --c-blue-700: 170deg, 89%, 70%;
-  --c-blue-800: 172deg, 95%, 80%;
-  --c-blue-900: 172deg, 100%, 85%;
+  --c-blue-100: 200deg, 100%, 15%;
+  --c-blue-200: 200deg, 93%, 30%;
+  --c-blue-300: 182deg, 89%, 40%;
+  --c-blue-400: 184deg, 83%, 45%;
+  --c-blue-500: 186deg, 79%, 50%;
+  --c-blue-600: 188deg, 84%, 60%;
+  --c-blue-700: 190deg, 89%, 70%;
+  --c-blue-800: 192deg, 95%, 80%;
+  --c-blue-900: 192deg, 100%, 85%;
+  --c-blue-gray: 200, 12%, 45%;
 
   --c-purple-100: 273deg, 100%, 15%;
   --c-purple-200: 274deg, 92%, 32%;
@@ -68,8 +71,10 @@ $colors: "green", "brown", "blue", "purple", "red";
   --c-red-700: 356deg, 86%, 70%;
   --c-red-800: 358deg, 92%, 77%;
   --c-red-900: 0deg, 100%, 85%;
+  --c-red-gray: 344, 12%, 45%;
 
   --c-black: 0, 0%, 14%;
+  --c-gray: 0, 2%, 35%;
 
   --f-size-h1: 4.5rem;
   --f-size-h2: 3rem;
@@ -130,7 +135,7 @@ p {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--c-black);
+    --color-background: var(--c-gray);
     --color-text: var(--c-primary-900, var(--c-white));
     --color-root: var(--c-white);
     --color-button: var(--c-white);

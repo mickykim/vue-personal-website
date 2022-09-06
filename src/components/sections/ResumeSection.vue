@@ -1,11 +1,16 @@
 <template>
   <section id="resume" data-section-id="1">
     <FadeInComponent direction="up">
-      <StyledHeading position="left" id="resume">Resume/CV</StyledHeading>
+      <StyledHeading position="left" id="resume" color="orange"
+        >Resume/CV</StyledHeading
+      >
     </FadeInComponent>
     <FadeInComponent :stagger="0.2" target="resume-section">
       <div class="resume-section">
-        <StyledButton class="styled-button">
+        <StyledButton
+          class="styled-button"
+          @click="openLink('https://www.google.com/')"
+        >
           <template #text> Resume </template>
           <template #icon>
             <IonDocumentTextSharp class="icon" />
@@ -28,6 +33,10 @@ import StyledHeading from "../StyledHeading.vue";
 import FadeInComponent from "../FadeInComponent.vue";
 import IonDocumentTextSharp from "~icons/ion/document-text-sharp";
 import MaterialSymbolsMailOutlineSharp from "~icons/material-symbols/mail-outline-sharp";
+
+const openLink = (url: string) => {
+  window.open(url);
+};
 </script>
 
 <style scoped>
@@ -38,6 +47,7 @@ import MaterialSymbolsMailOutlineSharp from "~icons/material-symbols/mail-outlin
   gap: 2rem;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .icon {

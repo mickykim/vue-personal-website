@@ -12,6 +12,7 @@
       <HeroSection ref="heroSection" />
       <ResumeSection />
       <ProjectsSection />
+      <ContactSection />
     </div>
   </main>
 </template>
@@ -24,6 +25,7 @@ import ProjectsSection from "./components/sections/ProjectsSection.vue";
 import ResumeSection from "./components/sections/ResumeSection.vue";
 import { onMounted, reactive, ref, watch } from "vue";
 import BackgroundImage from "./components/BackgroundImage.vue";
+import ContactSection from "./components/sections/ContactSection.vue";
 const main = ref();
 const root = document.querySelector<HTMLElement>(":root");
 const currentSection = ref();
@@ -78,6 +80,10 @@ watch(colorTheme, () => {
   root.style.setProperty("--c-primary-700", `var(--c-${colorTheme.color}-700)`);
   root.style.setProperty("--c-primary-800", `var(--c-${colorTheme.color}-800)`);
   root.style.setProperty("--c-primary-900", `var(--c-${colorTheme.color}-900)`);
+  root.style.setProperty(
+    "--color-background",
+    `var(--c-${colorTheme.color}-gray, var(--c-gray))`
+  );
 
   // root.style.setProperty(
   //   "--shadow-s",
