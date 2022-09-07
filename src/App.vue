@@ -9,7 +9,7 @@
       :current-section-id="currentSection"
     />
     <div class="index-template">
-      <HeroSection ref="heroSection" />
+      <HeroSection />
       <ResumeSection />
       <ProjectsSection />
       <ContactSection />
@@ -29,7 +29,6 @@ import ContactSection from "./components/sections/ContactSection.vue";
 const main = ref();
 const root = document.querySelector<HTMLElement>(":root");
 const currentSection = ref();
-const heroSection = ref<HTMLElement>();
 
 //-------------- Emit handlers ------------------
 function changeColorTheme(color: string) {

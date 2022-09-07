@@ -20,7 +20,7 @@
             <IonDocumentTextSharp class="icon" />
           </template>
         </StyledButton>
-        <StyledButton class="styled-button">
+        <StyledButton class="styled-button" @click="scrollToContact">
           <template #text> Contact </template>
           <template #icon>
             <MaterialSymbolsMailOutlineSharp class="icon" />
@@ -40,6 +40,11 @@ import MaterialSymbolsMailOutlineSharp from "~icons/material-symbols/mail-outlin
 
 const openLink = (url: string) => {
   window.open(url);
+};
+const scrollToContact = () => {
+  document.getElementById("contact")?.scrollIntoView({
+    behavior: "smooth",
+  });
 };
 </script>
 
