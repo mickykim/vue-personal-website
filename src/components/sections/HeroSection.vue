@@ -69,7 +69,7 @@ a:active {
 
 @media screen and (min-width: 600px) {
   #hero {
-    margin: 0rem 2rem 20rem 2rem;
+    margin: 0rem 2rem 12rem 2rem;
 
     width: 70ch;
   }

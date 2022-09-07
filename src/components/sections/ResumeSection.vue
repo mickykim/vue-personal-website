@@ -1,7 +1,11 @@
 <template>
   <section id="resume" data-section-id="1">
     <FadeInComponent direction="up">
-      <StyledHeading position="left" id="resume" color="orange"
+      <StyledHeading
+        position="left"
+        id="resume"
+        color="orange"
+        class="section-heading"
         >Resume/CV</StyledHeading
       >
     </FadeInComponent>
@@ -40,6 +44,9 @@ const openLink = (url: string) => {
 </script>
 
 <style scoped>
+.section-heading {
+  margin-bottom: 3rem;
+}
 .resume-section {
   display: flex;
   flex-direction: column;

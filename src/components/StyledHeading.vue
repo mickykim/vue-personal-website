@@ -33,7 +33,6 @@ h2 {
 
 .styled-heading {
   position: relative;
-  margin: 6rem 0;
 }
 .styled-heading.left {
   padding-left: 1.5rem;

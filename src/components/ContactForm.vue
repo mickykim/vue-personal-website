@@ -1,7 +1,9 @@
 <template>
-  <div class="container">
-    <form method="POST" @submit.prevent="sendEmail">
-      <label for="fname">First Name (Required)</label>
+  <div class="container" ref="container">
+    <form method="POST" @submit.prevent="sendEmail" v-if="!displayLoading">
+      <div class="label__wrapper">
+        <label for="fname">First Name (Required)</label>
+      </div>
       <input
         type="text"
         id="fname"
@@ -9,8 +11,9 @@
         placeholder="Name"
         required
       />
-
-      <label for="email">Email (Required)</label>
+      <div class="label__wrapper">
+        <label for="email">Email (Required)</label>
+      </div>
       <input
         type="email"
         id="email"
@@ -18,11 +21,13 @@
         placeholder="you@example.com"
         required
       />
-
-      <label for="company">Company</label>
+      <div class="label__wrapper">
+        <label for="company">Company</label>
+      </div>
       <input type="text" id="company" name="company" placeholder="Company" />
-
-      <label for="message">Message (Required)</label>
+      <div class="label__wrapper">
+        <label for="message">Message (Required)</label>
+      </div>
       <textarea
         id="message"
         name="message"
@@ -33,23 +38,35 @@
 
       <input type="submit" value="Submit" />
     </form>
-  </div>
-  <div class="circle-loader">
-    <div class="checkmark draw"></div>
+    <div class="circle-loader" v-if="displayLoading" ref="circleLoader">
+      <div class="checkmark draw" ref="checkmark"></div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import axios, { AxiosError } from "axios";
-import { ref } from "vue";
+import gsap from "gsap";
+import { onMounted, ref } from "vue";
+
+//References
 const name = ref();
 const company = ref();
 const email = ref();
 const message = ref();
-
 const displayLoading = ref(false);
+const circleLoader = ref<HTMLDivElement>();
+const checkmark = ref<HTMLDivElement>();
+const container = ref<HTMLDivElement>();
+
+// Helper functions
 const sendEmail = async () => {
+  if (!container.value) throw new Error("container ref not found");
   displayLoading.value = true;
+  container.value.style.display = "flex";
+  container.value.style.justifyContent = "center";
+  container.value.style.alignItems = "center";
+
   try {
     const { data, status } = await axios.post(
       "https://formspree.io/f/mqkjeqaw",
@@ -63,7 +80,10 @@ const sendEmail = async () => {
       }
     );
     if (status) {
-      displayLoading.value = false;
+      if (!circleLoader.value) throw new Error("circle loader ref not found");
+      if (!checkmark.value) throw new Error("checkmark ref not found");
+      circleLoader.value.classList.toggle("load-complete");
+      checkmark.value.style.display = "block";
     }
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
@@ -84,12 +104,25 @@ const sendEmail = async () => {
       }
       displayLoading.value = false;
       console.log(error.config);
+      alert("Error sending email, please try again");
     }
   }
 };
+
+//Lifecycle methods
+onMounted(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: "form", start: "top 80%" },
+    defaults: { duration: 1, ease: "power2.inOut" },
+  });
+  tl.from("label", { y: 101, stagger: 0.2 });
+});
 </script>
 
 <style scoped lang="scss">
+.container {
+  min-height: 750px;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -103,9 +136,14 @@ textarea {
 textarea:after {
   cursor: nwse-resize;
 }
+.label__wrapper {
+  overflow: hidden;
+}
 label {
   font-size: 1.25rem;
+  display: inline-block;
 }
+
 textarea,
 input {
   background: hsla(var(--c-white), 0.4);
@@ -131,12 +169,12 @@ input[type="submit"] {
 //Circle loader animation
 // Define vars we'll be using
 $brand-success: hsl(var(--c-primary-600, 120deg, 39.3%, 54.1%));
-$loader-size: 7em;
-$loader-thickness: 3px;
+$loader-size: 10em;
+$loader-thickness: 4px;
 $check-height: calc($loader-size/2);
 $check-width: calc($check-height/2);
 $check-left: calc($loader-size/6 + $loader-size/12);
-$check-thickness: 3px;
+$check-thickness: 8px;
 $check-color: $brand-success;
 
 .circle-loader {

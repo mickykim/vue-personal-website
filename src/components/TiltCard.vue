@@ -16,7 +16,9 @@
       <h3 class="title">{{ title }}</h3>
       <!-- <p class="description">{{ description }}</p> -->
     </div>
-    <TagList :tags="tags" class="tag-list" />
+    <div ref="tagListWrapper" class="tag-list__wrapper">
+      <TagList :tags="tags" class="tag-list" />
+    </div>
   </div>
   <CoverPage :item="coverData" v-if="isCoverOpen" @close-cover="closeCover" />
 </template>
@@ -41,6 +43,7 @@ const props = defineProps({
 const tiltCard = ref<HTMLElement>();
 const textContent = ref<HTMLElement>();
 const isCoverOpen = ref(false);
+const tagListWrapper = ref();
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -66,12 +69,15 @@ const closeCover = () => {
 
 onMounted(() => {
   if (!tiltCard.value || !textContent.value) return;
-  VanillaTilt.init(tiltCard.value, {
-    max: 10,
-    speed: 1000,
-    reverse: true,
-    easing: "cubic-bezier(0,.69,1,.69)",
+  if(window.matchMedia('(min-width: 900px)').matches){
+
+    VanillaTilt.init(tiltCard.value, {
+      max: 10,
+      speed: 1000,
+      reverse: true,
+      easing: "cubic-bezier(0,.69,1,.69)",
   });
+  }
 
   const tl = gsap.timeline({
     scrollTrigger: { trigger: textContent.value, start: "top 80%" },
@@ -82,6 +88,7 @@ onMounted(() => {
     y: 50,
     stagger: 0.5,
   });
+  tl.from(tagListWrapper.value.firstChild.children, {y: 101, stagger: 0.1, ease:'power2.inOut'} )
 });
 </script>
 
@@ -126,12 +133,15 @@ onMounted(() => {
   justify-self: center;
   transform: translateZ(15px);
 }
-.tag-list {
+
+.tag-list__wrapper {
   position: absolute;
   bottom: 17.5%;
-  margin: 0.5rem 2rem;
   transform: translateZ(15px);
-  width: 80%;
+  overflow: hidden;
+}
+.tag-list {
+  margin: 0.5rem 2rem;
 
   display: flex;
 }

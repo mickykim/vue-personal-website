@@ -244,7 +244,7 @@ li {
   --border-width: 4px;
   max-width: 150px;
   max-height: 150px;
-  border: var(--border-width) solid hsl(var(--c-primary-600, var(--c-white)));
+  border: var(--border-width) solid hsl(var(--c-primary-200, var(--c-white)));
   border-radius: 50%;
   align-self: center;
   margin-left: 25%;

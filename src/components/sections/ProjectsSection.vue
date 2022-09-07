@@ -1,7 +1,9 @@
 <template>
   <section id="projects" data-section-id="2">
     <FadeInComponent direction="up">
-      <StyledHeading position="right" color="blue"> Projects </StyledHeading>
+      <StyledHeading position="right" color="blue" class="section-heading">
+        Projects
+      </StyledHeading>
     </FadeInComponent>
 
     <div class="projects-section">
@@ -55,6 +57,12 @@ const cardsData = [
 </script>
 
 <style scoped>
+#projects {
+  margin-bottom: 6rem;
+}
+.section-heading {
+  margin-bottom: 3rem;
+}
 .projects-section {
   max-width: 760px;
   margin: 2rem 0;
