@@ -3,7 +3,7 @@
     <ul>
       <CloseButton @click="closeNavbar" class="close-button" />
       <li v-for="(section, index) in sections" :key="index">
-        <a :href="section.url" @click="closeNavbar">
+        <a :href="section.url" @click="closeNavbar" :class="section.color">
           {{ section.textContent }}
         </a>
       </li>
@@ -55,7 +55,22 @@ const tl = gsap.timeline({ defaults: { duration: 1, ease: "power3.inOut" } });
 onMounted(() => {});
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$colors: "green", "orange", "blue", "purple", "red";
+
+@for $i from 1 through length($colors) {
+  $color: nth($colors, $i); //Get the ith value from colors array
+  a.#{$color} {
+    --color-background: var(--c-#{$color}-600);
+    --color-text: var(--c-#{$color}-900);
+    --color-shadow: var(--c-#{$color}-900);
+    --shadow-xs: inset 0 1px 0 hsl(var(--color-shadow)),
+      0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 2px hsla(0, 0%, 0%, 0.24);
+  }
+  [data-order="#{$i}"] {
+    --anim-order: #{$i};
+  }
+}
 nav {
   position: fixed;
   top: 0;
@@ -81,17 +96,21 @@ li {
 a {
   font-size: 2rem;
   text-decoration: none;
+  color: hsl(var(--color-text));
 }
 .close-button {
   margin: 1rem;
   align-self: flex-end;
   font-size: 2rem;
+  cursor: pointer;
 }
 .menu-button {
   position: fixed;
   top: 2.5%;
   right: 5%;
   font-size: 2rem;
+  cursor: pointer;
+  z-index: 5;
 }
 
 @media screen and (min-width: 1200px) {

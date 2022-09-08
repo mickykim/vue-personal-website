@@ -163,7 +163,7 @@ $colors: "green", "orange", "blue", "purple", "red";
   border: 1px solid hsl(var(--c-primary-800));
   color: hsl(var(--c-primary-800));
   background: transparent;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 .inactive {
   opacity: 0;
@@ -176,7 +176,7 @@ $colors: "green", "orange", "blue", "purple", "red";
     --color-background: var(--c-#{$color}-600);
     --color-text: var(--c-#{$color}-100);
     --color-shadow: var(--c-#{$color}-900);
-    --shadow-xs: inset 0 2px 0 hsl(var(--color-shadow)),
+    --shadow-xs: inset 0 1px 0 hsl(var(--color-shadow)),
       0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 2px hsla(0, 0%, 0%, 0.24);
   }
   [data-order="#{$i}"] {
@@ -206,6 +206,10 @@ a:not(.expanded-link) {
     border-color: hsl(var(--color-background));
     min-width: var(--navbar-width);
     background: hsl(var(--color-background));
+    box-shadow: var(--shadow-xs);
+    &:active {
+      box-shadow: none;
+    }
   }
 }
 a:active {
@@ -244,7 +248,7 @@ li {
   --border-width: 4px;
   max-width: 150px;
   max-height: 150px;
-  border: var(--border-width) solid hsl(var(--c-primary-200, var(--c-white)));
+  border: var(--border-width) solid hsl(var(--c-primary-400, var(--c-white)));
   border-radius: 50%;
   align-self: center;
   margin-left: 25%;

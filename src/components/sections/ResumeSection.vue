@@ -9,7 +9,12 @@
         >Resume/CV</StyledHeading
       >
     </FadeInComponent>
-    <FadeInComponent :stagger="0.2" target="resume-section">
+    <FadeInComponent
+      :stagger="0.2"
+      :delay="0.5"
+      target="resume-section"
+      direction="up"
+    >
       <div class="resume-section">
         <StyledButton
           class="styled-button"

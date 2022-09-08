@@ -164,6 +164,14 @@ input[type="submit"] {
   transition: background 1s;
   padding: 1.125rem 2rem;
   align-self: center;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 hsl(var(--c-primary-900)),
+    0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
+  outline: none;
+}
+
+input[type="submit"]:active {
+  box-shadow: none;
 }
 
 //Circle loader animation

@@ -18,6 +18,8 @@ const props = defineProps({
   font-size: 0.875rem;
   background-color: hsla(var(--c-primary-200, var(--c-green-200)), 0.63);
   color: hsl(var(--c-primary-900, var(--c-white)));
+  box-shadow: inset 0 1px 0 hsla(var(--c-primary-900), 0.4),
+    0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 8px hsla(0, 0%, 0%, 0.24);
 }
 
 .tag-list {
