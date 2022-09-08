@@ -8,6 +8,7 @@
       id="navbar"
       :current-section-id="currentSection"
     />
+    <MobileNavbar id="mobile-nav" />
     <div class="index-template">
       <HeroSection />
       <ResumeSection />
@@ -26,6 +27,7 @@ import ResumeSection from "./components/sections/ResumeSection.vue";
 import { onMounted, reactive, ref, watch } from "vue";
 import BackgroundImage from "./components/BackgroundImage.vue";
 import ContactSection from "./components/sections/ContactSection.vue";
+import MobileNavbar from "./components/MobileNavbar.vue";
 const main = ref();
 const root = document.querySelector<HTMLElement>(":root");
 const currentSection = ref();
@@ -100,6 +102,7 @@ onMounted(() => {
 #navbar {
   display: none;
 }
+
 #app {
   width: 100%;
   position: static !important;
@@ -118,12 +121,11 @@ main {
 .index-template {
   padding: 0 0rem;
   width: 100%;
+  max-width: 866px;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 600px) {
-  .index-template {
-    padding: 0 8rem;
-  }
 }
 @media screen and (min-width: 1200px) {
   #navbar {

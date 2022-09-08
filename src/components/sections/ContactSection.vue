@@ -13,7 +13,9 @@
     <FadeInComponent direction="up">
       <h2>Let's Talk!</h2>
     </FadeInComponent>
-    <ContactForm />
+    <div class="form">
+      <ContactForm />
+    </div>
   </section>
 </template>
 
@@ -29,5 +31,10 @@ import FadeInComponent from "../FadeInComponent.vue";
 }
 h2 {
   font-weight: bold;
+  margin-bottom: 2rem;
+}
+.form {
+  max-width: 700px;
+  margin: 0 auto;
 }
 </style>

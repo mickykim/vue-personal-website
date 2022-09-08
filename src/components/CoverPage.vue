@@ -73,7 +73,7 @@
         <div class="text" v-if="item.websiteLink">
           <div ref="websiteLink">
             <StyledButton @click="openLink(item.websiteLink as string)">
-              <template #text> Visit Site</template>
+              <template #text> Visit </template>
               <template #icon> <ArrowForwardIos class="icon" /> </template>
             </StyledButton>
           </div>

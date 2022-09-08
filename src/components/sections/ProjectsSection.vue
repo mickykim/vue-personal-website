@@ -65,7 +65,7 @@ const cardsData = [
 }
 .projects-section {
   max-width: 760px;
-  margin: 2rem 0;
+  margin: 2rem auto;
   flex-wrap: wrap;
   display: grid;
   grid-template-columns: 1fr;

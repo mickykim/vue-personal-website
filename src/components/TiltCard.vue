@@ -152,14 +152,14 @@ onMounted(() => {
 }
 
 @media screen and (min-width: 600px) {
+  .text-content {
+    margin: 4rem auto;
+    height: 100%;
+  }
   .tilt-card {
     min-height: 400px;
   }
 }
 @media screen and (min-width: 900px) {
-  .text-content {
-    margin: 4rem auto;
-    height: 100%;
-  }
 }
 </style>
