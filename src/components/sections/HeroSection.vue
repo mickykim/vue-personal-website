@@ -52,6 +52,7 @@ h2 {
   line-height: normal;
   font-weight: bold;
 }
+
 .title {
   margin: 1rem 0rem;
 }

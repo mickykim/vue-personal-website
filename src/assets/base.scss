@@ -77,9 +77,9 @@ $colors: "green", "brown", "blue", "purple", "red";
   --c-gray: 0, 2%, 35%;
 
   --f-size-h1: 4.5rem;
-  --f-size-h2: 3rem;
+  --f-size-h2: clamp(2.25rem, 1rem + 2.6667vw, 3rem);
   --f-size-h3: 2.25rem;
-  --f-size-p: 1.25rem;
+  --f-size-p: font-size: clamp(0.75rem, 0.25rem + 1.3333vw, 1.25rem);
 
   --shadow-xs: 0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
   --shadow-s: 0 3px 6px hsla(0, 0%, 0%, 0.15), 0 2px 4px hsla(0, 0%, 0%, 0.12);

@@ -56,7 +56,7 @@
             {{ item.sideColumnTitle ? item.sideColumnTitle : "Tech stack" }}
           </h3>
         </div>
-        <div class="text" ref="sideColumnContent">
+        <div class="text side-column-content" ref="sideColumnContent">
           <TagList
             :tags="(item.sideColumnContent as string[])"
             :animation-delay="0.5"
@@ -303,7 +303,7 @@ p {
   position: relative;
   pointer-events: none;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 200px;
 
   .cover_img__inner {
     position: absolute;
@@ -326,8 +326,7 @@ p {
   }
 }
 .overlay__column {
-  max-width: 60ch;
-  margin: 0 auto;
+  width: 100%;
 }
 .overlay__column:nth-child(3) {
   grid-area: title;
@@ -338,6 +337,10 @@ p {
   grid-area: mainContent;
   padding-left: var(--x-padding);
   padding-right: var(--x-padding);
+}
+.overlay__column:nth-child(4) > p {
+  margin: 0 auto;
+  max-width: 60ch;
 }
 .overlay__column:nth-child(5) {
   grid-area: sideContent;
@@ -390,8 +393,22 @@ p {
   fill: aqua;
 }
 @media screen and (min-width: 600px) {
+  .cover {
+    --x-padding: 2rem;
+  }
+  .overlay__column:nth-child(3) > div:nth-child(2) {
+    margin: 0 auto;
+  }
+  .overlay__column:nth-child(6) > div:nth-child(2) {
+    margin: 0;
+    margin-right: var(--x-padding);
+  }
+  .overlay__column:nth-child(5) > div:nth-child(2) {
+    display: table;
+  }
   .overlay__column:nth-child(6) {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -422,6 +439,10 @@ p {
   }
   .overlay__column {
     width: 30ch;
+  }
+
+  .overlay__column:nth-child(6) > div:nth-child(2) {
+    margin: 0;
   }
   .overlay__column:nth-child(6) {
     margin-bottom: 0rem;
