@@ -17,7 +17,7 @@
       <!-- <p class="description">{{ description }}</p> -->
     </div>
     <div ref="tagListWrapper" class="tag-list__wrapper">
-      <TagList :tags="tags" class="tag-list" />
+      <TagList :tags="tags" />
     </div>
   </div>
   <CoverPage :item="coverData" v-if="isCoverOpen" @close-cover="closeCover" />
@@ -69,7 +69,8 @@ const closeCover = () => {
 
 onMounted(() => {
   if (!tiltCard.value || !textContent.value) return;
-  if(window.matchMedia('(min-width: 900px)').matches){
+  const touchDevice = ('ontouchstart' in document.documentElement);
+    if(!touchDevice){
 
     VanillaTilt.init(tiltCard.value, {
       max: 10,
@@ -88,7 +89,7 @@ onMounted(() => {
     y: 50,
     stagger: 0.5,
   });
-  tl.from(tagListWrapper.value.firstChild.children, {y: 101, stagger: 0.1, ease:'power2.inOut'} )
+  // tl.from(tagListWrapper.value.firstChild.children, {y: 101, stagger: 0.1, ease:'power2.inOut'} )
 });
 </script>
 
@@ -142,8 +143,6 @@ onMounted(() => {
 }
 .tag-list {
   margin: 0.5rem 2rem;
-
-  display: flex;
 }
 
 .title {

@@ -13,7 +13,7 @@
         href="https://liquipedia.net/heroes/Wrath"
         target="_blank"
         rel="noreferrer noopener"
-        >(I was relatively good!)</a
+        ><em>(I was relatively good!)</em></a
       >, watching baseball (let's go Blue Jays!), and learning to play the
       piano.
     </p>
@@ -56,7 +56,7 @@ h2 {
   margin: 1rem 0rem;
 }
 a {
-  color: hsl(var(--c-primary-300, var(--c-gray)));
+  color: hsl(var(--c-primary-600, var(--c-black)));
   text-decoration: none;
 }
 a:visited {

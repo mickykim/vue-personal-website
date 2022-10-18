@@ -1,23 +1,56 @@
 <template>
-  <ul class="tag-list">
-    <li v-for="tag in props.tags" :key="tag" class="tag">
-      {{ tag }}
+  <ul class="tag-list" ref="tagList">
+    <li
+      class="tag-wrapper"
+      v-for="tag in props.tags"
+      :key="tag"
+      ref="tagWrapper"
+    >
+      <p class="tag" ref="tag">
+        {{ tag }}
+      </p>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
+import gsap from 'gsap';
+import { onMounted, ref, watch } from 'vue';
+
 const props = defineProps({
   tags: Array<string>,
+  animationDelay: Number,
+  animationReverse: Boolean
 });
+const tagWrapper = ref();
+const tagList = ref<HTMLElement>();
+const tag = ref();
+const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 } });
+
+onMounted(() => {
+  tl.addLabel('start', 0);
+  tl.from(tagWrapper.value, { x: '-101%', scrollTrigger: { trigger: '.tag-wrapper', start: "top 80%" }}, `start+=${props.animationDelay}`);
+  tl.from(tag.value, { x: '101%',scrollTrigger: { trigger: '.tag-wrapper', start: "top 80%" }, }, `start+=${props.animationDelay}`);
+});
+
+// Reverse taglist sliding animation when closing cover page
+watch(() => props.animationReverse, () => {
+  console.log('hello');
+  tl.reverse();
+})
 </script>
 
 <style scoped>
+.tag-wrapper {
+  overflow: hidden;
+}
+
 .tag {
+  display: inline-block;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  background-color: hsla(var(--c-primary-200, var(--c-green-200)), 0.63);
-  color: hsl(var(--c-primary-900, var(--c-white)));
+  background-color: hsla(var(--c-primary-900, var(--c-green-200)), 0.83);
+  color: hsl(var(--c-primary-100, var(--c-white)));
   box-shadow: inset 0 1px 0 hsla(var(--c-primary-900), 0.4),
     0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 8px hsla(0, 0%, 0%, 0.24);
 }

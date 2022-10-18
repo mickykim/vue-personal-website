@@ -7,7 +7,7 @@
     </div>
     <section class="cover" ref="cover">
       <div class="cover_img" ref="coverImg">
-        <div class="cover_img__inner" ref="coverImgInner" />
+        <div class="cover_img__inner" ref="coverImgInner"></div>
         <!-- <ImageGallery
           class="cover_img__inner"
           ref="coverImgInner"
@@ -57,7 +57,11 @@
           </h3>
         </div>
         <div class="text" ref="sideColumnContent">
-          <TagList :tags="(item.sideColumnContent as string[])" />
+          <TagList
+            :tags="(item.sideColumnContent as string[])"
+            :animation-delay="0.5"
+            :animation-reverse="animationReverse"
+          />
         </div>
       </div>
 
@@ -103,7 +107,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import ImageGallery from "./ImageGallery.vue";
 import TagList from "./TagList.vue";
 import SplitType from "split-type";
@@ -144,7 +148,7 @@ const coverTitleInner = ref();
 const closeButton = ref();
 const githubLink = ref();
 const websiteLink = ref();
-
+let animationReverse = ref(false);
 const tl = gsap.timeline({
   defaults: { duration: 1, ease: "power3.inOut" },
 });
@@ -156,6 +160,7 @@ const hideCover = () => {
   tl.reverse().then(() => {
     emit("closeCover");
   });
+  animationReverse.value = true;
 };
 /**
  * Wraps the elements of an array.
@@ -165,7 +170,8 @@ const hideCover = () => {
  */
 
 onMounted(() => {
-  coverImgInner.value.style.background = `linear-gradient(hsla(0deg, 0%, 0%, 0.3), hsla(0deg, 0%, 0%, 0.6)), url(src/assets/${props.item.image})`;
+  coverImgInner.value.style.background = `linear-gradient(hsla(0deg, 0%, 0%, 0.3), hsla(0deg, 0%, 0%, 0.6)), url(src/assets/${props.item.image}) center`;
+  coverImgInner.value.style.backgroundRepeat = "no-repeat";
   const largeViewport = window.matchMedia("(min-width:1200px)");
   if (!cover.value) return;
   if (!props.item.githubLink || !props.item.websiteLink) {
@@ -188,7 +194,7 @@ onMounted(() => {
     .from(overlayRows.value, { scaleY: 0, duration: 0.8 }, "start")
 
     .addLabel("content", 0.4)
-    .from(cover.value, { opacity: 0 }, "content")
+    .from(cover.value, { opacity: 0, duration: 1.5 }, "content")
     .from(coverImg.value, { y: "-101%" }, "content")
     .from(coverImgInner.value, { y: "101%" }, "content")
 
@@ -203,11 +209,11 @@ onMounted(() => {
 
     .addLabel("text", 0.6)
     .from(mainContentText.lines, { y: "101%", stagger: 0.08 }, "text")
-    .from(
-      sideColumnContent.value.firstChild.children,
-      { y: "101%", opacity: 0, stagger: 0.2 },
-      "text"
-    )
+    // .from(
+    //   sideColumnContent.value.firstChild.children,
+    //   { y: "101%", opacity: 0, stagger: 0.2 },
+    //   "text"
+    // )
     .addLabel("button", 0.7)
     .from(closeButton.value, { x: "101%" }, "button")
     .from(closeButton.value.parentNode, { x: "-101%" }, "button");
@@ -281,12 +287,11 @@ p {
   right: 0;
   display: grid;
   padding-top: var(--top-padding);
-
   padding-bottom: var(--bottom-padding);
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: 1fr;
   justify-content: stretch;
-  grid-template-areas: "image" "title" "mainContent" "sideContent" "links";
+  grid-template-areas: "coverTitle" "image" "title" "mainContent" "sideContent" "links";
   gap: 1rem;
 }
 
@@ -298,6 +303,8 @@ p {
   position: relative;
   pointer-events: none;
   overflow: hidden;
+  min-height: 300px;
+
   .cover_img__inner {
     position: absolute;
     top: 0;
@@ -305,17 +312,22 @@ p {
     width: 100%;
     z-index: -1;
     pointer-events: all;
-    background-repeat: "no-repeat";
+    background-repeat: no-repeat;
   }
 }
 .cover_title {
-  grid-area: image;
-
   overflow: hidden;
+  grid-area: coverTitle;
+  margin: 0 auto;
+  height: min-content;
+
   .text__inner {
-    font-size: clamp(4rem, 6rem, 8rem);
     font-weight: bold;
   }
+}
+.overlay__column {
+  max-width: 60ch;
+  margin: 0 auto;
 }
 .overlay__column:nth-child(3) {
   grid-area: title;
@@ -336,12 +348,10 @@ p {
 .overlay__column:nth-child(6) {
   grid-area: links;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   gap: 1rem;
-  justify-content: flex-end;
-  margin-bottom: 10rem;
+  margin-bottom: 12rem;
   padding-left: var(--x-padding);
-  padding-right: var(--x-padding);
 }
 .overlay__column-title {
   margin-bottom: 0rem;
@@ -352,7 +362,8 @@ p {
 }
 .overlay__back {
   position: absolute;
-  bottom: 5%;
+  display: block;
+  bottom: 2.5%;
   left: var(--x-padding);
   stroke: var(--color-overlay);
   stroke-width: 2px;
@@ -379,6 +390,9 @@ p {
   fill: aqua;
 }
 @media screen and (min-width: 600px) {
+  .overlay__column:nth-child(6) {
+    flex-direction: row;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -398,7 +412,7 @@ p {
   }
 
   .cover_title {
-    grid-area: none;
+    grid-area: image;
 
     position: fixed;
     left: 50%;
@@ -411,10 +425,22 @@ p {
   }
   .overlay__column:nth-child(6) {
     margin-bottom: 0rem;
+    flex-flow: column;
+    justify-content: flex-end;
+    padding-left: var(--x-padding);
+    padding-right: var(--x-padding);
   }
 
   .overlay__column-title--main {
     display: block;
+  }
+  .overlay__back {
+    position: absolute;
+    bottom: 5%;
+    left: var(--x-padding);
+    stroke: var(--color-overlay);
+    stroke-width: 2px;
+    cursor: pointer;
   }
 }
 </style>

@@ -34,6 +34,14 @@ import TiltCard from "../TiltCard.vue";
 
 const cardsData = [
   {
+    title: "Pathfinder",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    tags: ["React", "TypeScript", "TailwindCSS"],
+    image: "pathfinder-no-bg.svg",
+    githubLink: "https://github.com/mickykim/pathfinder",
+    websiteLink: "https://mikimpathfinder.vercel.app/",
+  },
+  {
     title: "Invex Capital",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     tags: ["Vue", "TypeScript", "GSAP"],
@@ -42,7 +50,7 @@ const cardsData = [
   {
     title: "Construlita",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    tags: ["React", "TypeScript", "Tailwind"],
+    tags: ["React", "TypeScript", "TailwindCSS"],
     image: "construlita.png",
     githubLink: "https://github.com/mickykim/construlita",
     websiteLink: "https://construlita.vercel.app/",
