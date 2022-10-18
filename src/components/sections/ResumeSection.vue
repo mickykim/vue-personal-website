@@ -6,7 +6,7 @@
         id="resume"
         color="orange"
         class="section-heading"
-        >Resume/CV</StyledHeading
+        >Resume / CV</StyledHeading
       >
     </FadeInComponent>
     <FadeInComponent
@@ -60,11 +60,11 @@ const scrollToContact = () => {
 .resume-section {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15rem;
   gap: 2rem;
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 15rem;
 }
 
 .icon {

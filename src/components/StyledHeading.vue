@@ -26,9 +26,9 @@ h2 {
   display: inline-block;
   line-height: normal;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.375ch;
+  letter-spacing: 0.125ch;
 }
 
 .styled-heading {

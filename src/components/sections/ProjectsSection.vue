@@ -44,7 +44,7 @@ const cardsData = [
   {
     title: "Invex Capital",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    tags: ["Vue", "TypeScript", "GSAP"],
+    tags: ["HubSpot/HubL", "React", "Javascript", "HTML/CSS"],
     image: "invexcapital.png",
   },
   {

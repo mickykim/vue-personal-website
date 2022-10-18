@@ -68,14 +68,14 @@ a:hover {
 a:active {
 }
 .description {
-  margin-bottom: 6rem;
+  margin: 0rem auto;
+  margin-bottom: 2rem;
+  max-width: 65ch;
 }
 
 @media screen and (min-width: 900px) {
   #hero {
-    margin: 0rem auto;
     margin-bottom: 6rem;
-    width: 70ch;
   }
 }
 </style>

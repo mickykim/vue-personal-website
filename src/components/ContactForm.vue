@@ -9,6 +9,7 @@
         id="fname"
         name="firstname"
         placeholder="Name"
+        v-model="name"
         required
       />
       <div class="label__wrapper">
@@ -19,12 +20,19 @@
         id="email"
         name="email"
         placeholder="you@example.com"
+        v-model="email"
         required
       />
       <div class="label__wrapper">
         <label for="company">Company</label>
       </div>
-      <input type="text" id="company" name="company" placeholder="Company" />
+      <input
+        type="text"
+        id="company"
+        name="company"
+        placeholder="Company"
+        v-model="company"
+      />
       <div class="label__wrapper">
         <label for="message">Message (Required)</label>
       </div>
@@ -33,6 +41,7 @@
         name="message"
         placeholder="Write something.."
         style="height: 200px"
+        v-model="message"
         required
       ></textarea>
 
@@ -47,7 +56,7 @@
 <script setup lang="ts">
 import axios, { AxiosError } from "axios";
 import gsap from "gsap";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 //References
 const name = ref();
@@ -71,6 +80,7 @@ const sendEmail = async () => {
     const { data, status } = await axios.post(
       "https://formspree.io/f/mqkjeqaw",
       {
+        //! NEED TO SANITIZE INPUTS!!
         name: name.value,
         email: email.value,
         subject: company.value
@@ -84,6 +94,11 @@ const sendEmail = async () => {
       if (!checkmark.value) throw new Error("checkmark ref not found");
       circleLoader.value.classList.toggle("load-complete");
       checkmark.value.style.display = "block";
+      setTimeout(() => {
+        circleLoader.value.classList.toggle("load-complete");
+        checkmark.value.style.display = "none";
+        displayLoading.value = false;
+      }, 3000);
     }
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
@@ -127,6 +142,7 @@ form {
   display: flex;
   flex-direction: column;
   padding-bottom: 15rem;
+  width: 100%;
 }
 textarea {
   /* Set max and min width so that textarea can only resize vertically without changing the cursor */
