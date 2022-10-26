@@ -19,7 +19,6 @@
     </p>
   </section>
 </template>
-
 <script setup lang="ts">
 import { wrapLines } from "@/utils/utils";
 import gsap from "gsap";
