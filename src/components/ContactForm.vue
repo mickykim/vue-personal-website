@@ -95,6 +95,8 @@ const sendEmail = async () => {
       circleLoader.value.classList.toggle("load-complete");
       checkmark.value.style.display = "block";
       setTimeout(() => {
+        if (!circleLoader.value) throw new Error("circle loader ref not found");
+        if (!checkmark.value) throw new Error("checkmark ref not found");
         circleLoader.value.classList.toggle("load-complete");
         checkmark.value.style.display = "none";
         displayLoading.value = false;
