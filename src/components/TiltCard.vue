@@ -74,7 +74,7 @@ onMounted(() => {
 
     VanillaTilt.init(tiltCard.value, {
       max: 10,
-      speed: 1000,
+      speed: 500,
       reverse: true,
       easing: "cubic-bezier(0,.69,1,.69)",
   });

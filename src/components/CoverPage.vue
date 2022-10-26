@@ -346,6 +346,7 @@ p {
   grid-area: sideContent;
   padding-left: var(--x-padding);
   padding-right: var(--x-padding);
+  margin-bottom: 5rem;
 }
 
 .overlay__column:nth-child(6) {

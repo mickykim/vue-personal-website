@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
@@ -25,12 +26,17 @@ const props = defineProps({
 const tagWrapper = ref();
 const tagList = ref<HTMLElement>();
 const tag = ref();
-const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 } });
+const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
 onMounted(() => {
   tl.addLabel('start', 0);
-  tl.from(tagWrapper.value, { x: '-101%', scrollTrigger: { trigger: '.tag-wrapper', start: "top 80%" }}, `start+=${props.animationDelay}`);
-  tl.from(tag.value, { x: '101%',scrollTrigger: { trigger: '.tag-wrapper', start: "top 80%" }, }, `start+=${props.animationDelay}`);
+  tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
+  tl.to(tag.value, { x: '0%' },  `start+=${props.animationDelay}`);
+  ScrollTrigger.create({
+    animation: tl,
+    trigger: tagList.value,
+    start: 'top 85%',
+  })
 });
 
 // Reverse taglist sliding animation when closing cover page
@@ -43,6 +49,7 @@ watch(() => props.animationReverse, () => {
 <style scoped>
 .tag-wrapper {
   overflow: hidden;
+  transform: translateX(-101%);
 }
 
 .tag {
@@ -53,6 +60,7 @@ watch(() => props.animationReverse, () => {
   color: hsl(var(--c-primary-100, var(--c-white)));
   box-shadow: inset 0 1px 0 hsla(var(--c-primary-900), 0.4),
     0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 8px hsla(0, 0%, 0%, 0.24);
+  transform: translateX(101%);
 }
 
 .tag-list {
