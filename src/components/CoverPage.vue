@@ -119,10 +119,10 @@ const props = defineProps<{
   item: {
     image?: string;
     title: string;
-    fullTitle: string;
-    subtitle: string;
+    fullTitle?: string;
+    subtitle?: string;
     mainColumnTitle?: string;
-    mainColumnContent: string;
+    mainColumnContent?: string;
     sideColumnTitle?: string;
     sideColumnContent?: string | string[];
     githubLink?: string;
