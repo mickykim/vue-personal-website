@@ -1,7 +1,7 @@
 <template>
   <section id="hero" data-section-id="0">
     <FadeInComponent direction="up">
-      <h2 class="title">Miqueas Kim Han</h2>
+      <h2 class="title">Miqueas 'Micky' Kim Han</h2>
     </FadeInComponent>
     <p class="description" ref="description">
       Hey there! I'm Micky, a fullstack developer (MongoDB, Express, React,
