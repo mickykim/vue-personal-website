@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav ref="nav">
     <div class="icon" ref="icon">
       <img
         class="icon__inner"
@@ -29,7 +29,7 @@
             }"
             @click="onClick(sections[index].color, section.id)"
           >
-            {{ section.textContent }}
+            <p>{{ section.textContent }}</p>
           </a>
         </li>
       </div>
@@ -81,6 +81,7 @@ const props = defineProps({ currentSectionId: Number });
 const links = ref<HTMLLinkElement[]>([]);
 const icon = ref<HTMLDivElement>();
 const iconInner = ref<HTMLImageElement>();
+const nav = ref<HTMLDivElement>();
 const link_buttons = ref<HTMLLIElement[]>([]);
 const emit = defineEmits(["changeColorTheme"]);
 function onClick(color: string, id: number) {
@@ -96,14 +97,36 @@ function onClick(color: string, id: number) {
   });
   emit("changeColorTheme", color);
 }
+/**
+ * Utility function to calculate scale for css transform
+ * @param {HTMLElement} el
+ */
+function calculateExpandedScale(el: HTMLElement) {
+  if (!nav.value) return {};
+  const collapsed = el.getBoundingClientRect();
+  const expanded = nav.value.getBoundingClientRect();
+  return {
+    x: expanded.width / collapsed.width,
+    y: expanded.height / collapsed.height,
+  };
+}
+
+/**
+ * Utility function to add CSS to the given element.
+ * @param {string} styleString
+ */
+function addStyle(styleString: string, el: HTMLElement) {
+  const style = document.createElement("style");
+  style.textContent = styleString;
+  el.before(style);
+}
+
 watchEffect(() => {
   if (!props.currentSectionId && props.currentSectionId !== 0) return;
   onClick(sections[props.currentSectionId].color, props.currentSectionId);
 });
 onMounted(() => {
-  /**
-   * Expand navigation buttons once the last button is revealed
-   */
+  //Expand navigation buttons once the last button is revealed
   const tl = gsap.timeline({ defaults: { duration: 0.75 } });
   if (!icon.value || !iconInner.value) return;
   tl.addLabel("start", 0);
@@ -118,6 +141,28 @@ onMounted(() => {
       });
     }
   );
+  link_buttons.value.forEach((link, index) => {
+    const { x, y } = calculateExpandedScale(link);
+    addStyle(
+      `.${sections[index].color}:not(.expanded-link):hover {
+      transform: scaleX(${x});
+    }
+    .${sections[index].color}:not(.expanded-link):hover > * {
+      transform: scaleX(${1 / x});
+
+    }
+    
+    .${sections[index].color}.expanded-link{
+      transform: scaleX(${x});
+      
+    }
+    .${sections[index].color}.expanded-link > *{
+      transform: scaleX(${1 / x});
+      
+    }`,
+      link
+    );
+  });
 });
 </script>
 
@@ -126,8 +171,8 @@ onMounted(() => {
 * Setup for background color slides
 ** Variable values should be the same as in the js
 */
-$sections: 5;
-$colors: "green", "orange", "blue", "purple", "red";
+$sections: 4;
+$colors: "green", "orange", "blue", "red";
 
 @keyframes revealLink {
   0% {
@@ -154,7 +199,10 @@ $colors: "green", "orange", "blue", "purple", "red";
 }
 
 .expanded-link {
-  min-width: var(--navbar-width);
+  color: hsl(var(--color-text));
+  border-color: hsl(var(--color-background));
+  background: hsl(var(--color-background));
+  box-shadow: var(--shadow-xs);
 }
 
 .secondary {
@@ -185,7 +233,6 @@ $colors: "green", "orange", "blue", "purple", "red";
 }
 
 .link__wrapper {
-  overflow: hidden;
 }
 
 a {
@@ -196,15 +243,16 @@ a {
   background-color: hsl(var(--color-background));
   box-shadow: var(--shadow-xs);
   font-weight: bold;
-  min-width: 0px;
+  transform-origin: right;
+  transform: scaleX(1);
   text-decoration: none;
-  transition: min-width 0.5s, color 0.5s, border 0.5s, background 0.5s;
+  transition: transform 0.5s, color 0.5s, border 0.5s, background 0.5s;
+  transition: all 0.5s;
 }
 a:not(.expanded-link) {
   &:hover {
     color: hsl(var(--color-text));
     border-color: hsl(var(--color-background));
-    min-width: var(--navbar-width);
     background: hsl(var(--color-background));
     box-shadow: var(--shadow-xs);
     &:active {
@@ -232,7 +280,6 @@ ul {
   flex-direction: column;
   list-style-type: none;
   align-items: flex-end;
-  padding: 0.5rem 0.5rem;
   margin-bottom: 2rem;
 }
 li {
