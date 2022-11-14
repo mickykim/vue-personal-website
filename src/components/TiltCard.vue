@@ -7,7 +7,7 @@
     <div
       class="image-bg"
       :style="{
-        backgroundImage: `url(src/assets/${props.image})`,
+        backgroundImage: `url(./assets/${props.image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }"
@@ -35,6 +35,8 @@ const props = defineProps({
   id: Number,
   image: String,
   title: String,
+  fullTitle: String,
+  subtitle: String,
   description:String,
   tags:Array<string>,
   githubLink: String,
@@ -51,9 +53,9 @@ const coverData =
 {
     image: props.image,
     title: props.title as string,
-    fullTitle: "Invex Capital",
-    subtitle: "Invex Capital",
-    mainColumnContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus nunc vitae magna tristique, a maximus felis mattis. Pellentesque sollicitudin eros sit amet lectus molestie, lobortis commodo justo egestas. Sed. ",
+    fullTitle: props.fullTitle,
+    subtitle: props.subtitle,
+    mainColumnContent: props.description,
     sideColumnContent: props.tags,
     githubLink: props.githubLink,
     websiteLink: props.websiteLink,
@@ -74,7 +76,7 @@ onMounted(() => {
 
     VanillaTilt.init(tiltCard.value, {
       max: 10,
-      speed: 1000,
+      speed: 500,
       reverse: true,
       easing: "cubic-bezier(0,.69,1,.69)",
   });

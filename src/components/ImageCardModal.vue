@@ -1,6 +1,6 @@
 <template>
   <!-- Trigger/Open The Modal -->
-  <div ref="card" class="modal__card" @click="openModal">
+  <div ref="card" class="modal__card">
     <h3>Pog Title</h3>
     <h4>FeelsGoodMan Description Body</h4>
   </div>

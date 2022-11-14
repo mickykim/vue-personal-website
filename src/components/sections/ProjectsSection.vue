@@ -15,6 +15,8 @@
         <TiltCard
           :id="index"
           :title="card.title"
+          :full-title="card.fullTitle"
+          :subtitle="card.subtitle"
           :description="card.description"
           :tags="card.tags"
           :image="card.image"
@@ -35,7 +37,9 @@ import TiltCard from "../TiltCard.vue";
 const cardsData = [
   {
     title: "Pathfinder",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    fullTitle: "Pathfinder",
+    subtitle: "Interactive Dijkstra's & A* w/ Touch",
+    description: "Interactive pathfinding algorithm visualizer made in React.",
     tags: ["React", "TypeScript", "TailwindCSS"],
     image: "pathfinder-no-bg.svg",
     githubLink: "https://github.com/mickykim/pathfinder",
@@ -43,24 +47,27 @@ const cardsData = [
   },
   {
     title: "Invex Capital",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    fullTitle: "Invex Capital",
+    subtitle: "Invex Capital",
+    description:
+      "Landing page redesign focused on better performance and user experience. Contains a custom made gallery component and is integrated with HubSpot CMS",
     tags: ["HubSpot/HubL", "React", "Javascript", "HTML/CSS"],
     image: "invexcapital.png",
   },
   {
     title: "Construlita",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description: "Landing page redesign focusing on best performance possible.",
     tags: ["React", "TypeScript", "TailwindCSS"],
     image: "construlita.png",
     githubLink: "https://github.com/mickykim/construlita",
     websiteLink: "https://construlita.vercel.app/",
   },
-  {
-    title: "check.gg",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    tags: ["Mongoose", "Express", "React", "Node.js"],
-    image: "websiteImage.jpg",
-  },
+  // {
+  //   title: "check.gg",
+  //   description: "Esports match calendar",
+  //   tags: ["Mongoose", "Express", "React", "Node.js"],
+  //   image: "websiteImage.jpg",
+  // },
 ];
 </script>
 

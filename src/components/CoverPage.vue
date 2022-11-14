@@ -119,10 +119,10 @@ const props = defineProps<{
   item: {
     image?: string;
     title: string;
-    fullTitle: string;
-    subtitle: string;
+    fullTitle?: string;
+    subtitle?: string;
     mainColumnTitle?: string;
-    mainColumnContent: string;
+    mainColumnContent?: string;
     sideColumnTitle?: string;
     sideColumnContent?: string | string[];
     githubLink?: string;
@@ -170,7 +170,7 @@ const hideCover = () => {
  */
 
 onMounted(() => {
-  coverImgInner.value.style.background = `linear-gradient(hsla(0deg, 0%, 0%, 0.3), hsla(0deg, 0%, 0%, 0.6)), url(src/assets/${props.item.image}) center`;
+  coverImgInner.value.style.background = `linear-gradient(hsla(0deg, 0%, 0%, 0.3), hsla(0deg, 0%, 0%, 0.6)), url(/assets/${props.item.image}) center`;
   coverImgInner.value.style.backgroundRepeat = "no-repeat";
   const largeViewport = window.matchMedia("(min-width:1200px)");
   if (!cover.value) return;
@@ -346,6 +346,7 @@ p {
   grid-area: sideContent;
   padding-left: var(--x-padding);
   padding-right: var(--x-padding);
+  margin-bottom: 5rem;
 }
 
 .overlay__column:nth-child(6) {
