@@ -60,7 +60,7 @@ const addIntersectionObserver = () => {
         }
       });
     },
-    { threshold: 0.2, rootMargin: "-10% 0px -50% 0px" }
+    { threshold: 0.2, rootMargin: "0% 0px -80% 0px" }
   );
 
   document.querySelectorAll(".index-template > *").forEach((section) => {

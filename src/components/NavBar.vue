@@ -146,18 +146,28 @@ onMounted(() => {
     addStyle(
       `.${sections[index].color}:not(.expanded-link):hover {
       transform: scaleX(${x});
+
     }
-    .${sections[index].color}:not(.expanded-link):hover > * {
+
+    .${sections[index].color}:not(.expanded-link):hover p {
       transform: scaleX(${1 / x});
+
 
     }
     
     .${sections[index].color}.expanded-link{
       transform: scaleX(${x});
+
       
     }
-    .${sections[index].color}.expanded-link > *{
+    .${sections[index].color}.expanded-link:active{
+      transform: scaleX(${x});
+
+      
+    }
+    .${sections[index].color}.expanded-link p{
       transform: scaleX(${1 / x});
+
       
     }`,
       link
@@ -182,7 +192,11 @@ $colors: "green", "orange", "blue", "red";
     transform: translateY(0%);
   }
 }
-
+p {
+  font-family: Avertastd, Inter, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
 .hidden {
   opacity: 0%;
 }
@@ -246,8 +260,7 @@ a {
   transform-origin: right;
   transform: scaleX(1);
   text-decoration: none;
-  transition: transform 0.5s, color 0.5s, border 0.5s, background 0.5s;
-  transition: all 0.5s;
+  transition: transform 0.5s, border 0.5s, color 0.5s;
 }
 a:not(.expanded-link) {
   &:hover {
