@@ -143,32 +143,24 @@ onMounted(() => {
   );
   link_buttons.value.forEach((link, index) => {
     const { x, y } = calculateExpandedScale(link);
+    if (!x || !y) return;
     addStyle(
       `.${sections[index].color}:not(.expanded-link):hover {
       transform: scaleX(${x});
-
     }
 
     .${sections[index].color}:not(.expanded-link):hover p {
       transform: scaleX(${1 / x});
-
-
     }
     
     .${sections[index].color}.expanded-link{
       transform: scaleX(${x});
-
-      
     }
     .${sections[index].color}.expanded-link:active{
       transform: scaleX(${x});
-
-      
     }
     .${sections[index].color}.expanded-link p{
       transform: scaleX(${1 / x});
-
-      
     }`,
       link
     );
