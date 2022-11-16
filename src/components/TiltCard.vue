@@ -73,7 +73,21 @@ onMounted(() => {
   if (!tiltCard.value || !textContent.value) return;
   const touchDevice = ('ontouchstart' in document.documentElement);
     if(!touchDevice){
+      const style3d = document.createElement('style');
+      style3d.textContent = `
+      .tilt-card {
+        transform-style: preserve-3d;
+        transform: perspective(500px);
+      }
+      .text-content {
+        transform: translateZ(15px);
+      }
 
+      .tag-list__wrapper {
+        transform: translateZ(15px);
+      }
+      `
+    tiltCard.value.appendChild(style3d);
     VanillaTilt.init(tiltCard.value, {
       max: 10,
       speed: 500,
@@ -104,8 +118,6 @@ onMounted(() => {
   cursor: pointer;
   position: relative;
   min-height: 300px;
-  transform-style: preserve-3d;
-  transform: perspective(500px);
 }
 .tilt-card:hover {
   box-shadow: 0px 0px 0px 4px hsla(var(--c-primary-800), 62%);
@@ -136,13 +148,11 @@ onMounted(() => {
   margin: 0.5rem auto;
   z-index: 2;
   justify-self: center;
-  transform: translateZ(15px);
 }
 
 .tag-list__wrapper {
   position: absolute;
   bottom: 17.5%;
-  transform: translateZ(15px);
   overflow: hidden;
 }
 .tag-list {
