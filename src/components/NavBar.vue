@@ -1,6 +1,6 @@
 <template>
   <nav ref="nav">
-    <div class="icon" ref="icon">
+    <div class="icon" ref="icon" @click="openLink('https://www.mikim.dev/')">
       <img
         class="icon__inner"
         src="../assets/mickyIcon.webp"
@@ -84,6 +84,9 @@ const iconInner = ref<HTMLImageElement>();
 const nav = ref<HTMLDivElement>();
 const link_buttons = ref<HTMLLIElement[]>([]);
 const emit = defineEmits(["changeColorTheme"]);
+function openLink(url: string) {
+  window.open(url, "_self");
+}
 function onClick(color: string, id: number) {
   links.value.forEach((link, index) => {
     if (index == id) {
@@ -386,8 +389,12 @@ li {
   align-self: center;
   margin-left: 25%;
   margin-bottom: 1rem;
+  -webkit-transition: border 500ms;
+  -moz-transition: border 500ms;
+  -o-transition: border 500ms;
   transition: border var(--scaleDuration);
   overflow: hidden;
+  cursor: pointer;
 }
 .icon__inner {
   max-width: calc(150px - calc(var(--border-width) * 2));

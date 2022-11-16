@@ -134,7 +134,7 @@ onMounted(() => {
 .text-content {
   pointer-events: none;
   margin: 0.5rem auto;
-  z-index: 10;
+  z-index: 2;
   justify-self: center;
   transform: translateZ(15px);
 }
