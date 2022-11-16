@@ -234,7 +234,7 @@ onMounted(() => {
   --color-hover: hsl(var(--c-primary-700, var(--c-black)));
   position: fixed;
 
-  z-index: 10;
+  z-index: 100;
 }
 
 .overlay {
