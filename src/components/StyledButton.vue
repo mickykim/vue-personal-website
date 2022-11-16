@@ -86,6 +86,7 @@ onMounted(() => {
   border-left: 1px solid hsl(var(--c-black));
   padding: 1rem 1rem;
   min-height: 4rem;
+  color: hsl(var(--c-primary-100, var(--c-green-100)));
 }
 @media screen and (min-width: 900px) {
   .styled-button {
