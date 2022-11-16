@@ -7,7 +7,7 @@
     <div
       class="image-bg"
       :style="{
-        backgroundImage: `url(./src/assets/${props.image})`,
+        backgroundImage: `url(src/assets/${props.image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }"
