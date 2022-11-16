@@ -73,29 +73,29 @@ onMounted(() => {
 
   if (!background || !objects) return;
 
-  background.setAttribute(
-    "fill",
-    "hsla(var(--c-primary-100, var(--c-black)), 0.05)"
-  );
+  // background.setAttribute(
+  //   "fill",
+  //   "hsla(var(--c-primary-100, var(--c-black)), 0.05)"
+  // );
 
-  triangleFloat1.forEach((object) => {
-    object.setAttribute(
-      "fill",
-      "hsla(var(--c-primary-900, var(--c-white)), 0.2)"
-    );
-  });
-  triangleFloat2.forEach((object) => {
-    object.setAttribute(
-      "fill",
-      "hsla(var(--c-primary-800, var(--c-white)), 0.2)"
-    );
-  });
-  triangleFloat3.forEach((object) => {
-    object.setAttribute(
-      "fill",
-      "hsla(var(--c-primary-500, var(--c-white)), 0.10)"
-    );
-  });
+  // triangleFloat1.forEach((object) => {
+  //   object.setAttribute(
+  //     "fill",
+  //     "hsla(var(--c-primary-900, var(--c-white)), 0.2)"
+  //   );
+  // });
+  // triangleFloat2.forEach((object) => {
+  //   object.setAttribute(
+  //     "fill",
+  //     "hsla(var(--c-primary-800, var(--c-white)), 0.2)"
+  //   );
+  // });
+  // triangleFloat3.forEach((object) => {
+  //   object.setAttribute(
+  //     "fill",
+  //     "hsla(var(--c-primary-500, var(--c-white)), 0.10)"
+  //   );
+  // });
 });
 </script>
 

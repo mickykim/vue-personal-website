@@ -108,6 +108,7 @@ function calculateExpandedScale(el: HTMLElement) {
   return {
     x: expanded.width / collapsed.width,
     y: expanded.height / collapsed.height,
+    xdelta: (collapsed.width - expanded.width) / 2,
   };
 }
 
@@ -139,29 +140,35 @@ onMounted(() => {
       links.value.forEach((link) => {
         link.classList.add("expanded-link");
       });
-    }
+    },
+    { once: true }
   );
   link_buttons.value.forEach((link, index) => {
-    const { x, y } = calculateExpandedScale(link);
+    const { x, y, xdelta } = calculateExpandedScale(link);
     if (!x || !y) return;
     addStyle(
-      `.${sections[index].color}:not(.expanded-link):hover {
-      transform: scaleX(${x});
-    }
+      `
+      @keyframes ${sections[index].color}ScaleText {
+        from {
+          opacity: 0;
+          transform: scaleX(1);
+        }
+        to {
+          opacity: 1;
+          transform: scaleX(${1 / x}) translateX(${xdelta}px);
 
-    .${sections[index].color}:not(.expanded-link):hover p {
-      transform: scaleX(${1 / x});
-    }
-    
-    .${sections[index].color}.expanded-link{
-      transform: scaleX(${x});
-    }
-    .${sections[index].color}.expanded-link:active{
-      transform: scaleX(${x});
-    }
-    .${sections[index].color}.expanded-link p{
-      transform: scaleX(${1 / x});
-    }`,
+        }
+      }
+
+      @keyframes ${sections[index].color}ScaleLink {
+        from {
+          transform: scaleX(1);
+        }
+        to {
+          transform: scaleX(${x});
+        }
+      }
+      `,
       link
     );
   });
@@ -184,6 +191,16 @@ $colors: "green", "orange", "blue", "red";
     transform: translateY(0%);
   }
 }
+
+@keyframes fadeText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 p {
   font-family: Avertastd, Inter, sans-serif;
   font-size: 16px;
@@ -239,9 +256,14 @@ p {
 }
 
 .link__wrapper {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 a {
+  --scaleDuration: 0.75s;
   display: inline-block;
   padding: 0.625rem 2rem;
   border-radius: 0.25rem;
@@ -252,14 +274,48 @@ a {
   transform-origin: right;
   transform: scaleX(1);
   text-decoration: none;
-  transition: transform 0.5s, border 0.5s, color 0.5s;
+  transition: transform var(--scaleDuration), border var(--scaleDuration),
+    opacity var(--scaleDuration);
 }
+
+.orange.expanded-link {
+  animation: orangeScaleLink var(--scaleDuration) both;
+  p {
+    animation: orangeScaleText var(--scaleDuration) both;
+  }
+}
+.green.expanded-link {
+  animation: greenScaleLink var(--scaleDuration) both;
+  p {
+    animation: greenScaleText var(--scaleDuration) both;
+  }
+}
+.blue.expanded-link {
+  animation: blueScaleLink var(--scaleDuration) both;
+  p {
+    animation: blueScaleText var(--scaleDuration) both;
+  }
+}
+.red.expanded-link {
+  animation: redScaleLink var(--scaleDuration) both;
+  p {
+    animation: redScaleText var(--scaleDuration) both;
+  }
+}
+
 a:not(.expanded-link) {
+  p {
+    animation: fadeText var(--scaleDuration) both;
+  }
   &:hover {
     color: hsl(var(--color-text));
     border-color: hsl(var(--color-background));
     background: hsl(var(--color-background));
     box-shadow: var(--shadow-xs);
+    p {
+      animation: fadeText var(--scaleDuration) both;
+    }
+
     &:active {
       box-shadow: none;
     }
@@ -290,7 +346,7 @@ ul {
 li {
   transform: translateY(120%);
 
-  margin: 0.25rem auto;
+  margin: 0.25rem 0;
   transition: transform 1s;
   border-radius: 0.5rem;
 
@@ -305,7 +361,7 @@ li {
   align-self: center;
   margin-left: 25%;
   margin-bottom: 1rem;
-  transition: border 0.5s;
+  transition: border var(--scaleDuration);
   overflow: hidden;
 }
 .icon__inner {
