@@ -106,7 +106,8 @@ function calculateExpandedScale(el: HTMLElement) {
   const collapsed = el.getBoundingClientRect();
   const expanded = nav.value.getBoundingClientRect();
   return {
-    x: expanded.width / collapsed.width,
+    // Offset of 10 added to prevent clipping issues
+    x: expanded.width / (collapsed.width + 10),
     y: expanded.height / collapsed.height,
     xdelta: (collapsed.width - expanded.width) / 2,
   };
