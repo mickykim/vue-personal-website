@@ -107,7 +107,9 @@ onMounted(() => {
   transform-style: preserve-3d;
   transform: perspective(500px);
 }
-
+.tilt-card:hover {
+  box-shadow: 0px 0px 0px 4px hsla(var(--c-primary-800), 62%);
+}
 .image-bg {
   position: absolute;
   width: 100%;
