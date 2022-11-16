@@ -56,13 +56,13 @@ h2 {
   margin: 1rem 0rem;
 }
 a {
-  color: hsl(var(--c-primary-600, var(--c-black)));
+  color: hsl(var(--c-primary-200, var(--c-white)));
   text-decoration: none;
 }
 a:visited {
 }
 a:hover {
-  color: hsl(var(--c-primary-500));
+  color: hsl(var(--c-primary-400));
 }
 a:active {
 }
@@ -70,6 +70,7 @@ a:active {
   margin: 0rem auto;
   margin-bottom: 2rem;
   max-width: 65ch;
+  /* color: hsl(var(--c-primary-200, var(--c-green-200))); */
 }
 
 @media screen and (min-width: 900px) {
