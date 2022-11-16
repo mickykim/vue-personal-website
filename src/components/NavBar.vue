@@ -107,7 +107,7 @@ function calculateExpandedScale(el: HTMLElement) {
   const expanded = nav.value.getBoundingClientRect();
   return {
     // Offset of 10 added to prevent clipping issues
-    x: expanded.width / (collapsed.width + 10),
+    x: expanded.width / collapsed.width,
     y: expanded.height / collapsed.height,
     xdelta: (collapsed.width - expanded.width) / 2,
   };
@@ -160,6 +160,16 @@ onMounted(() => {
 
         }
       }
+      @keyframes ${sections[index].color}ScaleTextInverted {
+        from {
+          opacity: 1;
+          transform: scaleX(${1 / x}) translateX(${xdelta}px);
+        }
+        to {
+          opacity: 0;
+          transform: scaleX(1);
+        }
+      }
 
       @keyframes ${sections[index].color}ScaleLink {
         from {
@@ -167,6 +177,15 @@ onMounted(() => {
         }
         to {
           transform: scaleX(${x});
+        }
+      }
+
+      @keyframes ${sections[index].color}ScaleLinkInverted {
+        from {         
+          transform: scaleX(${x});
+        }
+        to {
+          transform: scaleX(1);
         }
       }
       `,
@@ -224,7 +243,7 @@ p {
 
 .expanded-link {
   color: hsl(var(--color-text));
-  border-color: hsl(var(--color-background));
+  border: 1px solid hsl(var(--color-background));
   background: hsl(var(--color-background));
   box-shadow: var(--shadow-xs);
 }
@@ -244,12 +263,13 @@ p {
 
 @for $i from 1 through length($colors) {
   $color: nth($colors, $i); //Get the ith value from colors array
-  a.#{$color} {
+  .#{$color} {
     --color-background: var(--c-#{$color}-600);
     --color-text: var(--c-#{$color}-100);
     --color-shadow: var(--c-#{$color}-900);
     --shadow-xs: inset 0 1px 0 hsl(var(--color-shadow)),
       0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 2px hsla(0, 0%, 0%, 0.24);
+    animation: scaleLinkInverted var(--scaleDuration) both;
   }
   [data-order="#{$i}"] {
     --anim-order: #{$i};
@@ -262,9 +282,13 @@ p {
   display: flex;
   justify-content: flex-end;
 }
-
+ul {
+  margin-left: -1rem;
+}
 a {
-  --scaleDuration: 0.75s;
+  box-sizing: border-box;
+  will-change: transform;
+  --scaleDuration: 0.5s;
   display: inline-block;
   padding: 0.625rem 2rem;
   border-radius: 0.25rem;

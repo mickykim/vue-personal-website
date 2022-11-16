@@ -1,5 +1,4 @@
 <template>
-  <BackgroundImage />
   <header><HeaderContainer /></header>
 
   <main ref="main">
@@ -25,7 +24,6 @@ import HeroSection from "./components/sections/HeroSection.vue";
 import ProjectsSection from "./components/sections/ProjectsSection.vue";
 import ResumeSection from "./components/sections/ResumeSection.vue";
 import { onMounted, reactive, ref, watch } from "vue";
-import BackgroundImage from "./components/BackgroundImage.vue";
 import ContactSection from "./components/sections/ContactSection.vue";
 import MobileNavbar from "./components/MobileNavbar.vue";
 const main = ref();
@@ -81,10 +79,10 @@ watch(colorTheme, () => {
   root.style.setProperty("--c-primary-700", `var(--c-${colorTheme.color}-700)`);
   root.style.setProperty("--c-primary-800", `var(--c-${colorTheme.color}-800)`);
   root.style.setProperty("--c-primary-900", `var(--c-${colorTheme.color}-900)`);
-  root.style.setProperty(
-    "--color-background",
-    `var(--c-${colorTheme.color}-gray, var(--c-gray))`
-  );
+  // root.style.setProperty(
+  //   "--color-background",
+  //   `var(--c-${colorTheme.color}-gray, var(--c-gray))`
+  // );
 
   // root.style.setProperty(
   //   "--shadow-s",
