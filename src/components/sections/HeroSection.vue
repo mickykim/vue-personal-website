@@ -50,13 +50,14 @@ h2 {
   display: inline-block;
   line-height: normal;
   font-weight: bold;
+  color: hsl(var(--c-primary-100, var(--c-green-200)));
 }
 
 .title {
   margin: 1rem 0rem;
 }
 a {
-  color: hsl(var(--c-primary-200, var(--c-white)));
+  color: hsl(var(--c-primary-300));
   text-decoration: none;
 }
 a:visited {
@@ -70,7 +71,7 @@ a:active {
   margin: 0rem auto;
   margin-bottom: 2rem;
   max-width: 65ch;
-  /* color: hsl(var(--c-primary-200, var(--c-green-200))); */
+  color: hsl(var(--c-primary-900, var(--c-green-900)));
 }
 
 @media screen and (min-width: 900px) {
