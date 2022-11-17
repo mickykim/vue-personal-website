@@ -50,7 +50,7 @@ h2 {
   display: inline-block;
   line-height: normal;
   font-weight: bold;
-  color: hsl(var(--c-primary-100, var(--c-green-200)));
+  color: hsl(var(--c-primary-900, var(--c-green-900)));
 }
 
 .title {
