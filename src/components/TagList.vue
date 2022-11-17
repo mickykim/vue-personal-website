@@ -49,11 +49,13 @@ watch(() => props.animationReverse, () => {
 <style scoped>
 .tag-wrapper {
   overflow: hidden;
+  will-change: transform;
   transform: translateX(-101%);
 }
 
 .tag {
   display: inline-block;
+  will-change: transform;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   background-color: hsla(var(--c-primary-900, var(--c-green-200)), 0.83);

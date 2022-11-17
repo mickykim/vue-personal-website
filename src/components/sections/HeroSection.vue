@@ -7,13 +7,13 @@
       Hey there! I'm Micky, a fullstack developer (MongoDB, Express, React,
       Node) with a focus on frontend development using Vue/React. Previously, I
       worked on graphics related projects such as creating a raytracer for
-      multiple surface types and automatic object recognition both in C++. On my
-      time outside of programming I enjoy playing videogames
+      multiple surface types and automatic object recognition in C++. During my
+      free time outside of programming I enjoy playing videogames
       <a
         href="https://liquipedia.net/heroes/Wrath"
         target="_blank"
         rel="noreferrer noopener"
-        ><em>(I was relatively good!)</em></a
+        ><em>(I was pretty good!)</em></a
       >, watching baseball (let's go Blue Jays!), and learning to play the
       piano.
     </p>
