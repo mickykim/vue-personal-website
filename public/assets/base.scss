@@ -1,0 +1,154 @@
+$rows: 20;
+$colors: "green", "brown", "blue", "purple", "red";
+
+@font-face {
+  font-family: "Avertastd";
+  src: url("./fonts/AvertaDemoPECuttedDemo-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "Avertastd";
+  src: url("./fonts/AvertaDemoPE-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: auto;
+}
+:root {
+  --c-white: 43, 0%, 100%;
+
+  --c-green-100: 98deg, 100%, 15%;
+  --c-green-200: 96deg, 90%, 35%;
+  --c-green-300: 94deg, 84%, 43%;
+  --c-green-400: 94deg, 80%, 68%;
+  --c-green-500: 92deg, 76%, 72%;
+  --c-green-600: 90deg, 80%, 74%;
+  --c-green-700: 90deg, 84%, 76%;
+  --c-green-800: 88deg, 90%, 80%;
+  --c-green-900: 86deg, 100%, 80%;
+  --c-green-gray: 85, 5%, 45%;
+
+  --c-orange-100: 20deg, 100%, 15%;
+  --c-orange-200: 22deg, 93%, 30%;
+  --c-orange-300: 25deg, 89%, 40%;
+  --c-orange-400: 30deg, 84%, 45%;
+  --c-orange-500: 30deg, 79%, 50%;
+  --c-orange-600: 32deg, 83%, 60%;
+  --c-orange-700: 35deg, 89%, 70%;
+  --c-orange-800: 38deg, 89%, 80%;
+  --c-orange-900: 40deg, 100%, 80%;
+  --c-orange-gray: 26, 15%, 45%;
+
+  --c-blue-100: 200deg, 100%, 15%;
+  --c-blue-200: 200deg, 93%, 30%;
+  --c-blue-300: 182deg, 89%, 40%;
+  --c-blue-400: 184deg, 83%, 45%;
+  --c-blue-500: 186deg, 79%, 50%;
+  --c-blue-600: 188deg, 84%, 60%;
+  --c-blue-700: 190deg, 89%, 70%;
+  --c-blue-800: 192deg, 95%, 80%;
+  --c-blue-900: 192deg, 100%, 85%;
+  --c-blue-gray: 200, 12%, 45%;
+
+  --c-purple-100: 273deg, 100%, 15%;
+  --c-purple-200: 274deg, 92%, 32%;
+  --c-purple-300: 276deg, 86%, 36%;
+  --c-purple-400: 277deg, 81%, 43%;
+  --c-purple-500: 279deg, 76%, 50%;
+  --c-purple-600: 280deg, 82%, 60%;
+  --c-purple-700: 282deg, 88%, 72%;
+  --c-purple-800: 284deg, 92%, 80%;
+  --c-purple-900: 285deg, 100%, 85%;
+
+  --c-red-100: 348deg, 100%, 15%;
+  --c-red-200: 350deg, 92%, 30%;
+  --c-red-300: 350deg, 86%, 35%;
+  --c-red-400: 352deg, 80%, 40%;
+  --c-red-500: 354deg, 76%, 50%;
+  --c-red-600: 356deg, 80%, 60%;
+  --c-red-700: 356deg, 86%, 70%;
+  --c-red-800: 358deg, 92%, 77%;
+  --c-red-900: 0deg, 100%, 85%;
+  --c-red-gray: 344, 12%, 45%;
+
+  --c-black: 0, 0%, 14%;
+  --c-gray: 0, 2%, 16%;
+
+  --f-size-h1: 4.5rem;
+  --f-size-h2: clamp(2.25rem, 1rem + 2.6667vw, 3rem);
+  --f-size-h3: 2.25rem;
+  --f-size-p: font-size: clamp(0.75rem, 0.25rem + 1.3333vw, 1.25rem);
+
+  --shadow-xs: 0 1px 3px hsla(0, 0%, 0%, 0.12), 0 1px 2px hsla(0, 0%, 0%, 0.24);
+  --shadow-s: 0 3px 6px hsla(0, 0%, 0%, 0.15), 0 2px 4px hsla(0, 0%, 0%, 0.12);
+
+  --shadow-m: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.1);
+
+  --shadow-l: 0 15px 25px hsla(0, 0%, 0%, 0.15), 0 5px 10px hsla(0, 0%, 0%, 0.5);
+  --shadow-xl: 0 20px 40px hsla(0, 0%, 0%, 0.2);
+
+  --shadow-inset-s: 0 -4px 0px hsla(0, 0%, 100%, 0.15),
+    inset 0 4px 4px hsla(0, 0%, 0%, 0.1);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--c-white);
+  --color-root: var(--c-white);
+  --color-button: var(--c-white);
+  --color-shadow: var(--c-white);
+
+  --section-gap: 160px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: Avertastd, Inter, sans-serif;
+  font-size: 16px;
+  transition: color 0.5s;
+}
+html {
+  scroll-behavior: smooth;
+}
+h1 {
+  font-size: var(--f-size-h1);
+}
+
+h2 {
+  font-size: var(--f-size-h2);
+}
+
+h3 {
+  font-size: var(--f-size-h3);
+}
+
+p {
+  font-size: var(--f-size-p);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--c-gray);
+    --color-root: var(--c-white);
+    --color-button: var(--c-white);
+  }
+}
+
+body {
+  will-change: color;
+  color:  hsl(var(--c-primary-900, var(--c-green-900)));
+  // overflow-x: hidden;
+  background: hsl(var(--color-background));
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  z-index: -20;
+}
