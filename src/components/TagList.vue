@@ -30,8 +30,8 @@ const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagge
 
 onMounted(() => {
   tl.addLabel('start', 0);
-  tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
-  tl.to(tag.value, { x: '0%' },  `start+=${props.animationDelay}`);
+  tl.to('.tag-wrapper', { x: '0%'}, `start+=${props.animationDelay}`);
+  tl.to('.tag', { x: '0%' },  `start+=${props.animationDelay}`);
   ScrollTrigger.create({
     animation: tl,
     trigger: tagList.value,
