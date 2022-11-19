@@ -302,7 +302,7 @@ p {
   position: relative;
   pointer-events: none;
   overflow: hidden;
-  min-height: 200px;
+  min-height: 250px;
 
   .cover_img__inner {
     position: absolute;
@@ -338,8 +338,7 @@ p {
   padding-right: var(--x-padding);
 }
 .overlay__column:nth-child(4) > p {
-  margin: 0 auto;
-  max-width: 60ch;
+  /* margin: 0 auto; */
 }
 .overlay__column:nth-child(5) {
   grid-area: sideContent;
@@ -353,7 +352,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 12rem;
+  margin-bottom: 25%;
   padding-left: var(--x-padding);
 }
 .overlay__column-title {
@@ -366,7 +365,7 @@ p {
 .overlay__back {
   position: absolute;
   display: block;
-  bottom: 2.5%;
+  bottom: 1.25rem;
   left: var(--x-padding);
   stroke: var(--color-overlay);
   stroke-width: 2px;
@@ -395,20 +394,19 @@ p {
 @media screen and (min-width: 600px) {
   .cover {
     --x-padding: 2rem;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "coverTitle coverTitle" "image image" "title title" "mainContent mainContent" "sideContent sideContent" ". links";
   }
   .overlay__column:nth-child(3) > div:nth-child(2) {
     margin: 0 auto;
   }
-  .overlay__column:nth-child(6) > div:nth-child(2) {
-    margin: 0;
-    margin-right: var(--x-padding);
-  }
-  .overlay__column:nth-child(5) > div:nth-child(2) {
-    display: table;
-  }
+
   .overlay__column:nth-child(6) {
-    flex-direction: row;
-    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding-left: var(--x-padding);
+    padding-right: var(--x-padding);
+    align-items: flex-end;
   }
 }
 
@@ -430,7 +428,6 @@ p {
 
   .cover_title {
     grid-area: image;
-
     position: fixed;
     left: 50%;
     top: 45%;
@@ -441,15 +438,8 @@ p {
     width: 30ch;
   }
 
-  .overlay__column:nth-child(6) > div:nth-child(2) {
-    margin: 0;
-  }
   .overlay__column:nth-child(6) {
-    margin-bottom: 0rem;
-    flex-flow: column;
-    justify-content: flex-end;
-    padding-left: var(--x-padding);
-    padding-right: var(--x-padding);
+    align-items: flex-start;
   }
 
   .overlay__column-title--main {

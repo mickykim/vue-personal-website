@@ -54,6 +54,7 @@ onMounted(() => {
   cursor: pointer;
   align-items: center;
   transition: background-color 0.5s;
+  width: min-content;
   box-shadow: inset 0 1px 0 hsl(var(--c-primary-900)),
     0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
 }

@@ -113,14 +113,15 @@ onMounted(() => {
 .tilt-card {
   display: flex;
   grid-template-columns: 1fr;
-  background-color: hsla(var(--c-primary-200, var(--c-green-500)), 0.5);
+  background-color: hsla(var(--c-primary-200, var(--c-blue-200)), 0.5);
   width: 100%;
   cursor: pointer;
   position: relative;
   min-height: 300px;
+  color: hsl(var(--c-primary-900, var(--c-blue-900)));
 }
 .tilt-card:hover {
-  box-shadow: 0px 0px 0px 4px hsla(var(--c-primary-800), 62%);
+  box-shadow: 0px 0px 0px 4px hsla(var(--c-primary-800, var(--c-blue-800)), 62%);
 }
 .image-bg {
   position: absolute;
@@ -162,6 +163,7 @@ onMounted(() => {
 .title {
   margin: 1rem 0;
   font-weight: bold;
+  color: hsl(var(--c-primary-900, var(--c-blue-900)));
 }
 
 @media screen and (min-width: 600px) {

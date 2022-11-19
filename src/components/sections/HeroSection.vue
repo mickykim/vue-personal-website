@@ -50,20 +50,20 @@ h2 {
   display: inline-block;
   line-height: normal;
   font-weight: bold;
-  color: hsl(var(--c-primary-900, var(--c-green-900)));
+  color: hsl(var(--c-primary-700, var(--c-green-700)));
 }
 
 .title {
   margin: 1rem 0rem;
 }
 a {
-  color: hsl(var(--c-primary-300));
+  color: hsl(var(--c-primary-300, var(--c-green-300)));
   text-decoration: none;
 }
 a:visited {
 }
 a:hover {
-  color: hsl(var(--c-primary-400));
+  color: hsl(var(--c-primary-400, var(--c-green-400)));
 }
 a:active {
 }

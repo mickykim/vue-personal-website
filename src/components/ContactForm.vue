@@ -145,6 +145,7 @@ form {
   flex-direction: column;
   padding-bottom: 15rem;
   width: 100%;
+  color: hsl(var(--c-primary-900, var(--c-red-900)));
 }
 textarea {
   /* Set max and min width so that textarea can only resize vertically without changing the cursor */
