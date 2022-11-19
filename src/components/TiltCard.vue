@@ -155,6 +155,7 @@ onMounted(() => {
   position: absolute;
   bottom: 17.5%;
   overflow: hidden;
+  z-index: 10;
 }
 .tag-list {
   margin: 0.5rem 2rem;

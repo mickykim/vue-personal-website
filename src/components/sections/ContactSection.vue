@@ -32,6 +32,7 @@ import FadeInComponent from "../FadeInComponent.vue";
 h2 {
   font-weight: bold;
   margin-bottom: 2rem;
+  color: hsl(var(--c-primary-900, var(--c-red-900)));
 }
 .form {
   max-width: 700px;
