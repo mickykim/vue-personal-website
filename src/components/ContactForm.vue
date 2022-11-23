@@ -168,23 +168,23 @@ input {
   background: hsla(var(--c-white), 0.4);
   padding: 1rem 0.5rem;
   border: none;
-  color: hsl(var(--c-primary-100));
+  color: hsl(var(--c-primary-100, var(--c-red-100)));
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
 input:focus,
 textarea:focus {
-  outline-color: hsl(var(--c-priamry-900, 0deg, 50%, 50%));
+  outline-color: hsl(var(--c-primary-900, var(--c-red-900)));
   outline-style: solid;
   outline-width: 3px;
 }
 input[type="submit"] {
-  background: hsl(var(--c-primary-600, var(--c-white)));
+  background: hsl(var(--c-primary-600, var(--c-red-600)));
   transition: background 1s;
   padding: 1.125rem 2rem;
   align-self: center;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 hsl(var(--c-primary-900)),
+  box-shadow: inset 0 1px 0 hsl(var(--c-primary-900, var(--c-red-900))),
     0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
   outline: none;
 }
@@ -195,7 +195,7 @@ input[type="submit"]:active {
 
 //Circle loader animation
 // Define vars we'll be using
-$brand-success: hsl(var(--c-primary-600, 120deg, 39.3%, 54.1%));
+$brand-success: hsl(var(--c-primary-600, var(--c-red-600)));
 $loader-size: 10em;
 $loader-thickness: 4px;
 $check-height: calc($loader-size/2);
