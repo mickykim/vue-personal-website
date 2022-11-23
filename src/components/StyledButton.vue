@@ -73,18 +73,15 @@ onMounted(() => {
 }
 .left-text {
   text-align: center;
-  padding: 0 1rem;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: bold;
   color: hsl(var(--c-primary-100, var(--c-green-100)));
-  min-height: 2rem;
-  line-height: 4rem;
+  line-height: 1rem;
 }
 .right-icon {
   display: flex;
   border-left: 1px solid hsl(var(--c-black));
-  padding: 0rem 1rem;
   min-height: 1rem;
   color: hsl(var(--c-primary-100, var(--c-green-100)));
 }
