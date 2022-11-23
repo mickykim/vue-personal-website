@@ -52,13 +52,13 @@ const cardsData = [
     description:
       "Landing page redesign focused on better performance and user experience. Contains a custom made gallery component and is integrated with HubSpot CMS",
     tags: ["HubSpot/HubL", "React", "Javascript", "HTML/CSS"],
-    image: "invexcapital.png",
+    image: "invexcapital.webp",
   },
   {
     title: "Construlita",
     description: "Landing page redesign focusing on best performance possible.",
     tags: ["React", "TypeScript", "TailwindCSS"],
-    image: "construlita.png",
+    image: "construlita.webp",
     githubLink: "https://github.com/mickykim/construlita",
     websiteLink: "https://construlita.vercel.app/",
   },

@@ -72,23 +72,61 @@ onMounted(() => {
   z-index: 10;
 }
 .left-text {
-  flex-grow: 0;
   text-align: center;
-  padding: 1.375rem 4rem;
+  padding: 0 1rem;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: bold;
   color: hsl(var(--c-primary-100, var(--c-green-100)));
-  min-height: 4rem;
+  min-height: 2rem;
+  line-height: 4rem;
 }
 .right-icon {
   display: flex;
-  flex: 0;
   border-left: 1px solid hsl(var(--c-black));
-  padding: 1rem 1rem;
-  min-height: 4rem;
+  padding: 0rem 1rem;
+  min-height: 1rem;
   color: hsl(var(--c-primary-100, var(--c-green-100)));
 }
+
+@media screen and (min-width: 600px) {
+  .styled-button {
+    position: relative;
+    background-color: hsl(var(--c-primary-500, var(--c-green-500)));
+    border: none;
+    display: flex;
+    flex-wrap: nowrap;
+    cursor: pointer;
+    align-items: center;
+    transition: background-color 0.5s;
+    width: min-content;
+    box-shadow: inset 0 1px 0 hsl(var(--c-primary-900)),
+      0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
+  }
+  .styled-button:active {
+    box-shadow: none;
+  }
+
+  .left-text {
+    flex-grow: 0;
+    text-align: center;
+    padding: 1.375rem 4rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: hsl(var(--c-primary-100, var(--c-green-100)));
+    min-height: 4rem;
+  }
+  .right-icon {
+    display: flex;
+    flex: 0;
+    border-left: 1px solid hsl(var(--c-black));
+    padding: 1rem 1rem;
+    min-height: 4rem;
+    color: hsl(var(--c-primary-100, var(--c-green-100)));
+  }
+}
+
 @media screen and (min-width: 900px) {
   .styled-button {
     min-height: 4rem;

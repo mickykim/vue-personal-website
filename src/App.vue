@@ -90,7 +90,10 @@ watch(colorTheme, () => {
   // );
 });
 onMounted(() => {
-  document.addEventListener("scroll", addIntersectionObserver);
+  const largeViewport = window.matchMedia("(min-width:1200px)");
+  if (largeViewport.matches) {
+    document.addEventListener("scroll", addIntersectionObserver);
+  }
 });
 </script>
 
