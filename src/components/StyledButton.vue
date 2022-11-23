@@ -12,8 +12,11 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
+import { stringify } from "querystring";
 import { onMounted, ref } from "vue";
-
+const props = defineProps({
+  color: String,
+});
 const button = ref<HTMLElement>();
 const overlay = ref<HTMLElement>();
 const leftText = ref<HTMLElement>();
@@ -41,13 +44,52 @@ onMounted(() => {
     2 * rightIcon.value.getBoundingClientRect().width;
 
   button.value.style.maxWidth = `${maxWidth.toFixed(2)}px`;
+  const largeViewport = window.matchMedia("(min-width:1200px)");
+  if (!largeViewport.matches) {
+    if (props.color === "blue") {
+      const style = document.createElement("style");
+      style.textContent = ` 
+    .styled-button{
+      background-color: hsl(var(--c-blue-500));
+    }
+    .hover-overlay{
+      background-color: hsla(var(--c-blue-100), 8%);
+    }
+    .left-text{
+      color: hsl(var(--c-blue-100));
+    }
+    .right-icon{
+      color: hsl(var(--c-blue-100));
+    }
+    `;
+      button.value.appendChild(style);
+    }
+    if (props.color === "orange") {
+      const style = document.createElement("style");
+      style.textContent = ` 
+    .styled-button{
+      background-color: hsl(var(--c-orange-500));
+    }
+    .hover-overlay{
+      background-color: hsla(var(--c-orange-100), 8%);
+    }
+    .left-text{
+      color: hsl(var(--c-orange-100));
+    }
+    .right-icon{
+      color: hsl(var(--c-orange-100));
+    }
+    `;
+      button.value.appendChild(style);
+    }
+  }
 });
 </script>
 
 <style scoped>
 .styled-button {
   position: relative;
-  background-color: hsl(var(--c-primary-500, var(--c-green-500)));
+  background-color: hsl(var(--c-primary-500, var(--c-orange-500)));
   border: none;
   display: flex;
   flex-wrap: nowrap;
@@ -55,7 +97,7 @@ onMounted(() => {
   align-items: center;
   transition: background-color 0.5s;
   width: min-content;
-  box-shadow: inset 0 1px 0 hsl(var(--c-primary-900)),
+  box-shadow: inset 0 1px 0 hsl(var(--c-primary-900, var(--c-orange-900))),
     0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
 }
 .styled-button:active {
@@ -63,7 +105,7 @@ onMounted(() => {
 }
 
 .hover-overlay {
-  background-color: hsla(var(--c-primary-100, var(--c-black)), 8%);
+  background-color: hsla(var(--c-primary-100, var(--c-orange-100)), 8%);
   position: absolute;
   top: 0;
   left: 0;
@@ -76,20 +118,19 @@ onMounted(() => {
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: bold;
-  color: hsl(var(--c-primary-100, var(--c-green-100)));
+  color: hsl(var(--c-primary-100, var(--c-orange-100)));
   line-height: 1rem;
 }
 .right-icon {
   display: flex;
   border-left: 1px solid hsl(var(--c-black));
   min-height: 1rem;
-  color: hsl(var(--c-primary-100, var(--c-green-100)));
+  color: hsl(var(--c-primary-100, var(--c-orange-100)));
 }
 
 @media screen and (min-width: 600px) {
   .styled-button {
     position: relative;
-    background-color: hsl(var(--c-primary-500, var(--c-green-500)));
     border: none;
     display: flex;
     flex-wrap: nowrap;
@@ -97,8 +138,6 @@ onMounted(() => {
     align-items: center;
     transition: background-color 0.5s;
     width: min-content;
-    box-shadow: inset 0 1px 0 hsl(var(--c-primary-900)),
-      0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
   }
   .styled-button:active {
     box-shadow: none;
@@ -111,7 +150,6 @@ onMounted(() => {
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: bold;
-    color: hsl(var(--c-primary-100, var(--c-green-100)));
     min-height: 4rem;
   }
   .right-icon {
@@ -120,13 +158,9 @@ onMounted(() => {
     border-left: 1px solid hsl(var(--c-black));
     padding: 1rem 1rem;
     min-height: 4rem;
-    color: hsl(var(--c-primary-100, var(--c-green-100)));
   }
 }
 
 @media screen and (min-width: 900px) {
-  .styled-button {
-    min-height: 4rem;
-  }
 }
 </style>
