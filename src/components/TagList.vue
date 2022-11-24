@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { onMounted, ref, watch } from 'vue';
+import { nextTick, onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
   tags: Array<string>,
@@ -28,8 +28,8 @@ const tagList = ref<HTMLElement>();
 const tag = ref();
 const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
-onMounted(() => {
-  if(!tagWrapper.value || !tag.value) return;
+onMounted(async () => {
+  if(!tagWrapper.value || !tag.value) await nextTick();
   tl.addLabel('start', 0);
   tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
   tl.to(tag.value, { x: '0%' },  `start+=${props.animationDelay}`);
