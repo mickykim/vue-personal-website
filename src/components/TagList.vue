@@ -29,7 +29,7 @@ const tag = ref();
 const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
 onMounted(async () => {
-  while(!tagWrapper.value || !tag.value){ await nextTick();
+  if(!tagWrapper.value || !tag.value){ await nextTick();
   }
   tl.addLabel('start', 0);
   tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
