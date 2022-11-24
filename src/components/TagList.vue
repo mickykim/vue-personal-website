@@ -36,6 +36,7 @@ onMounted(() => {
     animation: tl,
     trigger: tagList.value,
     start: 'top 85%',
+    once: true,
   })
 });
 

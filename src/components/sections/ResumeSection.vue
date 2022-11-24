@@ -19,13 +19,18 @@
         <StyledButton
           class="styled-button"
           @click="openLink('https://www.google.com/')"
+          color="orange"
         >
           <template #text> Resume </template>
           <template #icon>
             <IonDocumentTextSharp class="icon" />
           </template>
         </StyledButton>
-        <StyledButton class="styled-button" @click="scrollToContact">
+        <StyledButton
+          class="styled-button"
+          @click="scrollToContact"
+          color="orange"
+        >
           <template #text> Contact </template>
           <template #icon>
             <MaterialSymbolsMailOutlineSharp class="icon" />

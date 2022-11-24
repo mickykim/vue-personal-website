@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { stringify } from "querystring";
 import { onMounted, ref } from "vue";
 const props = defineProps({
   color: String,
@@ -62,7 +61,7 @@ onMounted(() => {
       color: hsl(var(--c-blue-100));
     }
     `;
-      button.value.appendChild(style);
+      button.value.prepend(style);
     }
     if (props.color === "orange") {
       const style = document.createElement("style");
@@ -80,7 +79,7 @@ onMounted(() => {
       color: hsl(var(--c-orange-100));
     }
     `;
-      button.value.appendChild(style);
+      button.value.prepend(style);
     }
   }
 });
@@ -96,7 +95,7 @@ onMounted(() => {
   cursor: pointer;
   align-items: center;
   transition: background-color 0.5s;
-  width: min-content;
+  min-width: 156px;
   box-shadow: inset 0 1px 0 hsl(var(--c-primary-900, var(--c-orange-900))),
     0 2px 3px hsla(0, 0%, 0%, 0.12), 0 2px 5px hsla(0, 0%, 0%, 0.24);
 }
@@ -118,6 +117,7 @@ onMounted(() => {
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: bold;
+  padding: 1rem 1.5rem;
   color: hsl(var(--c-primary-100, var(--c-orange-100)));
   line-height: 1rem;
 }
@@ -125,6 +125,7 @@ onMounted(() => {
   display: flex;
   border-left: 1px solid hsl(var(--c-black));
   min-height: 1rem;
+  padding: 1rem 1.5rem;
   color: hsl(var(--c-primary-100, var(--c-orange-100)));
 }
 
@@ -137,7 +138,7 @@ onMounted(() => {
     cursor: pointer;
     align-items: center;
     transition: background-color 0.5s;
-    width: min-content;
+    width: fit-content;
   }
   .styled-button:active {
     box-shadow: none;

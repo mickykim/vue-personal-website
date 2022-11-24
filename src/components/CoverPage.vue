@@ -68,7 +68,10 @@
       <div class="overlay__column" v-if="item.githubLink || item.websiteLink">
         <div class="text" v-if="item.githubLink">
           <div ref="githubLink">
-            <StyledButton @click="openLink(item.githubLink as string)">
+            <StyledButton
+              @click="openLink(item.githubLink as string)"
+              color="blue"
+            >
               <template #text> Github </template>
               <template #icon> <ArrowForwardIos class="icon" /> </template>
             </StyledButton>
@@ -76,7 +79,10 @@
         </div>
         <div class="text" v-if="item.websiteLink">
           <div ref="websiteLink">
-            <StyledButton @click="openLink(item.websiteLink as string)">
+            <StyledButton
+              @click="openLink(item.websiteLink as string)"
+              color="blue"
+            >
               <template #text> Visit </template>
               <template #icon> <ArrowForwardIos class="icon" /> </template>
             </StyledButton>
@@ -95,7 +101,7 @@
       </div> -->
       <div class="text overlay__back">
         <div ref="closeButton">
-          <StyledButton @click="hideCover">
+          <StyledButton @click="hideCover" color="blue">
             <template #text> Back </template>
             <template #icon> <ArrowBackIosNew class="icon" /> </template>
           </StyledButton>
@@ -290,7 +296,7 @@ p {
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: 1fr;
   justify-content: stretch;
-  grid-template-areas: "coverTitle" "image" "title" "mainContent" "sideContent" "links";
+  grid-template-areas: "coverTitle" "image" "image" "mainContent" "sideContent" "links";
   gap: 1rem;
 }
 
@@ -328,6 +334,7 @@ p {
   width: 100%;
 }
 .overlay__column:nth-child(3) {
+  display: none;
   grid-area: title;
   padding-left: var(--x-padding);
   padding-right: var(--x-padding);
@@ -396,7 +403,7 @@ p {
     --x-padding: 2rem;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "coverTitle coverTitle" "image image" "title title" "mainContent mainContent" "sideContent sideContent" ". links";
+    grid-template-areas: "coverTitle coverTitle" "image image" "image image" "mainContent mainContent" "sideContent sideContent" ". links";
   }
   .overlay__column:nth-child(3) > div:nth-child(2) {
     margin: 0 auto;
@@ -436,6 +443,9 @@ p {
   }
   .overlay__column {
     width: 30ch;
+  }
+  .overlay__column:nth-child(3) {
+    display: block;
   }
 
   .overlay__column:nth-child(6) {
