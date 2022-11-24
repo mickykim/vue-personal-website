@@ -235,9 +235,9 @@ onMounted(() => {
 <style scoped lang="scss">
 /* Transition style properties */
 .cover_page {
-  --color-overlay: hsl(var(--c-primary-100, var(--c-black)));
-  --color-text: hsl(var(--c-primary-900, var(--c-white)));
-  --color-hover: hsl(var(--c-primary-700, var(--c-black)));
+  --color-overlay: hsl(var(--c-primary-100, var(--c-blue-100)));
+  --color-text: hsl(var(--c-primary-900, var(--c-blue-900)));
+  --color-hover: hsl(var(--c-primary-700, var(--c-blue-700)));
   position: fixed;
   z-index: 999;
 }
