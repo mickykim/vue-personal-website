@@ -2,16 +2,16 @@ $rows: 20;
 $colors: "green", "brown", "blue", "purple", "red";
 
 @font-face {
-  font-family: "Avertastd";
-  src: url("./fonts/AvertaDemoPECuttedDemo-Regular.otf") format("opentype");
+  font-family: "Outfit";
+  src: url("./fonts/Outfit-Regular.ttf");
   font-weight: 400;
   font-style: normal;
   font-display: auto;
 }
 
 @font-face {
-  font-family: "Avertastd";
-  src: url("./fonts/AvertaDemoPE-ExtraBold.otf") format("opentype");
+  font-family: "Outfit";
+  src: url("./fonts/Outfit-ExtraBold.ttf");
   font-weight: 800;
   font-style: normal;
   font-display: auto;
@@ -109,7 +109,7 @@ $colors: "green", "brown", "blue", "purple", "red";
   margin: 0;
   padding: 0;
   font-weight: normal;
-  font-family: Avertastd, Inter, sans-serif;
+  font-family: Outfit, sans-serif;
   font-size: 16px;
   transition: color 0.5s;
 }
