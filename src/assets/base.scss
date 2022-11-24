@@ -1,21 +1,6 @@
 $rows: 20;
 $colors: "green", "brown", "blue", "purple", "red";
 
-@font-face {
-  font-family: "Outfit";
-  src: url("./fonts/Outfit-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
-  font-display: auto;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url("./fonts/Outfit-ExtraBold.ttf");
-  font-weight: 800;
-  font-style: normal;
-  font-display: auto;
-}
 :root {
   --c-white: 43, 0%, 100%;
 
