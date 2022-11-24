@@ -28,8 +28,18 @@ const tagList = ref<HTMLElement>();
 const tag = ref();
 const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
-onMounted(async () => {
-  if(!tagWrapper.value || !tag.value){ await nextTick();
+onMounted(() => {
+  if(!tagWrapper.value || !tag.value){ nextTick(() => {
+    tl.addLabel('start', 0);
+  tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
+  tl.to(tag.value, { x: '0%' },  `start+=${props.animationDelay}`);
+  ScrollTrigger.create({
+    animation: tl,
+    trigger: tagList.value,
+    start: 'top 85%',
+    once: true,
+  })
+  });
   }
   tl.addLabel('start', 0);
   tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
