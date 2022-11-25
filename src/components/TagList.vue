@@ -23,27 +23,33 @@ const props = defineProps({
   animationDelay: Number,
   animationReverse: Boolean
 });
-const tagWrapper = ref();
+const tagWrapper = ref<HTMLLIElement>();
 const tagList = ref<HTMLElement>();
 const tag = ref<HTMLElement>();
 const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
-onMounted(() => {
-  if(!tagWrapper.value || !tag.value) return;
-  tl.addLabel('start', 0);
+watch(() => tag.value, (tag) => {
+  if(!tag) return;
   tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
-  tl.to(tag.value, { x: '0%' },  `start+=${props.animationDelay}`);
+
+  tl.to(tag, { x: '0%' },  `start+=${props.animationDelay}`);
   ScrollTrigger.create({
     animation: tl,
     trigger: tagList.value,
     start: 'top 85%',
     once: true,
   })
+})
+
+
+onMounted(() => {
+  if(!tagWrapper.value) return;
+  tl.addLabel('start', 0);
+
 });
 
 // Reverse taglist sliding animation when closing cover page
 watch(() => props.animationReverse, () => {
-  console.log('hello');
   tl.reverse();
 })
 </script>
