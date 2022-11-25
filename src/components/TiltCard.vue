@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import VanillaTilt from "vanilla-tilt";
-import { onMounted, onUpdated, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TagList from "./TagList.vue";
@@ -69,7 +69,7 @@ const closeCover = () => {
 }
 
 
-onUpdated(() => {
+onMounted(() => {
   if (!tiltCard.value || !textContent.value) return;
   const touchDevice = ('ontouchstart' in document.documentElement);
     if(!touchDevice){
