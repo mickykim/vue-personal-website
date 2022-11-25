@@ -29,7 +29,7 @@ const tag = ref<HTMLElement>();
 const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
 watch(() => tag.value, (tag) => {
-  if(!tag) return;
+  if(!tag || !tagWrapper.value) return;
   tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
 
   tl.to(tag, { x: '0%' },  `start+=${props.animationDelay}`);
