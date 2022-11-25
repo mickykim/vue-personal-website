@@ -3,7 +3,7 @@
     <li
       class="tag-wrapper"
       v-for="tag in props.tags"
-      :key="tag"
+      :key="uuid.v4"
       ref="tagWrapper"
     >
       <p class="tag" ref="tag">
@@ -17,6 +17,7 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { onMounted, onUpdated, ref, watch } from 'vue';
+import { uuid } from 'vue-uuid'
 
 const props = defineProps({
   tags: Array<string>,
@@ -43,7 +44,6 @@ onUpdated(() => {
 
 // Reverse taglist sliding animation when closing cover page
 watch(() => props.animationReverse, () => {
-  console.log('hello');
   tl.reverse();
 })
 </script>

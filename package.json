@@ -17,7 +17,8 @@
     "split-type": "^0.3.2",
     "swiper": "^8.2.6",
     "vanilla-tilt": "^1.7.2",
-    "vue": "^3.2.36"
+    "vue": "^3.2.36",
+    "vue-uuid": "^3.0.0"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.88",

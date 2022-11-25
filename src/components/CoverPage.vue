@@ -223,11 +223,19 @@ onMounted(() => {
     .addLabel("button", 0.7)
     .from(closeButton.value, { x: "101%" }, "button")
     .from(closeButton.value.parentNode, { x: "-101%" }, "button");
-  if (githubLink.value || websiteLink.value) {
-    tl.from(githubLink.value, { x: "101%" }, "button")
-      .from(githubLink.value.parentNode, { x: "-101%" }, "button")
-      .from(websiteLink.value, { x: "101%" }, "button+=0.1")
-      .from(websiteLink.value.parentNode, { x: "-101%" }, "button+=0.1");
+  if (githubLink.value) {
+    tl.from(githubLink.value, { x: "101%" }, "button").from(
+      githubLink.value.parentNode,
+      { x: "-101%" },
+      "button"
+    );
+  }
+  if (websiteLink.value) {
+    tl.from(websiteLink.value, { x: "101%" }, "button+=0.1").from(
+      websiteLink.value.parentNode,
+      { x: "-101%" },
+      "button+=0.1"
+    );
   }
 });
 </script>
