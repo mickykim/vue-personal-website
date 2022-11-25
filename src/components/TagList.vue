@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { onMounted, onUpdated, ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
   tags: Array<string>,
