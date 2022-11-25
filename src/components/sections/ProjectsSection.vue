@@ -36,6 +36,15 @@ import TiltCard from "../TiltCard.vue";
 
 const cardsData = [
   {
+    title: "Belmont Village",
+    fullTitle: "Belmont Village ",
+    subtitle: "Senior Living",
+    description: "Full website export from HubSpot CMS to own custom server.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    image: "pathfinder-no-bg.svg",
+    websiteLink: "https://belmontvillage.com.mx/",
+  },
+  {
     title: "Pathfinder",
     fullTitle: "Pathfinder",
     subtitle: "Interactive Dijkstra's & A* w/ Touch",
@@ -51,7 +60,7 @@ const cardsData = [
     subtitle: "Invex Capital",
     description:
       "Landing page redesign focused on better performance and user experience. Contains a custom made gallery component and is integrated with HubSpot CMS",
-    tags: ["HubSpot/HubL", "React", "Javascript", "HTML/CSS"],
+    tags: ["HubSpot/HubL", "React", "JavaScript", "HTML/CSS"],
     image: "invexcapital.webp",
   },
   {
