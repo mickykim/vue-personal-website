@@ -183,8 +183,8 @@ onMounted(() => {
   if (!props.item.githubLink || !props.item.websiteLink) {
     if (largeViewport.matches) {
       cover.value.style.gridTemplateAreas = `
-      'image image image image image'
-      'title . . mainContent sideContent'
+      'image image image image image image'
+      'title . . mainContent sideContent links'
       `;
     }
   }
