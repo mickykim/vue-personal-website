@@ -3,7 +3,7 @@
     <li
       class="tag-wrapper"
       v-for="tag in props.tags"
-      :key="uuid.v4"
+      :key="uuid.v4()"
       ref="tagWrapper"
     >
       <p class="tag" ref="tag">
