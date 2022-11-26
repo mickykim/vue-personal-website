@@ -52,7 +52,6 @@ const openNavbar = () => {
   tl.to(navbar.value, { x: "0%" });
 };
 const tl = gsap.timeline({ defaults: { duration: 1, ease: "power3.inOut" } });
-onMounted(() => {});
 </script>
 
 <style scoped lang="scss">
@@ -110,6 +109,7 @@ a {
   right: 5%;
   font-size: 2rem;
   cursor: pointer;
+  color: hsl(var(--c-primary-900, var(--c-white)));
   z-index: 5;
 }
 

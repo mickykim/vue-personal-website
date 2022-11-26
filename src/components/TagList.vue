@@ -6,7 +6,7 @@
       :key="uuid.v4()"
       ref="tagWrapper"
     >
-      <p class="tag" ref="tag">
+      <p class="tag" :ref="(el) => tags.push(el as HTMLElement)">
         {{ tag }}
       </p>
     </li>
@@ -24,16 +24,16 @@ const props = defineProps({
   animationDelay: Number,
   animationReverse: Boolean
 });
-const tagWrapper = ref();
+const tagWrapper = ref<HTMLLIElement>();
 const tagList = ref<HTMLElement>();
-const tag = ref<HTMLElement>();
+const tags = ref<HTMLElement[]>([]);
 const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.inOut', stagger: 0.125 }, });
 
-onUpdated(() => {
-  if(!tagWrapper.value || !tag.value) return;
+onMounted(() => {
+  if(!tagWrapper.value || !tags.value) return;
   tl.addLabel('start', 0);
   tl.to(tagWrapper.value, { x: '0%'}, `start+=${props.animationDelay}`);
-  tl.to(tag.value, { x: '0%' },  `start+=${props.animationDelay}`);
+  tl.to(tags.value, { x: '0%' },  `start+=${props.animationDelay}`);
   ScrollTrigger.create({
     animation: tl,
     trigger: tagList.value,
