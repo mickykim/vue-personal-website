@@ -1,5 +1,4 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import withUUID from "vue-uuid";
 
-const app = withUUID(createApp(App)).mount("#app");
+const app = createApp(App).mount("#app");

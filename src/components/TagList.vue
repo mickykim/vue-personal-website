@@ -3,7 +3,7 @@
     <li
       class="tag-wrapper"
       v-for="tag in props.tags"
-      :key="uuid.v4()"
+      :key="tag"
       ref="tagWrapper"
     >
       <p class="tag" :ref="(el) => tags.push(el as HTMLElement)">
@@ -16,8 +16,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { onMounted, onUpdated, ref, watch } from 'vue';
-import { uuid } from 'vue-uuid'
+import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
   tags: Array<string>,
