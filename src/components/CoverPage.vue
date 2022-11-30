@@ -454,7 +454,7 @@ p {
 
     .text__inner {
       padding: 0;
-      line-height: initial;
+      line-height: normal;
     }
   }
   .overlay__column {
