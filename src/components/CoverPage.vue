@@ -454,6 +454,10 @@ p {
     top: 45%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    .text__inner {
+      padding: 0;
+      line-height: normal;
+    }
   }
   .overlay__column {
     width: 30ch;
