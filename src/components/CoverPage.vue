@@ -329,15 +329,16 @@ p {
   }
 }
 .cover_title {
-  overflow: hidden;
   grid-area: coverTitle;
-  margin: 0 auto;
+  overflow: hidden;
   height: min-content;
-
-  padding-left: var(--x-padding);
-  padding-right: var(--x-padding);
+  margin-top: 1.5rem;
   .text__inner {
+    height: 100%;
     font-weight: bold;
+    text-align: center;
+    line-height: 7rem;
+    padding-bottom: 1.5rem;
   }
 }
 .overlay__column {
@@ -409,9 +410,6 @@ p {
   fill: aqua;
 }
 @media screen and (min-width: 600px) {
-  .cover_title {
-    padding: 0;
-  }
   .cover {
     --x-padding: 2rem;
     grid-template-rows: repeat(5, 1fr);
@@ -431,6 +429,9 @@ p {
 }
 
 @media screen and (min-width: 1200px) {
+  .cover_title {
+    padding: 0;
+  }
   .cover {
     --x-padding: 2rem;
     --top-padding: 8rem;

@@ -140,8 +140,8 @@ onMounted(() => {
   width: 100%;
   background: linear-gradient(
     to bottom,
-    hsla(var(--c-black), 0.25) -10%,
-    hsla(var(--c-black), 0.8)
+    hsla(var(--c-black), 0.15) -10%,
+    hsla(var(--c-black), 0.6)
   );
 }
 .text-content {

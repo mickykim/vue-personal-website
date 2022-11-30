@@ -41,7 +41,7 @@ const cardsData = [
     subtitle: "Senior Living",
     description: "Full website export from HubSpot CMS to own custom server.",
     tags: ["HTML", "CSS", "JavaScript"],
-    image: "pathfinder-no-bg.svg",
+    image: "belmontvillage.webp",
     websiteLink: "https://belmontvillage.com.mx/",
   },
   {

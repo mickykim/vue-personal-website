@@ -22,15 +22,24 @@ export function clampBuilder(
     slope * 100
   }vw, ${maxFontSize}rem )`;
 }
+/**
+ *  !This function is not appending the created element.
+ * @param elements
+ * @param wrapType
+ * @returns
+ */
 export const wrapLines = (
   elements: Array<HTMLElement> | null,
   wrapType: string
 ) => {
-  if (!elements || elements.length === 0) return;
+  console.log(elements);
+  if (!elements || elements.length === 0 || wrapType === "") return;
   elements.forEach((el) => {
+    console.log({ old: el.parentNode });
     const wrapEl = document.createElement(wrapType);
     wrapEl.style.overflow = "hidden";
     el.parentNode?.appendChild(wrapEl);
     wrapEl.appendChild(el);
+    console.log({ new: el.parentNode });
   });
 };
