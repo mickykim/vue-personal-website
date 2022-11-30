@@ -333,13 +333,13 @@ p {
   overflow: hidden;
   height: min-content;
   margin-top: 1.5rem;
-  z-index: 10;
   .text__inner {
     height: 100%;
     font-weight: bold;
     text-align: center;
     line-height: 7rem;
     padding-bottom: 1.5rem;
+    z-index: 10;
   }
 }
 .overlay__column {
