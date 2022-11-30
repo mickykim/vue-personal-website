@@ -334,6 +334,8 @@ p {
   margin: 0 auto;
   height: min-content;
 
+  padding-left: var(--x-padding);
+  padding-right: var(--x-padding);
   .text__inner {
     font-weight: bold;
   }
@@ -407,6 +409,9 @@ p {
   fill: aqua;
 }
 @media screen and (min-width: 600px) {
+  .cover_title {
+    padding: 0;
+  }
   .cover {
     --x-padding: 2rem;
     grid-template-rows: repeat(5, 1fr);
