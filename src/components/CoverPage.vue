@@ -373,6 +373,7 @@ p {
   gap: 1rem;
   margin-bottom: 25%;
   padding-left: var(--x-padding);
+  padding-right: var(--x-padding);
 }
 .overlay__column-title {
   margin-bottom: 0rem;
@@ -444,7 +445,6 @@ p {
   }
 
   .cover_title {
-    grid-area: image;
     position: fixed;
     left: 50%;
     top: 45%;
@@ -453,6 +453,7 @@ p {
     padding: 0;
 
     .text__inner {
+      padding: 0;
       line-height: normal;
     }
   }
