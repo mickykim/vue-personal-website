@@ -453,7 +453,6 @@ p {
     padding: 0;
 
     .text__inner {
-      padding: 0;
       line-height: normal;
     }
   }
