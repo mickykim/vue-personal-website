@@ -429,9 +429,6 @@ p {
 }
 
 @media screen and (min-width: 1200px) {
-  .cover_title {
-    padding: 0;
-  }
   .cover {
     --x-padding: 2rem;
     --top-padding: 8rem;
@@ -444,8 +441,6 @@ p {
       "image image image image image"
       "title . mainContent sideContent links";
   }
-  .cover_img {
-  }
 
   .cover_title {
     grid-area: image;
@@ -454,9 +449,11 @@ p {
     top: 45%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    padding: 0;
+
     .text__inner {
       padding: 0;
-      line-height: normal;
+      line-height: initial;
     }
   }
   .overlay__column {
