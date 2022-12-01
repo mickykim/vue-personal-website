@@ -348,6 +348,7 @@ p {
     line-height: 7rem;
     padding-bottom: 1.5rem;
     z-index: 999;
+    -webkit-transform: translateZ(1px);
   }
 }
 .overlay__column {
