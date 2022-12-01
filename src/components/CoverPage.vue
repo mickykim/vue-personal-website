@@ -252,7 +252,7 @@ onMounted(() => {
   --color-text: hsl(var(--c-primary-900, var(--c-blue-900)));
   --color-hover: hsl(var(--c-primary-700, var(--c-blue-700)));
   position: fixed;
-  z-index: 2;
+  z-index: 999;
 }
 
 .overlay {
@@ -344,7 +344,7 @@ p {
     text-align: center;
     line-height: 7rem;
     padding-bottom: 1.5rem;
-    z-index: 10;
+    z-index: 999;
   }
 }
 .overlay__column {
