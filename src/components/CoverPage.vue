@@ -339,7 +339,6 @@ p {
     text-align: center;
     line-height: 7rem;
     padding-bottom: 1.5rem;
-    z-index: 10;
   }
 }
 .overlay__column {
@@ -445,6 +444,7 @@ p {
   }
 
   .cover_title {
+    grid-area: initial;
     position: fixed;
     left: 50%;
     top: 45%;
