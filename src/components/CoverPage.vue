@@ -205,6 +205,7 @@ onMounted(() => {
     .from(coverImgInner.value, { y: "101%" }, "content")
 
     .addLabel("title", 0.6)
+    .from(coverTitle.value, { y: "-101%" }, "title")
     .from(coverTitleInner.value, { y: "101%" }, "title")
     .from(mainColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
     .from(sideColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
