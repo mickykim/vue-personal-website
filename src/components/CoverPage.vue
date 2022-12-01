@@ -20,7 +20,11 @@
       <div class="cover_title text" ref="coverTitle">
         <h2
           class="text__inner title"
-          ref="coverTitleInner"
+          :ref="
+            (el) => {
+              coverTitleInner = el;
+            }
+          "
           :style="{ fontSize: `${clampBuilder(400, 900, 4, 9)}` }"
         >
           {{ item.title }}
@@ -204,7 +208,7 @@ onMounted(() => {
     .from(coverImg.value, { y: "-101%" }, "content")
     .from(coverImgInner.value, { y: "101%" }, "content")
 
-    .addLabel("title", 0.6)
+    .addLabel("title", 0.8)
     .from(coverTitle.value, { y: "-101%" }, "title")
     .from(coverTitleInner.value, { y: "101%" }, "title")
     .from(mainColumnTitleInner.value, { y: "101%", opacity: 0 }, "title")
@@ -214,14 +218,14 @@ onMounted(() => {
     .from(subtitleInner.value.parentNode, { x: "-101%" }, "title+=0.2")
     .from(subtitleInner.value, { x: "101%" }, "title+=0.2")
 
-    .addLabel("text", 0.6)
+    .addLabel("text", 0.8)
     .from(mainContentText.lines, { y: "101%", stagger: 0.08 }, "text")
     // .from(
     //   sideColumnContent.value.firstChild.children,
     //   { y: "101%", opacity: 0, stagger: 0.2 },
     //   "text"
     // )
-    .addLabel("button", 0.7)
+    .addLabel("button", 0.8)
     .from(closeButton.value, { x: "101%" }, "button")
     .from(closeButton.value.parentNode, { x: "-101%" }, "button");
   if (githubLink.value) {
