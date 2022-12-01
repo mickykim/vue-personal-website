@@ -322,6 +322,7 @@ p {
   pointer-events: none;
   overflow: hidden;
   min-height: 250px;
+  z-index: -1;
 
   .cover_img__inner {
     position: absolute;
@@ -338,6 +339,8 @@ p {
   overflow: hidden;
   height: min-content;
   margin-top: 1.5rem;
+  z-index: 999;
+
   .text__inner {
     height: 100%;
     font-weight: bold;
