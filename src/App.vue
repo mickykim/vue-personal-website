@@ -2,11 +2,13 @@
   <header><HeaderContainer /></header>
 
   <main ref="main">
-    <NavBar
-      @change-color-theme="changeColorTheme"
-      id="navbar"
-      :current-section-id="currentSection"
-    />
+    <div class="navbar--wrapper">
+      <NavBar
+        @change-color-theme="changeColorTheme"
+        id="navbar"
+        :current-section-id="currentSection"
+      />
+    </div>
     <MobileNavbar id="mobile-nav" />
     <div class="index-template">
       <HeroSection />
@@ -20,11 +22,15 @@
 <script setup lang="ts">
 import HeaderContainer from "./components/HeaderContainer.vue";
 import HeroSection from "./components/sections/HeroSection.vue";
-import ProjectsSection from "./components/sections/ProjectsSection.vue";
 import ResumeSection from "./components/sections/ResumeSection.vue";
 import { onMounted, reactive, ref, watch, defineAsyncComponent } from "vue";
-import ContactSection from "./components/sections/ContactSection.vue";
 
+const ProjectsSection = defineAsyncComponent(
+  () => import("./components/sections/ProjectsSection.vue")
+);
+const ContactSection = defineAsyncComponent(
+  () => import("./components/sections/ContactSection.vue")
+);
 const NavBar = defineAsyncComponent(() => import("./components/NavBar.vue"));
 const MobileNavbar = defineAsyncComponent(
   () => import("./components/MobileNavbar.vue")
@@ -128,7 +134,9 @@ main {
   max-width: 866px;
   margin: 0 auto;
 }
-
+.navbar--wrapper {
+  width: 250px;
+}
 @media screen and (min-width: 600px) {
 }
 @media screen and (min-width: 1200px) {
