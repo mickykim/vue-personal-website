@@ -30,9 +30,11 @@
 </template>
 
 <script setup lang="ts">
+import { defineAsyncComponent } from "vue";
 import FadeInComponent from "../FadeInComponent.vue";
 import StyledHeading from "../StyledHeading.vue";
-import TiltCard from "../TiltCard.vue";
+
+const TiltCard = defineAsyncComponent(() => import("../TiltCard.vue"));
 
 const cardsData = [
   {
