@@ -18,14 +18,17 @@
 </template>
 
 <script setup lang="ts">
-import NavBar from "./components/NavBar.vue";
 import HeaderContainer from "./components/HeaderContainer.vue";
 import HeroSection from "./components/sections/HeroSection.vue";
 import ProjectsSection from "./components/sections/ProjectsSection.vue";
 import ResumeSection from "./components/sections/ResumeSection.vue";
-import { onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, ref, watch, defineAsyncComponent } from "vue";
 import ContactSection from "./components/sections/ContactSection.vue";
-import MobileNavbar from "./components/MobileNavbar.vue";
+
+const NavBar = defineAsyncComponent(() => import("./components/NavBar.vue"));
+const MobileNavbar = defineAsyncComponent(
+  () => import("./components/MobileNavbar.vue")
+);
 const main = ref();
 const root = document.querySelector<HTMLElement>(":root");
 const currentSection = ref();
