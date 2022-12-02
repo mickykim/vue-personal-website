@@ -149,7 +149,7 @@ onMounted(() => {
   );
   link_buttons.value.forEach((link, index) => {
     const { x, y, xdelta } = calculateExpandedScale(link);
-    if (!x || !y) return;
+    if (!x || !y || !sections[index]) return;
     addStyle(
       `
       @keyframes ${sections[index].color}ScaleText {
