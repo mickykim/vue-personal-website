@@ -134,6 +134,8 @@ main {
   max-width: 866px;
   margin: 0 auto;
 }
+
+//Wrapper used with defined width to prevent CLS when lazy loading navbar
 .navbar--wrapper {
   width: 250px;
 }
