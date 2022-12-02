@@ -1,7 +1,8 @@
 <template>
   <nav ref="navbar">
+    <CloseButton @click="closeNavbar" class="close-button" />
+
     <ul>
-      <CloseButton @click="closeNavbar" class="close-button" />
       <li v-for="(section, index) in sections" :key="index">
         <a :href="section.url" @click="closeNavbar" :class="section.color">
           {{ section.textContent }}
