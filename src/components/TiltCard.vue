@@ -25,13 +25,12 @@
 
 <script setup lang="ts">
 import VanillaTilt from "vanilla-tilt";
-import { defineAsyncComponent, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TagList from "./TagList.vue";
-// import CoverPage from "./CoverPage.vue";
+import CoverPage from "./CoverPage.vue";
 
-const CoverPage = defineAsyncComponent(() => import('./CoverPage.vue'));
 const props = defineProps({
   id: Number,
   image: String,
