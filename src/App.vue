@@ -24,13 +24,15 @@ import HeaderContainer from "./components/HeaderContainer.vue";
 import HeroSection from "./components/sections/HeroSection.vue";
 import ResumeSection from "./components/sections/ResumeSection.vue";
 import { onMounted, reactive, ref, watch, defineAsyncComponent } from "vue";
+import ProjectsSection from "./components/sections/ProjectsSection.vue";
+import ContactSection from "./components/sections/ContactSection.vue";
 
-const ProjectsSection = defineAsyncComponent(
-  () => import("./components/sections/ProjectsSection.vue")
-);
-const ContactSection = defineAsyncComponent(
-  () => import("./components/sections/ContactSection.vue")
-);
+// const ProjectsSection = defineAsyncComponent(
+//   () => import("./components/sections/ProjectsSection.vue")
+// );
+// const ContactSection = defineAsyncComponent(
+//   () => import("./components/sections/ContactSection.vue")
+// );
 const NavBar = defineAsyncComponent(() => import("./components/NavBar.vue"));
 const MobileNavbar = defineAsyncComponent(
   () => import("./components/MobileNavbar.vue")
