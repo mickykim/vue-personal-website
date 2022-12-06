@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import CloseButton from "~icons/material-symbols/close";
 import MenuButton from "~icons/material-symbols/menu";
 const sections = [
