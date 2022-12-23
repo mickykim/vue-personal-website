@@ -54,7 +54,7 @@ const cardsData = [
     tags: ["React", "TypeScript", "TailwindCSS"],
     image: "pathfinder-no-bg.svg",
     githubLink: "https://github.com/mickykim/pathfinder",
-    websiteLink: "https://mikimpathfinder.vercel.app/",
+    websiteLink: "https://pathfinder.mikim.dev/",
   },
   {
     title: "Invex Capital",
