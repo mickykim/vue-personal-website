@@ -18,7 +18,7 @@
       <div class="resume-section">
         <StyledButton
           class="styled-button"
-          @click="openLink('https://www.google.com/')"
+          @click="openLink('./assets/MiqueasKimHan.pdf')"
           color="orange"
         >
           <template #text> Resume </template>
@@ -47,7 +47,6 @@ import StyledHeading from "../StyledHeading.vue";
 import FadeInComponent from "../FadeInComponent.vue";
 import IonDocumentTextSharp from "~icons/ion/document-text-sharp";
 import MaterialSymbolsMailOutlineSharp from "~icons/material-symbols/mail-outline-sharp";
-
 const openLink = (url: string) => {
   window.open(url);
 };
