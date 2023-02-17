@@ -124,6 +124,13 @@ p {
     --color-button: var(--c-white);
   }
 }
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: var(--c-gray);
+    --color-root: var(--c-white);
+    --color-button: var(--c-white);
+  }
+}
 
 body {
   will-change: color;
